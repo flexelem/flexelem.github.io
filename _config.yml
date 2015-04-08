@@ -1,0 +1,26 @@
+# Dependencies
+markdown:            redcarpet
+highlighter:         pygments
+
+# Permalinks
+#
+# Use of `relative_permalinks` ensures post links from the index work properly.
+permalink:           pretty
+relative_permalinks: true
+
+# Setup
+title:               Hodor
+tagline:             'A Jekyll theme'
+description:         All about programming
+url:                 http://lanyon.getpoole.com
+baseurl:             /
+paginate:            5
+
+# About/contact
+author:
+  name:              Burak Aktas
+  url:               https://twitter.com/mdo
+  email:             buraktas@gmail.com
+
+# Custom vars
+version:             1.0.0
