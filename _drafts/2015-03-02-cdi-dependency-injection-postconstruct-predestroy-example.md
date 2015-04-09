@@ -36,8 +36,6 @@ Due to the [Weld Reference][3] injection and initialization happens in this orde
 >   </ul>
 > </div>
 
-<!-- more -->
-
 So, the purpose of using <blognewcode>@PostConstruct</blognewcode> is clear; it gives you a chance to initialize injected beans, resources etc.
 
 {% highlight java %}
