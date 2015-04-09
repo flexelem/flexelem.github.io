@@ -22,5 +22,7 @@ author:
   url:               https://twitter.com/mdo
   email:             buraktas@gmail.com
 
+comments:	true
+
 # Custom vars
 version:             1.0.0
