@@ -12,7 +12,7 @@ relative_permalinks: true
 title:               Hodor
 tagline:             'A Jekyll theme'
 description:         All about programming
-url:                 http://lanyon.getpoole.com
+url:                 http://buraktas.com
 baseurl:             /
 paginate:            5
 
