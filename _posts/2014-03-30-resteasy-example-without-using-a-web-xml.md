@@ -17,6 +17,8 @@ comments: true
 ---
 In this tutorial we will implement a simple web service with RESTEasy implementation -it's an implementation of the JAX-RS specification by JBoss- without using a web.xml file. I've used
 
+<!--more-->
+
 <div>
   <ul>
     <li>
@@ -52,17 +54,17 @@ command line will prompt some questions while it is initializing your project li
 
 After we created our maven project we have to import initialized project into eclipse by <b>import->Existing Maven Projects</b>
 
-![]({{ site.url }}/public/images/2014/03/eclipse_import-maven_project.png)
+![import_maven]({{ site.url }}/public/images/2014/03/eclipse_import-maven_project.png)
 
 Then browse to the directory where you created your maven project, and select the root folder.
 
 Now our directory structure should look like this
 
-<a href="{{ site.url }}/public/images/2014/03/directory.png"><img src="{{ site.url }}/public/images/2014/03/directory.png" alt="directory" width="290" height="343" class="aligncenter size-full" /></a>
+![directory]({{ site.url }}/public/images/2014/03/directory.png)
 
 <h3> 2. Dependencies </h3>
 
-We are going to use 2 dependencies which <code>junit</code> is optional cause I&#8217;m not going to show any test methods in this tutorial 
+We are going to use 2 dependencies which <code>junit</code> is optional cause I'm not going to show any test methods in this tutorial 
 
 <pre>
 <code class="language-default">&lt;dependencies&gt;
@@ -205,7 +207,7 @@ mvn clean install
 
 After the process is successfully finished, maven will create <b>.war</b> file under target directory. When we deploy it on JBoss, we could use our implemented resource on <b>http://localhost:8080/rest-helloworld/helloworld</b> which will print <b>Hello World</b>
       
-<a href="{{ site.url }}/public/images/2014/03/localhost_hello_world.png"><img src="{{ site.url }}/public/images/2014/03/localhost_hello_world.png" alt="localhost_hello_world" width="968" height="69" class="aligncenter size-full" /></a>
+![localhost_helloword]({{ site.url }}/public/images/2014/03/localhost_hello_world.png)
       
 Here you can find the original source code. <br>
 <a href="https://github.com/flexelem/resteasy_hello_world" title="RESTEasy Hello World" target="_blank">RESTEasy Hello World</a>

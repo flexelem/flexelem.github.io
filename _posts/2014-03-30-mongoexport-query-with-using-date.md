@@ -14,8 +14,11 @@ tags:
   - timestamp
 comments: true
 ---
-Sometimes we might want to export only a specific part of our collection with query support of **mongoexport**.  
+Sometimes we might want to export only a specific part of our collection with query support of <b>mongoexport</b>.
+  
 Suppose this is our notebook collection, and each document refers to a notebook with their production date.
+
+<!--more-->
 
 <pre>
 <code class="language-javascript">{

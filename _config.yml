@@ -15,6 +15,7 @@ description:         All about programming
 url:                 http://buraktas.com
 baseurl:             /
 paginate:            5
+excerpt_separator: <!--more-->
 
 # About/contact
 author:

@@ -13,39 +13,43 @@ tags:
   - jersey-client
   - rest
   - web-service
+comments: true
 ---
 In this tutorial we will implement a Jersey client example with JSON support. The tools and technologies that I have used are;
 
-<div class="bullet list">
-  <ul>
+<!--more-->
+
+<div>
+  <u></u>l>
     <li>
       Eclipse 4.3.0
     </li>
+
     <li>
       JBoss AS 7.1.1.Final
     </li>
+
     <li>
       Maven 3.1.1
     </li>
+
     <li>
       JDK 1.7
     </li>
   </ul>
 </div>
 
-#### Project Structure 
-
+<h3> Project Structure </h3>
 Our project structure will look like below;
 
-<div class="hentry img">
-  <a href="http://www.buraktas.com/wp-content/uploads/2014/04/jersey-client-get-structure.png"><img src="http://www.buraktas.com/wp-content/uploads/2014/04/jersey-client-get-structure.png" alt="jersey-client-get-structure" width="322" height="417" class="aligncenter size-full wp-image-124" /></a>
-</div>
+![]({{ site.url }}/public/images/2014/04/jersey-client-get-structure.png)
 
-#### Dependencies 
+<h3> Dependencies </h3>
 
 There are two dependencies to use Jersey client and JSON support
 
-<pre class="lang:xhtml decode:true " >&lt;dependency&gt;
+<pre>
+<code class="language-default">&lt;dependency&gt;
 	&lt;groupId&gt;com.sun.jersey&lt;/groupId&gt;
 	&lt;artifactId&gt;jersey-client&lt;/artifactId&gt;
 	&lt;version&gt;1.18.1&lt;/version&gt;
@@ -55,23 +59,26 @@ There are two dependencies to use Jersey client and JSON support
 	&lt;groupId&gt;com.sun.jersey&lt;/groupId&gt;
 	&lt;artifactId&gt;jersey-json&lt;/artifactId&gt;
 	&lt;version&gt;1.18.1&lt;/version&gt;
-&lt;/dependency&gt;</pre>
+&lt;/dependency&gt;</code>
+</pre>
 
-<div class="bullet list">
+<div>
   <ul>
     <li>
       <b>jersey-client</b> dependency provides required jars for jersey client.
     </li>
+
     <li>
-      <b>jersey-json</b> dependecy includes the jersey-json.jar which provides JSON support. </ul> </div> <h4>
-        POJO Entity
-      </h4>
+      <b>jersey-json</b> dependecy includes the jersey-json.jar which provides JSON support. 
+    </li>
+  </ul>
+</div> 
+
+<h3> POJO Entity </h3>
+We will simply use a Book entity which consists of 4 fields
       
-      <p>
-        We will simply use a Book entity which consists of 4 fields
-      </p>
-      
-      <pre class="lang:java decode:true " >public class BookEntity {
+<pre>
+<code class="language-java">public class BookEntity {
 
     private int    id;
     private String title;
@@ -121,30 +128,26 @@ There are two dependencies to use Jersey client and JSON support
 
         return stringBuilder.toString();
     }
-}</pre>
+}</code>
+</pre>
+
+<h3> Client Configuration </h3>
+
+To enable JSON support we have to turn <code>JSONConfiguration.FEATURE_POJO_MAPPING</code> feature on for our jersey client. So we create our client with the following code;
+
       
-      <h4>
-        Client Configuration
-      </h4>
-      
-      <p>
-        To enable JSON support we have to turn <blogcode>JSONConfiguration.FEATURE_POJO_MAPPING</blogcode> feature on for our jersey client. So we create our client with the following code;
-      </p>
-      
-      <pre class="lang:java mark:2 decode:true " >ClientConfig clientConfig = new DefaultClientConfig();
+<pre>
+<code class="language-java">ClientConfig clientConfig = new DefaultClientConfig();
 clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
-Client client = Client.create(clientConfig);</pre>
+Client client = Client.create(clientConfig);</code>
+</pre>
+
+<h3> Resource Class </h3>
+
+Here are the interface and the implementation class of our resource
       
-      <h4>
-        Resource Class
-      </h4>
-      
-      <p>
-        Here are the interface and the implementation class of our resource
-      </p>
-      
-      <pre class="lang:java decode:true " >
-@Path("/book-service")
+<pre>
+<code class="language-java">@Path("/book-service")
 public interface BookResource {
 
     @GET
@@ -162,13 +165,13 @@ public interface BookResource {
     @Consumes("application/json")
     @Produces("application/json")
     public BookEntity createBook(BookEntity bookEntity);
-}</pre>
+}</code>
+</pre>
       
-      <pre class="lang:java decode:true " >
-public class DefaultBookResource implements BookResource {
-
-    private Map&lt;Integer, BookEntity&gt; list      = new HashMap&lt;Integer, BookEntity&gt;();
-    private AtomicInteger            idCounter = new AtomicInteger();
+<pre>
+<code class="language-java">public class DefaultBookResource implements BookResource {
+    private Map&lt;Integer, BookEntity&gt; list = new HashMap&lt;Integer, BookEntity&gt;();
+    private AtomicInteger idCounter = new AtomicInteger();
 
     public DefaultBookResource() {
 
@@ -200,34 +203,31 @@ public class DefaultBookResource implements BookResource {
 
     @Override
     public BookEntity createBook(BookEntity bookEntity) {
-
         bookEntity.setId(idCounter.getAndIncrement());
         list.put(bookEntity.getId(), bookEntity);
 
         return bookEntity;
     }
-}</pre>
+}</code>
+</pre>
       
-      <div class="bullet list">
-        <ul>
-          <li>
-            <blogcode>Map<Integer, BookEntity> list</blogcode> is a list that it will have two entities initially.
-          </li>
-          <li>
-            <blogcode>AtomicInteger</blogcode> provides to increment and decrement amotically an integer.
-          </li>
-        </ul>
-      </div>
+<div>
+  <ul>
+    <li>
+      <code>Map&lt;Integer, BookEntity&gt; list</code> is a list that it will have two entities initially.
+    </li>
+    <li>
+      <code>AtomicInteger</code> provides to increment and decrement amotically an integer.
+    </li>
+  </ul>
+</div>
       
-      <h4>
-        GET Request
-      </h4>
+<h3> GET Request </h3>
+
+As I mentioned earlier we have to create our Jersey client with JSON support, then we can start to make requests to available resources. I will first send a GET request to return a BookEntity if it exists.
       
-      <p>
-        As I mentioned earlier we have to create our Jersey client with JSON support, then we can start to make requests to available resources. I will first send a GET request to return a BookEntity if it exists.
-      </p>
-      
-      <pre class="lang:java decode:true " >public class JerseyClient {
+<pre>
+<code class="language-java">public class JerseyClient {
 
     public static void main(String[] args) {
 
@@ -248,22 +248,21 @@ public class DefaultBookResource implements BookResource {
 
         System.out.println(responseEntity.toString());
     }
-}</pre>
-      
-      <p>
-        Output ;
-      </p>
-      
-      <pre class="lang:default decode:true " >Id : 1
+}</code>
+</pre>
+
+Output;
+
+<pre>Id : 1
 Title : Exile
 Author : Salvatore
-Price : 9.99</pre>
-      
-      <p>
-        Now lets see how we can get the list from response which contains BookEntities
-      </p>
-      
-      <pre class="lang:java mark:5 decode:true " >// GET request to list resource
+Price : 9.99
+</pre>
+
+Now lets see how we can get the list from response which contains BookEntities
+
+<pre>
+<code class="language-java">// GET request to list resource
 String getListURL = "http://localhost:8080/jersey-client-json-example/services/book-service/list";
 webResourceGet = client.resource(getListURL);
 response = webResourceGet.get(ClientResponse.class);
@@ -277,21 +276,18 @@ for (Entry&lt;Integer, BookEntity&gt; entry : list.entrySet()) {
 
      BookEntity bookEntity = entry.getValue();
      System.out.println(bookEntity.toString());
-}</pre>
+}</code>
+</pre>
       
-      <div class="bullet list">
-        <ul>
-          <li>
-            <blogcode>GenericType</blogcode> is the key object to get the list from the response.
-          </li>
-        </ul>
-      </div>
+<div>
+  <ul>
+    <li><code>GenericType</code> is the key object to get the list from the response.</li>
+  </ul>
+</div>
+
+Output will be ;
       
-      <p>
-        Output will be ;
-      </p>
-      
-      <pre class="lang:default decode:true " >Id : 0
+<pre>Id : 0
 Title : TheSoulforge
 Author : MargaretWeis
 Price : 7.99
@@ -299,17 +295,15 @@ Price : 7.99
 Id : 1
 Title : Exile
 Author : Salvatore
-Price : 9.99</pre>
+Price : 9.99
+</pre>
+
+<h3> POST Request </h3>
+
+Now we will create a BookEntity object to send it associated POST resource.
       
-      <h4>
-        POST Request
-      </h4>
-      
-      <p>
-        Now we will create a BookEntity object to send it associated POST resource.
-      </p>
-      
-      <pre class="lang:java decode:true " >public class JerseyClient {
+<pre>
+<code class="language-java">public class JerseyClient {
 
     public static void main(String[] args) {
 
@@ -330,17 +324,15 @@ Price : 9.99</pre>
 
         System.out.println(responseEntity.toString());
     }
-}</pre>
+}</code>
+</pre>
+
+Finally our output will be;
       
-      <p>
-        Finally our output will be;
-      </p>
-      
-      <pre class="lang:java decode:true " >Id : 2
+<pre>Id : 2
 Title : LOTR
 Author : Tolkien
-Price : 12.99</pre>
+Price : 12.99
+</pre>
       
-      <p>
-        You can download the source code from <a href="http://www.buraktas.com/wp-content/uploads/2014/04/jersey-client-json-example.rar" target="_blank">here</a>.
-      </p>
+You can download the source code from <a href="{{ site.url }}/public/images/2014/04/jersey-client-json-example.rar" target="_blank">here</a>.
