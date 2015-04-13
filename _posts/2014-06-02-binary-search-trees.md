@@ -427,7 +427,7 @@ The delete procedure will use a subroutine which is called <em>transplant</em> t
         Node y = treePredecessor(delNode);
         swapKeys(delNode, y);
  
-    Node z = y.getLeftChild();
+        Node z = y.getLeftChild();
         transplant(y, z);
     }
 }</code>
