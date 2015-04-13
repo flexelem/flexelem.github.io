@@ -11,21 +11,24 @@ tags:
   - jackson
   - java
   - json
+comments: true
 ---
 We will see a simple example about converting objects to/from JSON objects in Java by Jackson. First, add maven dependency for jackson.
 
-<pre class="lang:java decode:true " >&lt;dependency&gt;
+<pre><code class="language-apacheconf">&lt;dependency&gt;
         &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
         &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;
         &lt;version&gt;2.4.4&lt;/version&gt;
-    &lt;/dependency&gt;</pre>
+&lt;/dependency&gt;</code>
+</pre>
+
+<!--more-->
 
 And two typical Person and Address classes.
 
-<div class="class-names">
-  <b>Person.java</b></p> 
+<b>Person.java</b>
   
-  <pre class="lang:java decode:true " >public class Person {
+<pre><code class="language-java">public class Person {
 
     private String name;
     private String lastName;
@@ -61,12 +64,12 @@ And two typical Person and Address classes.
 
         return stringBuilder.toString();
     }
-}</pre>
+}</code>
+</pre>
   
-  <div class="class-names">
-    <b>Address.java</b></p> 
+<b>Address.java</b>
     
-    <pre class="lang:java decode:true " >public class Address {
+<pre><code class="language-java">public class Address {
 
     private int zipcode;
     private String street;
@@ -90,29 +93,26 @@ And two typical Person and Address classes.
 
         return stringBuilder.toString();
     }
-}</pre>
-  </div>
+}</code>
+</pre>
   
-  <p>
-    <b><u>Notes</u></b>
-  </p>
+<b><u>Notes</u></b>
   
-  <div class="bullet list">
+<div>
     <ul>
       <li>
-        <blognewcode>@JsonCreator</blognewcode> annotation is used for constructors or static factory methods to construct instances from Json. This is called <b>property base creators</b>. Property base creators can have one more or more parameters which all of them have to annotated by <blognewcode>@JsonProperty</blognewcode> annotations.
+        <code>@JsonCreator</code> annotation is used for constructors or static factory methods to construct instances from Json. This is called <b>property base creators</b>. Property base creators can have one more or more parameters which all of them have to annotated by <code>@JsonProperty</code> annotations.
       </li>
+
       <li>
-        <blognewcode>@JsonProperty</blognewcode> annotation is used to bind data by a given name.
+        <code>@JsonProperty</code> annotation is used to bind data by a given name.
       </li>
     </ul>
-  </div>
+</div>
   
-  <h3>
-    1.Object to JSON
-  </h3>
+<h3> 1.Object to JSON </h3>
   
-  <pre class="lang:java decode:true " >public class JacksonExample {
+<pre><code class="language-java">public class JacksonExample {
 
     public static void main(String[] args) throws JsonProcessingException {
         Address homeAddress = new Address(12345, "Stenhammer Drive");
@@ -127,13 +127,12 @@ And two typical Person and Address classes.
         String value = objectMapper.writeValueAsString(person);
         System.out.println(value);
     }
-}</pre>
+}</code>
+</pre>
   
-  <p>
-    Output will be;
-  </p>
+Output will be;
   
-  <pre class="lang:default decode:true " >{
+<pre><code class="language-java">{
    "name":"Sawyer",
    "lastName":"Bootstrapper",
    "age":23,
@@ -147,32 +146,30 @@ And two typical Person and Address classes.
          "street":"Market Street"
       }
    ]
-}</pre>
+}</code>
+</pre>
   
-  <h3>
-    2.JSON to Object
-  </h3>
+<h3> 2.JSON to Object </h3>
   
-  <pre class="lang:java decode:true " >public class JacksonExample {
+<pre><code class="language-java">public class JacksonExample {
 
     private static String jsonValue = "{\"name\":\"Sawyer\",\"lastName\":\"Bootstrapper\",\"age\":23,\"addressList\":[{\"zipcode\":12345,\"street\":" +
             "\"Stenhammer Drive\"},{\"zipcode\":7986,\"street\":\"Market Street\"}]}";
 
     public static void main(String[] args) throws IOException {
-
         Person personValue = objectMapper.readValue(jsonValue, Person.class);
         System.out.println(personValue.toString());
     }
-}</pre>
+}</code>
+</pre>
   
-  <p>
-    Output will be;
-  </p>
+Output will be;
   
-  <pre class="lang:default decode:true " >name: Sawyer
+<pre>name: Sawyer
 lastName: Bootstrapper
 age: 23
 zipcode: 12345
 street: Stenhammer Drive
 zipcode: 7986
-street: Market Street</pre>
+street: Market Street
+</pre>

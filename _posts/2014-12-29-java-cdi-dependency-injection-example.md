@@ -32,30 +32,30 @@ CDI (Context and Dependency Injection) is a specification defined in [JSR-299][1
 
 <!--more-->
 
-We are going to use <blognewcode>@Inject</blognewcode> alongside <blognewcode>@Named</blognewcode> annotations from CDI of Java EE. <blognewcode>@Named</blognewcode> annotation is used for giving names for classes which implements the interface, and it is optional. Otherwise, we can specify alternatives and a default bean by <blognewcode>@Alternative</blognewcode>, and <blognewcode>@Default</blognewcode> annotations. However, I am going to show them in this tutorial. Moreover, these are the example interface and implementation classes we are going to use.
+We are going to use <code>@Inject</code> alongside <code>@Named</code> annotations from CDI of Java EE. <code>@Named</code> annotation is used for giving names for classes which implements the interface, and it is optional. Otherwise, we can specify alternatives and a default bean by <code>@Alternative</code>, and <code>@Default</code> annotations. However, I am going to show them in this tutorial. Moreover, these are the example interface and implementation classes we are going to use.
 
 <b><u>Notes:</u></b>
 
 <div>
   <ul>
     <li>
-      <blognewcode>@Named</blognewcode> annotation is commonly used if there are more than one implementation for an interface. Thus, it provides to give and inject by their names.
+      <code>@Named</code> annotation is commonly used if there are more than one implementation for an interface. Thus, it provides to give and inject by their names.
     </li>
     <li>
-      If there is only one implementation of an interface and <blognewcode>@Named</blognewcode> annotation is used, then the name of the bean is determined as camelCase style of class name.
+      If there is only one implementation of an interface and <code>@Named</code> annotation is used, then the name of the bean is determined as camelCase style of class name.
     </li>
     <li>
-      We can use <blognewcode>@Default</blognewcode> and <blognewcode>@Alternative</blognewcode> annotations instead of giving names to them.
+      We can use <code>@Default</code> and <code>@Alternative</code> annotations instead of giving names to them.
     </li>
     <li>
-      If there is only one implementation of an interface, compiler will inject it as the default one. So, there is no need to use <blognewcode>@Named</blognewcode>, <blognewcode>@Default</blognewcode> or <blognewcode>@Alternative</blognewcode> annotations.
+      If there is only one implementation of an interface, compiler will inject it as the default one. So, there is no need to use <code>@Named</code>, <code>@Default</code> or <code>@Alternative</code> annotations.
     </li>
   </ul>
 </div>
 
 <b><u>Important</u></b>
 
-We have to create an empty <blognewcode>beans.xml</blognewcode> file in <blognewcode>src/main/resources/META-INF</blognewcode> if it is a jar application or <blognewcode>src/main/webapp/WEB-INF</blognewcode> if it is a war application.
+We have to create an empty <code>beans.xml</code> file in <code>src/main/resources/META-INF</code> if it is a jar application or <code>src/main/webapp/WEB-INF</code> if it is a war application.
 
 <pre><code class="language-apacheconf">&lt;beans xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="

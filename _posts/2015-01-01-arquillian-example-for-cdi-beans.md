@@ -27,7 +27,7 @@ comments: true
 ---
 Arquillian is a platform which provides integration tests by deploying, running containers so that we can easily use cdi beans in tests. In this tutorial we will see how to inject and use cdi beans in test classes by running Arquillian.
 
-As a first step we have to add Arquillian core library in our pom.xml in the <blognewcode>dependencyManagement</blognewcode> block. Well it is completely optional, and you can add it in <blognewcode>dependencies</blognewcode> section.
+As a first step we have to add Arquillian core library in our pom.xml in the <code>dependencyManagement</code> block. Well it is completely optional, and you can add it in <code>dependencies</code> section.
 
 <!--more-->
 
@@ -44,7 +44,7 @@ As a first step we have to add Arquillian core library in our pom.xml in the <bl
 &lt;/dependencyManagement&gt;</code>
 </pre>
 
-Afterwards, add Arquillian Junit container in our pom.xml in <blognewcode>dependencies</blognewcode>.
+Afterwards, add Arquillian Junit container in our pom.xml in <code>dependencies</code>.
 
 <pre><code class="language-apacheconf">&lt;dependency&gt;
         &lt;groupId&gt;org.jboss.arquillian.junit&lt;/groupId&gt;
@@ -167,10 +167,10 @@ public class AutoServiceTest {
 <div>  
   <ul>
     <li>
-      <blognewcode>@RunWith(Arquillian.class)</blognewcode> provides to run our test class with Arquillian features.
+      <code>@RunWith(Arquillian.class)</code> provides to run our test class with Arquillian features.
     </li>
     <li>
-      We have to create a public static method to bootstrap a virtual context for our beans with <blognewcode>@Deployment</blognewcode> annotation. This method returns a <blognewcode>ShrinkWrap</blognewcode> archive.
+      We have to create a public static method to bootstrap a virtual context for our beans with <code>@Deployment</code> annotation. This method returns a <code>ShrinkWrap</code> archive.
     </li>
     <li>
       The classes which we are going to inject and test should be added into archive. On the other hand, we can add package(s) instead of adding classes.

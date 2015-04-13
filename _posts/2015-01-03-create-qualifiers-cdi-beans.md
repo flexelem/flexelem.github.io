@@ -16,13 +16,13 @@ tags:
   - qualifier
 comments: true
 ---
-As I described in my previous [post][1], we can define and inject cdi beans by <blognewcode>@Named</blognewcode> annotation. Well according to the CDI specification (JSR-299) injecting beans by their names is legacy and tend to cause issues (if a bean is tried to be injected by an undefined/wrong name then we will get errors which are hard to find). Thus, we are going to create different annotations (qualifiers) to inject different type of beans from same interface. Moreover, we will use Weld CDI implementation.
+As I described in my previous [post][1], we can define and inject cdi beans by <code>@Named</code> annotation. Well according to the CDI specification (JSR-299) injecting beans by their names is legacy and tend to cause issues (if a bean is tried to be injected by an undefined/wrong name then we will get errors which are hard to find). Thus, we are going to create different annotations (qualifiers) to inject different type of beans from same interface. Moreover, we will use Weld CDI implementation.
 
 <!--more-->
 
 <h3> Create a Qualifier </h3>
 
-Creating your own qualifier is easy. We have to create a standard annotation and mark it with <blognewcode>@Qualifier</blognewcode>.
+Creating your own qualifier is easy. We have to create a standard annotation and mark it with <code>@Qualifier</code>.
 
 <pre><code class="language-java">import javax.inject.Qualifier;
 import java.lang.annotation.Retention;
@@ -217,7 +217,7 @@ public @interface Auto {
 }</code>
 </pre>
 
-<blognewcode>default</blognewcode> property is optional here. It means if we dont specify a type then the default value will be used. Now let's an example by field injection.
+<code>default</code> property is optional here. It means if we dont specify a type then the default value will be used. Now let's an example by field injection.
 
 <pre><code class="language-java">public class AutoServiceCallerImp implements AutoServiceCaller{
 
@@ -237,6 +237,6 @@ public @interface Auto {
 }</code>
 </pre>
 
-So, as we can see we define the type of our cdi beans just by giving type value, and we have only used <blognewcode>@Auto</blognewcode> annotation.
+So, as we can see we define the type of our cdi beans just by giving type value, and we have only used <code>@Auto</code> annotation.
 
  [1]: {{ site.url }}/java-cdi-dependency-injection-example/
