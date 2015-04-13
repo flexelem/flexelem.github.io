@@ -9,8 +9,8 @@ permalink:           pretty
 relative_permalinks: true
 
 # Setup
-title:               Hodor
-tagline:             'A Jekyll theme'
+title:               Burak Aktas
+tagline:             'Software Engineer'
 description:         All about programming
 url:                 http://buraktas.com
 baseurl:             /
@@ -20,8 +20,8 @@ excerpt_separator: <!--more-->
 # About/contact
 author:
   name:              Burak Aktas
-  url:               https://twitter.com/mdo
   email:             buraktas@gmail.com
+#  url:               https://twitter.com/mdo
 
 # Custom vars
 version:             1.0.0

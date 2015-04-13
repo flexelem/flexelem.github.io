@@ -123,7 +123,7 @@ public class ProducesExample {
 }</code>
 </pre>
 
-![]({{ site.url }}/public/images/2015/02/disambiguation1.png)
+![]({{ site.url }}/public/images/2015/02/producer_method_bean.png)
 
 Now what if we had more than one Bank implementation and we want to resolve disambiguation in producer method. Assume we have HSBC and Chase.
 
