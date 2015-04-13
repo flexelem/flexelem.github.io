@@ -14,30 +14,35 @@ tags:
 ---
 Insertion sort is an efficient algorithm for sorting a small number of elements, however, it is less efficient on large lists than more advanced sorting algorithms. On the other hand, it has several advantages which are;
 
-<div class="bullet list">
+<!--more-->
+
+<div>
   <ul>
     <li>
       It is <b>adaptive</b>; Sorting performance adapts to the initial order of elements.
     </li>
+
     <li>
       It is <b>online</b>; New elements can be added during the sorting phase.
     </li>
+
     <li>
       It is <b>stable</b>; The elements with equal key will keep their order in the array.
     </li>
+
     <li>
       It is <b>in-place</b>; Requires constant amount of space \(O(1)\).
     </li>
   </ul>
 </div>
 
-### Algorithm 
+<h3> Algorithm </h3>
 
 The main idea of insertion sort is that array is divided in two parts which left part is already sorted, and right part is unsorted. So, at every iteration sorted part grows by one element which is called key. During an iteration, if compared element is greater than **key** then compared element has to shift to right to open a position for key. Lets see an iterative example on array {5, 2, 4, 6, 1, 3}. In each turn the key is underlined, and the sorted part of array has bold numbers.
 
-[<img src="http://www.buraktas.com/wp-content/uploads/2014/05/insertion_sort-1024x555.png" alt="insertion_sort" width="1024" height="555" class="aligncenter size-large wp-image-283" />][1]
+![insertion_sort]({{ site.url }}/public/images/2014/05/insertion_sort-1024x555.png)
 
-### Complexity Analysis 
+<h3> Complexity Analysis </h3>
 
 <table class="TFtable">
   <tr>
@@ -87,19 +92,17 @@ The main idea of insertion sort is that array is divided in two parts which left
   </tr>
 </table>
 
-### Code 
+<h3> Code </h3>
 
-<pre class="lang:java decode:true " >public class InsertionSort {
+<pre>
+<code class="language-java">public class InsertionSort {
 
     public void insertionSort(int[] numbers) {
-
         for (int j = 1; j &lt; numbers.length; j++) {
-
             int key = numbers[j];
             int i = j - 1;
 
             while (i &gt;= 0 && numbers[i] &gt; key) {
-
                 numbers[i + 1] = numbers[i];
                 i = i - 1;
             }
@@ -107,23 +110,22 @@ The main idea of insertion sort is that array is divided in two parts which left
             numbers[i + 1] = key;
         }
     }
-}</pre>
+}</code>
+</pre>
 
 And here are a bunch of test cases.
 
-<pre class="lang:java decode:true " >public class InsertionSortTest {
-
+<pre>
+<code class="language-java">public class InsertionSortTest {
     private InsertionSort testClass;
 
     @Before
     public void setUp() {
-
         testClass = new InsertionSort();
     }
 
     @Test
     public void insertionSortEx1TestSuccess() throws Exception {
-
         int[] numbers = new int[] { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
         testClass.insertionSort(numbers);
 
@@ -132,12 +134,10 @@ And here are a bunch of test cases.
 
     @Test
     public void insertionSortEx2TestSuccess() throws Exception {
-
         int[] numbers = new int[] { 5, 2, 4, 6, 1, 3 };
         testClass.insertionSort(numbers);
 
         assertArrayEquals(new int[] { 1, 2, 3, 4, 5, 6 }, numbers);
     }
-}</pre>
-
- [1]: http://www.buraktas.com/wp-content/uploads/2014/05/insertion_sort.png
+}</code>
+</pre>
