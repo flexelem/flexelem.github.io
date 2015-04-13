@@ -423,7 +423,6 @@ The delete procedure will use a subroutine which is called <em>transplant</em> t
     } else if (delNode.getRightChild() == null) {
         transplant(delNode, delNode.getLeftChild());
     } else {
- 
         Node y = treePredecessor(delNode);
         swapKeys(delNode, y);
  
