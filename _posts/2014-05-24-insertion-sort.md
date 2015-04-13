@@ -11,6 +11,7 @@ tags:
   - algorithms
   - java
   - sorting
+comments: true
 ---
 Insertion sort is an efficient algorithm for sorting a small number of elements, however, it is less efficient on large lists than more advanced sorting algorithms. On the other hand, it has several advantages which are;
 
