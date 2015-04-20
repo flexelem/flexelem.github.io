@@ -20,7 +20,7 @@ In this tutorial we will implement a Jersey client example with JSON support. Th
 <!--more-->
 
 <div>
-  <u></u>l>
+  <ul>
     <li>
       Eclipse 4.3.0
     </li>
