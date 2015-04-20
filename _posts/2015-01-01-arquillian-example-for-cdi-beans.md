@@ -176,7 +176,7 @@ public class AutoServiceTest {
       The classes which we are going to inject and test should be added into archive. On the other hand, we can add package(s) instead of adding classes.
     </li>
     <li>
-      As specified in this <a href="{{ site.url }}/java-dependency-injection-example/">article</a> we have to create a beans.xml file to use CDI beans. So, the location of the beans.xml file will be different due to our project type.
+      As specified in this <a href="{{ site.url }}/java-cdi-dependency-injection-example/">article</a> we have to create a beans.xml file to use CDI beans. So, the location of the beans.xml file will be different due to our project type.
     </li>
   </ul>
 </div>
