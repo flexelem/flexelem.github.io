@@ -13,7 +13,7 @@ tags:
   - java
 comments: true
 ---
-Binary search is a searching algorithm which works on a sorted (ascending or descending) array. In each turn, the given key is compared with the key at the middle of the array, if it is equal to it then its index is returned. Otherwise, if the given key is less than key at the middle then binary search continues its operation on left sub-array ( *A[0..Mid-1]* ), and similarly on right sub-array ( *A[mid+1..N-1]* ) if given key greater than it. If the given key cannot be found then an indication of not found is returned.
+Binary search is a searching algorithm which works on a sorted (ascending or descending) array. In each turn, the given key is compared with the key at the middle of the array, if it is equal to it then its index is returned. Otherwise, if the given key is less than key at the middle then binary search continues its operation on left sub-array \\( ( A[0..Mid-1] ) \\), and similarly on right sub-array \\( ( A[mid+1..N-1] ) \\) if given key greater than it. If the given key cannot be found then an indication of not found is returned.
 
 <!--more-->
 
@@ -33,7 +33,7 @@ Finding an item takes logarithmic time in binary search. Thus, it works blazingl
   </ol>
 </div>
 
-<h3> Complexity Analysis </h3>
+<h2> Complexity Analysis </h2>
 
 <table class="TFtable">
   <tr>
@@ -87,7 +87,7 @@ An illustration of searching a key 22 is shown below;
 
 ![binary_search]({{ site.url }}/public/images/2014/06/binary_search1.png)
 
-<h3> Code </h3>
+<h2> Code </h2>
 
 <pre><code class="language-java">public int binarySearch(int[] numbers, int left, int right, int key) {
 	if (left &lt;= right) { // recurse until length of array is 1

@@ -15,11 +15,11 @@ tags:
   - sorting
 comments: true
 ---
-Merge sort is another comparison based sort algorithm. It closely follows *divide-and-conquer* paradigm, and provides \(O(n&#8203;lgn)\) run time complexity in worst and average cases, however, \(O(n)\) in space complexity. Merge sort can be used for sorting huge data sets that can not fit into memory. It is also a stable sort which preserves the order of equal elements. 
+Merge sort is another comparison based sort algorithm. It closely follows *divide-and-conquer* paradigm, and provides \\( O(n&#8203;lgn) \\) run time complexity in worst and average cases, however, \\( O(n) \\) in space complexity. Merge sort can be used for sorting huge data sets that can not fit into memory. It is also a stable sort which preserves the order of equal elements. 
 
 <!--more-->
 
-<h3> Algorithm </h3>
+<h2> Algorithm </h2>
 
 Merge sort follows a divide-and-conquer algorithm by the following steps;
 
@@ -87,7 +87,7 @@ Merge sort follows a divide-and-conquer algorithm by the following steps;
     </tr>
 </table>
   
-<h3> Code </h3>
+<h2> Code </h2>
   
 <em>mergeSort</em> procedure divides input into two equal parts by recursion until input size becomes 1. Then, <em>merge</em> procedure sorts and combine divided parts. The code of mergeSort procedure is as following ;
 
@@ -107,7 +107,7 @@ Merge sort follows a divide-and-conquer algorithm by the following steps;
   
 ![]({{ site.url }}/public/images/2014/06/merge_sort.png)
 
-<em>merge</em> procedure is the part where subarrays are combined and sorted. Thus, <em>merge</em> procedure on an n-element subarray takes time \(O(n)\). Code of <em>merge</em> procedure is as follows;
+<em>merge</em> procedure is the part where subarrays are combined and sorted. Thus, <em>merge</em> procedure on an n-element subarray takes time \\( O(n) \\). Code of <em>merge</em> procedure is as follows;
 
 <pre><code class="language-java">private void merge(int[] numbers, int left, int mid, int right) {
 	int[] leftArray = new int[mid - left + 1];

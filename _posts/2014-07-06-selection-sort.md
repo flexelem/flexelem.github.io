@@ -15,11 +15,11 @@ tags:
   - sorting
 comments: true
 ---
-Selection sort is an in-place comparison sort algorithm which has \(O(n^2)\) running time complexity in both best and worst case. Even though its logic is similar to insertion sort, it's a very inefficient sorting algorithm. List is both divided into two parts as sorted and unsorted where initially sorted part is empty. Every turn, algorithm finds the minimum (or maximum) key in unsorted sublist then swaps it with the leftmost element of unsorted part. Due to the reason which elements in any place could get swapped selection sort is not stable.
+Selection sort is an in-place comparison sort algorithm which has \\( O(n^2) \\) running time complexity in both best and worst case. Even though its logic is similar to insertion sort, it's a very inefficient sorting algorithm. List is both divided into two parts as sorted and unsorted where initially sorted part is empty. Every turn, algorithm finds the minimum (or maximum) key in unsorted sublist then swaps it with the leftmost element of unsorted part. Due to the reason which elements in any place could get swapped selection sort is not stable.
 
 <!--more-->
 
-<h3> Algorithm </h3>
+<h2> Algorithm </h2>
 
 <div>
   <ul>
@@ -37,9 +37,9 @@ Selection sort is an in-place comparison sort algorithm which has \(O(n^2)\) run
 
 ![selection_sort]({{ site.url }}/public/images/2014/07/selection_sort.png)
 
-<h3> Complexity Analysis </h3>
+<h2> Complexity Analysis </h2>
 
-Due to the fact that selection sort is not adaptive ( number of cycles doesn't change due to given order) it takes \(O(n^2)\) for every case.
+Due to the fact that selection sort is not adaptive ( number of cycles doesn't change due to given order) it takes \\( O(n^2) \\) for every case.
 
 <table class="TFtable">
   <tr>
@@ -89,7 +89,7 @@ Due to the fact that selection sort is not adaptive ( number of cycles doesn't c
   </tr>
 </table>
 
-<h3> Code </h3>
+<h2> Code </h2>
 
 <pre><code class="language-java">public class SelectionSort {
 
