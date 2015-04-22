@@ -15,7 +15,7 @@ tags:
   - sorting
 comments: true
 ---
-Quicksort is a sorting algorithm which applies divide and conquer paradigm. Quicksort has a worst case running time of \(O(n^2)\) , however, it has running time of \(O(n&#8203;logn)\) on average which makes quicksort very efficient. Moreover, it works in-place but not stable. The performance of quicksort depends on selecting the pivot, and starting to partition around it. During the partition procedure subarrays divided into four regions; \(\leq x\), \(> x\), \(unrestricted\) ,and finally the \(pivot\).
+Quicksort is a sorting algorithm which applies divide and conquer paradigm. Quicksort has a worst case running time of \\( O(n^{2}) \\) , however, it has running time of \\( O(n&#8203; logn) \\) on average which makes quicksort very efficient. Moreover, it works in-place but not stable. The performance of quicksort depends on selecting the pivot, and starting to partition around it. During the partition procedure subarrays divided into four regions; \\( \leq x \\), \\( > x \\), \\( unrestricted \\) ,and finally the \\( pivot \\).
 
 <!--more-->
 
@@ -23,7 +23,7 @@ Quicksort is a sorting algorithm which applies divide and conquer paradigm. Quic
 
 It works by selecting a pivot element and partition the array around the pivot in which left side is less than or equal to pivot ,and right side is greater than pivot. Later on two subarrays are sorted by making recursive calls to quicksort.
 
-<h3> Algorithm </h3>
+<h2> Algorithm </h2>
 
 <div>
   <ul>
@@ -39,9 +39,9 @@ It works by selecting a pivot element and partition the array around the pivot i
   </ul>
 </div>
 
-<h3> Complexity Analysis </h3>
+<h2> Complexity Analysis </h2>
 
-As it was mentioned performance of quicksort depends on the choice of pivot. So selecting always the last, first or mid element as pivot will let quicksort to run \(O(n^2)\) in worst case ,and space complexity will become \(O(n)\) due to the number of recursive calls. However, there are some optimizations to decrease worst case running time and space complexity which you find from [wiki][1]
+As it was mentioned performance of quicksort depends on the choice of pivot. So selecting always the last, first or mid element as pivot will let quicksort to run \\( O(n^{2}) \\) in worst case ,and space complexity will become \\( O(n) \\) due to the number of recursive calls. However, there are some optimizations to decrease worst case running time and space complexity which you find from [wiki][1]
 
 <table class="TFtable">
   <tr>
@@ -74,7 +74,7 @@ As it was mentioned performance of quicksort depends on the choice of pivot. So 
   
   <tr>
     <td>
-      \(O(n&#8203;logn)\)
+      \(O(nlogn)\)
     </td>
     
     <td>
@@ -132,7 +132,7 @@ As it was mentioned performance of quicksort depends on the choice of pivot. So 
 
 <h3> Randomized Pivot Selection </h3>
 
-Pivot is selected by a randomized way to prevent from worst cases (like already sorted array as input). Instead of always selecting \(A[high]\) as the pivot, an element is randomly chosen from the subarray \(A[low..high]\). After pivot is selected it is swapped by \(A[high]\). On the other hand, by random selection every element has same probability to get selected. Thus we expect the split of the input array to be well balanced on average. *Randomizedpartition* procedure is shown below;
+Pivot is selected by a randomized way to prevent from worst cases (like already sorted array as input). Instead of always selecting \\( A[high] \\) as the pivot, an element is randomly chosen from the subarray \\( A[low..high] \\). After pivot is selected it is swapped by \\( A[high] \\). On the other hand, by random selection every element has same probability to get selected. Thus we expect the split of the input array to be well balanced on average. *Randomizedpartition* procedure is shown below;
 
 <pre><code class="language-java">private int randomizedPartition(int[] numbers, int low, int high) {
 	Random rand = new Random();
@@ -144,5 +144,5 @@ Pivot is selected by a randomized way to prevent from worst cases (like already 
 
 You can find the whole code from [here][2]
 
- [2]: http://en.wikipedia.org/wiki/Quicksort
- [4]: https://gist.github.com/flexelem/9bd3b18f867c7182cadc
+ [1]: http://en.wikipedia.org/wiki/Quicksort
+ [2]: https://gist.github.com/flexelem/9bd3b18f867c7182cadc
