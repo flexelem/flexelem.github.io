@@ -37,13 +37,13 @@ Insertion sort is an efficient algorithm for sorting a small number of elements,
   </ul>
 </div>
 
-<h3> Algorithm </h3>
+<h2> Algorithm </h2>
 
 The main idea of insertion sort is that array is divided in two parts which left part is already sorted, and right part is unsorted. So, at every iteration sorted part grows by one element which is called key. During an iteration, if compared element is greater than **key** then compared element has to shift to right to open a position for key. Lets see an iterative example on array {5, 2, 4, 6, 1, 3}. In each turn the key is underlined, and the sorted part of array has bold numbers.
 
 ![insertion_sort]({{ site.url }}/public/images/2014/05/insertion_sort-1024x555.png)
 
-<h3> Complexity Analysis </h3>
+<h2> Complexity Analysis </h2>
 
 <table class="TFtable">
   <tr>
@@ -93,7 +93,7 @@ The main idea of insertion sort is that array is divided in two parts which left
   </tr>
 </table>
 
-<h3> Code </h3>
+<h2> Code </h2>
 
 <pre>
 <code class="language-java">public class InsertionSort {

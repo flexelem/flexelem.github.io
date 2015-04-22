@@ -14,11 +14,11 @@ tags:
   - sorting
 comments: true
 ---
-Bubble sort is one of the simplest sorting algorithm which pairs are repeatedly compared and swapped if they are in wrong order. This process continues until no swaps are needed means that list is sorted. It takes its name from the fact that necessary elements bubble up to their correct position. Even though bubble sort shows a great performance over small input size, it has a poor performance when the input size grows. It is fast when array is in sorted order or nearly sorted. On the other hand, its worst case performance is \(O(n^{2})\) if the array is in reversed order.
+Bubble sort is one of the simplest sorting algorithm which pairs are repeatedly compared and swapped if they are in wrong order. This process continues until no swaps are needed means that list is sorted. It takes its name from the fact that necessary elements bubble up to their correct position. Even though bubble sort shows a great performance over small input size, it has a poor performance when the input size grows. It is fast when array is in sorted order or nearly sorted. On the other hand, its worst case performance is \\( O(n^{2}) \\) if the array is in reversed order.
 
 <!--more-->
 
-<h3> Algorithm </h3>
+<h2> Algorithm </h2>
 
 <div>
   <ol>
@@ -40,7 +40,7 @@ Finally, our array is sorted, however, it needs an additional iteration to figur
 
 ![]({{ site.url }}/public/images/2014/05/bubble_sort_2.png)
 
-<h3> Complexity Analysis </h3>
+<h2> Complexity Analysis </h2>
 
 <table class="TFtable">
   <tr>
@@ -90,7 +90,7 @@ Finally, our array is sorted, however, it needs an additional iteration to figur
   </tr>
 </table>
 
-<h3> Code </h3>
+<h2> Code </h2>
 
 <pre>
 <code class="language-java">public class BubbleSort {
