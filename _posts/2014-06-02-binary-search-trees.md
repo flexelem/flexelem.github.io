@@ -271,7 +271,7 @@ The successor of a node <b>x</b> is the node with smallest key greater than <b>x
       Easy Case : If <b>x</b>'s right subtree is nonempty, return minimum key in right subtree.
     </li>
     <li>
-      Otherwise : Find the first ancestor <b>y</b> which is also a left child of it's parent <b>z</b>. 
+      Otherwise : Find the first ancestor <b>y</b> which is also a left child of it's parent <b>z</b>. Then return <b>z</b>.
     </li>
   </ul> 
 </div> 
