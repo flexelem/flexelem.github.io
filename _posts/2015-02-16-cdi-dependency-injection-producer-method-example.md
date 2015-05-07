@@ -83,6 +83,8 @@ org.jboss.weld.exceptions.DeploymentException: WELD-001409 Ambiguous dependencie
   at org.jboss.arquillian.container.weld.ee.embedded_1_1.WeldEEMockContainer.deploy(WeldEEMockContainer.java:98)</code>
 </pre>
 
+![]({{ site.url }}/public/images/2015/02/disambiguation1.png)
+
 Now it is time solve our simple ambiguous dependency problem. We are going to create a qualifier called <code>@BankProducer</code>.
 
 <pre><code class="language-java">
