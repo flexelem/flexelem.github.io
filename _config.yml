@@ -1,12 +1,14 @@
 # Dependencies
+plugins:             [jekyll-paginate]
 markdown:            redcarpet
-highlighter:         pygments
+highlighter:         pygments.rb
 
 # Permalinks
 #
 # Use of `relative_permalinks` ensures post links from the index work properly.
 permalink:           pretty
-relative_permalinks: true
+#relative_permalinks: true
+future: true
 
 # Setup
 title:               Burak Aktas
