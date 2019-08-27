@@ -256,4 +256,4 @@ And the output would be like;
 
 You can find the whole project from my [github][1]
 
-[1]: https://github.com/flexelem/spring-retry-example
+[1]: https://github.com/flexelem/spring-tutorials/tree/master/spring-retry
