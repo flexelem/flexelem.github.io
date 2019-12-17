@@ -285,7 +285,7 @@ Here is the command for creating Target Group with its output.
 
 <br>
 
-Now we will create an Elastic Load Balancer to register
+Now we will create an Elastic Load Balancer.
 
 > aws elbv2 create-load-balancer --name example-elb --subnets subnet-dafc6f93 subnet-6b8f2b30 subnet-eed8a38b subnet-f38b2bde --security-groups sg-0620dc50979b05b24 --scheme internet-facing --type application
 
