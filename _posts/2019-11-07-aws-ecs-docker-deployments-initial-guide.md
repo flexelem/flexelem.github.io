@@ -21,7 +21,7 @@ In this tutorial we will walk through how to deploy simple docker containers int
 
 We will use EC2 type container instances. Before starting there are some components specific to ECS terminology which we need to understand;
 
-- Task Definition: JSON|YML based configuration file. In other words recipe or blueprint of your containers. We give parameters like Docker Image, CPU, Memory, Network Mode for one or more containers. You can think of it like a Dockerfile.
+- Task Definition: JSON\|YML based configuration file. In other words recipe or blueprint of your containers. We give parameters like Docker Image, CPU, Memory, Network Mode for one or more containers. You can think of it like a Dockerfile.
 - Task: An instance based on given Task Definition. This is the Docker container which can contain one or more Task Definitions.
 - Service: Allows you to create and maintain a number of tasks (containers) including their lifecycle and deployment properties from same Task Definition.
 - ECS Container Agent: A service (docker container) that manages the connection between ECS cluster. 
