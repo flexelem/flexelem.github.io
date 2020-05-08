@@ -179,7 +179,7 @@ create sequence users_seq;
     </dependencies>
 ```
 
-</br>
+<br>
 
 <h3>DAO and Repository Classes</h3>
 Here are the simple UserDAO and Repository implementations we will use in this application.
