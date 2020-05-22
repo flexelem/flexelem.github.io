@@ -18,7 +18,7 @@ which are dependent on other systems or resources. For example, charging a clien
 
 <!--more-->
 
-</br>
+<br>
 <h2>Dependencies</h2>
 
 ```xml
@@ -59,7 +59,7 @@ which are dependent on other systems or resources. For example, charging a clien
 </project>
 ```
 
-</br>
+<br>
 <h2>Enabling Retry</h2>
 First, we have to enable retry globally from Spring context to our <code>@Configuration</code> class by adding <code>@EnableRetry</code> annotation.
 
@@ -78,7 +78,7 @@ public class Application {
 }
 ```
 
-</br>
+<br>
 <h2>1. Retry with Retryable Annotation</h2>
 To define a retry strategy for a method we have to add <code>@Retryable</code> annotation on it. Additionally, we can define the behaviour of retry by providing some set of inputs. We will take a closer look for the most general ones which are;
 

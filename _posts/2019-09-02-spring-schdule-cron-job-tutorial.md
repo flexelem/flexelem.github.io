@@ -17,7 +17,7 @@ and streaming them. Instead of implementing separate cron jobs and managing them
 
 <!--more-->
 
-</br>
+<br>
 <h2>Dependencies</h2>
 
 ```xml
@@ -46,7 +46,7 @@ and streaming them. Instead of implementing separate cron jobs and managing them
     </dependencies>
 ```
 
-</br>
+<br>
 <h2>Enabling Scheduling</h2>
 First, we have to enable scheduling globally from Spring context to our <code>@Configuration</code> class by adding <code>@EnableScheduling</code> annotation.
 
