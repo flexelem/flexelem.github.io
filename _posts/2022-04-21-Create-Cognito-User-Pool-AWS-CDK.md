@@ -144,11 +144,11 @@ There are a bunch of steps for registering and confirming a new user in cognito.
 ### Sign-up User
 The first step is sign-up a user by [sign-up](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cognito-idp/sign-up.html) command.
 
-> aws cognito-idp sign-up \
---client-id \<app_client_id\> \
---username wiyovah293@carsik.com \
---password 1234Abcd^ \
---user-attributes Name="email",Value="wiyovah293@carsik.com" Name="family_name",Value="Foobar" Name="custom:tenant_id",Value="1234567890" Name="custom:created_at",Value="2022-01-01" Name="custom:employee_id",Value="10" Name="custom:is_admin",Value="false" \
+> aws cognito-idp sign-up \\\
+--client-id \<app_client_id\> \\\
+--username wiyovah293@carsik.com \\\
+--password 1234Abcd^ \\\
+--user-attributes Name="email",Value="wiyovah293@carsik.com" Name="family_name",Value="Foobar" Name="custom:tenant_id",Value="1234567890" Name="custom:created_at",Value="2022-01-01" Name="custom:employee_id",Value="10" Name="custom:is_admin",Value="false" \\\
 --region us-east-1
 
 Response;
@@ -169,9 +169,9 @@ Response;
 ### Confirm User
 Next step is confirming the user by [admin-confirm-sign-up](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cognito-idp/admin-confirm-sign-up.html) command. Since this is an admin command we don't have to provide the verification code. This will move user's confirmation state from `Unconfirmed` to `Confirmed` state.
 
-> aws cognito-idp admin-confirm-sign-up \
---user-pool-id \<user_pool_id\> \
---username wiyovah293@carsik.com \
+> aws cognito-idp admin-confirm-sign-up \\\
+--user-pool-id \<user_pool_id\> \\\
+--username wiyovah293@carsik.com \\\
 --region us-east-1
 
 <br/>
@@ -179,10 +179,10 @@ Next step is confirming the user by [admin-confirm-sign-up](https://awscli.amazo
 ### Update User Attribute
 Final step is updating user's email attribute as verified by calling the command [admin-update-user-attributes](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cognito-idp/admin-update-user-attributes.html)
 
-> aws cognito-idp admin-update-user-attributes \
---user-pool-id \<user_pool_id\> \
---username wiyovah293@carsik.com \
---user-attributes Name=email_verified,Value=true \
+> aws cognito-idp admin-update-user-attributes \\\
+--user-pool-id \<user_pool_id\> \\\
+--username wiyovah293@carsik.com \\\
+--user-attributes Name=email_verified,Value=true \\\
 --region us-east-1
 
 <br/>
@@ -230,9 +230,9 @@ Finally, our cognito user pool will have a verified user
 ## User Signin
 I will use another AWS CLI command for signing in and verify that we are getting related JWT tokens.
 
-> aws cognito-idp initiate-auth --auth-flow USER_PASSWORD_AUTH \
---client-id \<app_client_id\> \
---auth-parameters USERNAME=wiyovah293@carsik.com,PASSWORD=1234Abcd^ \
+> aws cognito-idp initiate-auth --auth-flow USER_PASSWORD_AUTH \\\
+--client-id \<app_client_id\> \\\
+--auth-parameters USERNAME=wiyovah293@carsik.com,PASSWORD=1234Abcd^ \\\
 --region us-east-1
 
 ```json
