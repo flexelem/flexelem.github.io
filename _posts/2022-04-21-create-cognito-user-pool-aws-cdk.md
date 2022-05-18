@@ -187,7 +187,7 @@ Final step is updating user's email attribute as verified by calling the command
 
 <br/>
 
-## Creating a User From Web a App
+## Creating a User From Web App
 We will create a user from a web app which uses AWS Amplify. The related project can be from my [github](https://github.com/flexelem/react-amplify-simple-login-form) repository. It only
 has two input fields for taking user email and password. The standard and custom attributes are given as hard coded parameters for signup. Also, the two methods we are calling can be found
 at Amplify [documentation](https://docs.amplify.aws/lib/auth/emailpassword/q/platform/js/).
