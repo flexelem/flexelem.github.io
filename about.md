@@ -1,12 +1,12 @@
 ---
 layout: page
-title: About
 ---
 
-<p class="message">
-  Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live.
-</p>
+Hi there,
 
-Hey All!
+I am Burak, a Software Engineer with 8+ years of experience. I have been mainly working on AWS ecosystem with both serverless architectures along with containerized microservices. I worked with Java, NodeJS and Python frameworks in production before.
+I prefer to work with AWS as cloud provider along with AWS CDK as infrastructure as code.
 
-I am a passionate backend developer from San Francisco (well I am originally from Istanbul/Turkey) and I have been living here since Sep 2014. My main language is Java but nowadays trying to learn python as well! Python is fun :) Whatever, I am generally interested in distributed systems, scalability, and like to deal with huge amount client requests. Beyond that I am a humble, funny, bold and most important a truly team player. 
+I love designing and implementing software architectures based on any type of needs for companies.
+
+Feel free to drop message to my inbox or don't hesitate connect me from Linkedin.
