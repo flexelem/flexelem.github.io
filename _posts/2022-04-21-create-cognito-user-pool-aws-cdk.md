@@ -95,6 +95,8 @@ class CognitoUserPoolStack(core.Stack):
         )
 ```
 
+<br/>
+
 Now lets go over with the properties of UserPool construct we created above;
 
 - `user_pool_name`: Property for defining the name of Cognito UserPool resource. Though this is not a good practice explained [here](https://aws.amazon.com/premiumsupport/knowledge-center/cloudformation-custom-name/#:~:text=AWS%20CloudFormation%20doesn't%20replace,before%20you%20update%20a%20stack.)
@@ -246,6 +248,12 @@ I will use another AWS CLI command for signing in and verify that we are getting
         "IdToken": "eyJraWQiOiJzaEc0dkdiNVwva3JlREtuUXhpT3h5bU1lWkozVkVnS3J0Mkh3R1wvaGNXS1U9IiwiYWxnIjoiUlMyNTYifQ.eyJjdXN0b206Y3JlYXRlZF9hdCI6IjIwMjItMDEtMDEiLCJzdWIiOiIwZDQ0NDE1NS0xMGMzLTQ0YzYtYWU3YS04OTE0ZDU0NGRjYjciLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfbzlqTkFJSmUwIiwiY29nbml0bzp1c2VybmFtZSI6IjBkNDQ0MTU1LTEwYzMtNDRjNi1hZTdhLTg5MTRkNTQ0ZGNiNyIsImN1c3RvbTp0ZW5hbnRfaWQiOiIxMjM0NTY3ODkwIiwiY3VzdG9tOmVtcGxveWVlX2lkIjoiMTAiLCJvcmlnaW5fanRpIjoiNTdiNjkzYTctNjc4Yi00NGU4LTgxZmItNjI5OWUwNGI2YzkwIiwiYXVkIjoiNHYxNDBmNnAwYmdoc2F1OGRiZzg4OWJrbmMiLCJldmVudF9pZCI6IjdhODA1YTI3LWZlNmMtNGRjZC04OGJjLWU2YmQ1NmYzZTZlNCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjUwNTQ0OTY1LCJleHAiOjE2NTA1NDg1NjUsImlhdCI6MTY1MDU0NDk2NSwiZmFtaWx5X25hbWUiOiJmb29iYXIiLCJqdGkiOiI4ZTQ3NTA4OS0wNDk3LTQ1NzItYTc0My0xYzg5ODkxNDNhNGQiLCJlbWFpbCI6IndpeW92YWgyOTNAY2Fyc2lrLmNvbSJ9.ETxGAC4wPvnCj_YdIW4__20S7mkd1MFYbdUUMtLtU6JKaQomxLic3Jvg09Y0adx0Pc4IB3DmAs7u9D63qJVK045trFhKWrszj0znAiK1r7blhREsiYWBScUn1rql2tpup7Mz9SzU9_resQKzWTgshqvdPRuGPcqjFsKy-FE7xvBv25-JBn8tHt2XZjqmDBR_YwXeP4pAsDTezb9b3XQY_XzmOTp2_I0dOTT2O-gleF3itRDmS5FelO5C9476143e0i7zKv5MXfe3VhmcoUvZWgSJ7W_ElkEJtg7lPkP-gcj0SXeHkBF1EWjE7gJnVbNPEvJUyKBlyXYF3AyaQSZXGw"
     }
 }
+```
+
+On the other hand, we can use `signIn` method from Amplify like;
+
+```javascript
+const user = await Auth.signIn(email, password);
 ```
 
 <br/>
