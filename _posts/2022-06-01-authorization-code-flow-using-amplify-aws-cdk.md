@@ -383,7 +383,16 @@ class ApiGatewayStack(core.Stack):
 
 <br/>
 
-## Deploying The CDK Stack(s)
+## Synth Stack(s)
+> cdk synth
+
+```
+Supply a stack id (AuthCodeFlowStack, AuthCodeFlowStack/CognitoStack, AuthCodeFlowStack/ApiGatewayStack) to display its template.
+```
+
+<br/>
+
+## Deploy Stack(s)
 > cdk deploy --all
 
 <br/>
