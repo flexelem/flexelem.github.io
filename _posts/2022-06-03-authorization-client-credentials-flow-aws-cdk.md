@@ -267,3 +267,5 @@ Don't forget to delete the stack after your testing.
 
 
 <br/>
+
+I hope you enjoyed my tutorial about OAuth Client Credentials Flow in AWS CDK. Here you can also find the related github [repository](https://github.com/flexelem/aws-cdk-examples/tree/main/client-credentials-flow). Please don't hesitate any questions if you have.

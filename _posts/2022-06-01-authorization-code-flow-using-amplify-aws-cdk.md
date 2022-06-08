@@ -405,4 +405,4 @@ Don't forget to delete the stack after your testing.
 
 <br/>
 
-I hope you enjoyed my tutorial about OAuth Authorization Code Flow in AWS CDK. Here you can also find the related github [repository](https://github.com/flexelem/authorization-code-flow-aws-cdk). Please don't hesitate any questions if you have.
+I hope you enjoyed my tutorial about OAuth Authorization Code Flow in AWS CDK. Here you can also find the related github [repository](https://github.com/flexelem/aws-cdk-examples/tree/main/authorization-code-flow). Please don't hesitate any questions if you have.

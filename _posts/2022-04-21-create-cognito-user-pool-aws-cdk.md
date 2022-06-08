@@ -265,5 +265,4 @@ Don't forget to delete the stack after your testing.
 
 <br/>
 
-Hopefully, this was a helpful guide for creating AWS Cognito UserPool by AWS CDK. Here you can also find the related github [repository](https://github.com/flexelem/cognito-userpool-cdk-example)
-
+Hopefully, this was a helpful guide for creating AWS Cognito UserPool by AWS CDK. Here you can also find the related github [repository](https://github.com/flexelem/aws-cdk-examples/tree/main/cognito-user-pool)
