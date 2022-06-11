@@ -1,5 +1,5 @@
 ---
-title:  OAuth Client Credentials Flow with AWS Cognito in AWS CDK
+title:  OAuth 2.0 Client Credentials Flow with AWS Cognito in AWS CDK
 author: buraktas
 layout: post
 permalink: /oauth-client-credentials-flow-aws-cdk/

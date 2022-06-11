@@ -1,5 +1,5 @@
 ---
-title:  OAuth Authorization Code Flow with AWS Cognito in AWS CDK
+title:  OAuth 2.0 Authorization Code Flow with AWS Cognito in AWS CDK
 author: buraktas
 layout: post
 permalink: /oauth-authorization-code-flow-aws-cdk/
