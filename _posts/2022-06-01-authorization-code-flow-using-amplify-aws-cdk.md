@@ -34,7 +34,7 @@ is authorized an access token is being issued generally in JWT format. This acce
 each protected resource may also require `OAuth 2.0 Scopes`. Scopes are a way to limit access for an access token. For example; some access tokens may be granted read and write access for protected resource, on the other hand, some will only have read access. Authorization Code
 Flow is an OAuth 2.0 flow based on a redirection (redirect URI) from the Authorization server to exchange returned `code` with an access token.
 
-![auth_code_flow]({{ site.url }}/public/images/2022/06/auth_code_flow.png)
+![auth_code_flow]({{ site.url }}/assets/img/2022/06/auth_code_flow.png)
 
 - User clicks on Login page on the Web Client.
 - Web Client makes an [`/authorize`](https://docs.aws.amazon.com/cognito/latest/developerguide/authorization-endpoint.html) request to initiate Authorization Code Flow. This is a GET request including `client_id`, `redirect_uri`, `response_type` and `scope` (optional) query parameters.
@@ -50,7 +50,7 @@ Flow is an OAuth 2.0 flow based on a redirection (redirect URI) from the Authori
 
 Here is the same representation of Authorization Code Flow by using AWS architecture including different resources;
 
-![aws_auth_code_flow]({{ site.url }}/public/images/2022/06/aws_auth_code_flow.png)
+![aws_auth_code_flow]({{ site.url }}/assets/img/2022/06/aws_auth_code_flow.png)
 
 - User clicks on the login page which makes an `/authorize` call by the browser.
 - AWS Cognito will return a redirect response for a login url and user will be asked for entering their credentials.
@@ -80,13 +80,13 @@ Well as like any other web app we have a landing page containing only one Login 
 <br/>
 
 
-![landing_page]({{ site.url }}/public/images/2022/06/landing_page.png)
+![landing_page]({{ site.url }}/assets/img/2022/06/landing_page.png)
 
 <br/>
 
 After clicking on login button browser makes an `/authorize` request and Cognito returns a redirect response with a URL (in location header) pointing to a login page from their Hosted UI.
 
-![browser_authorize_request]({{ site.url }}/public/images/2022/06/browser_authorize_request.png)
+![browser_authorize_request]({{ site.url }}/assets/img/2022/06/browser_authorize_request.png)
 
 
 <br/>
@@ -97,30 +97,30 @@ Browser will redirect user to the login page which includes query parameters;
 - scope
 - redirect_uri
 
-![browser_redirection_login]({{ site.url }}/public/images/2022/06/browser_redirection_login.png)
+![browser_redirection_login]({{ site.url }}/assets/img/2022/06/browser_redirection_login.png)
 
 <br/>
 
 
 This is the Cognito Hosted UI login page. User will be redirected back to the `redirect_uri` provided after they enter their credentials with a `code` query parameter.
 
-![aws_cognito_hosted_ui]({{ site.url }}/public/images/2022/06/aws_cognito_hosted_ui.png)
+![aws_cognito_hosted_ui]({{ site.url }}/assets/img/2022/06/aws_cognito_hosted_ui.png)
 
 <br/>
 
 AWS Cognito returns a redirect response.
 
-![redirect_back_web_client]({{ site.url }}/public/images/2022/06/redirect_back_web_client.png)
+![redirect_back_web_client]({{ site.url }}/assets/img/2022/06/redirect_back_web_client.png)
 
 <br/>
 
 AWS Amplify will make `/token` request behind the scenes after the user is redirected back to the web client. Later on, user will get a valid access token.
 
-![token_request]({{ site.url }}/public/images/2022/06/token_request.png)
+![token_request]({{ site.url }}/assets/img/2022/06/token_request.png)
 
 <br/>
 
-![token_request_form_data]({{ site.url }}/public/images/2022/06/token_request_form_data.png)
+![token_request_form_data]({{ site.url }}/assets/img/2022/06/token_request_form_data.png)
 
 <br/>
 
@@ -140,7 +140,7 @@ User will get the valid tokens
 
 As the final step, user is able to call protected APIs. Here is the super simple Dashboard page which contains a button to make a call to our protected API. Once we click on it we will see a success response.
 
-![redirected_to_redirect_uri_web_client]({{ site.url }}/public/images/2022/06/redirected_to_redirect_uri_web_client.png)
+![redirected_to_redirect_uri_web_client]({{ site.url }}/assets/img/2022/06/redirected_to_redirect_uri_web_client.png)
 
 <br/>
 

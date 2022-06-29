@@ -6,8 +6,9 @@ permalink: /aws-serverless-disposable-email-architecture/
 dsq_needs_sync:
   - 1
 categories:
-  - Amazon Web Services
+  - aws
 tags:
+  - aws
   - aws-ses
   - aws-lambda
   - aws-s3
@@ -24,7 +25,7 @@ In this tutorial I will walk through about building a disposable email address a
 One thing to note here is we have to persist email contents into either `S3` or send it to `SNS` and get the contents from there because AWS SES doesn't store this data. There is an related stackoverflow [post](https://stackoverflow.com/questions/36120311/how-do-i-get-the-email-body-given-an-amazon-ses-message-id)
 
 
-![architecture]({{ site.url }}/public/images/2019/08/aws_serverless_email_architecture_diagram.png)
+![architecture]({{ site.url }}/assets/img/2019/08/aws_serverless_email_architecture_diagram.png)
 
 <br>
 
@@ -33,7 +34,7 @@ As the first step we will verify our domain on AWS SES. I assume we bought this 
 
 <br>
 
-![verify_domain_step_1]({{ site.url }}/public/images/2019/08/verify_domain_step_1.png)
+![verify_domain_step_1]({{ site.url }}/assets/img/2019/08/verify_domain_step_1.png)
 
 <br>
 
@@ -41,7 +42,7 @@ Here `Genarate DKIM Settings` is totally optional since you can set it up later.
 
 <br>
 
-![verify_domain_step_2]({{ site.url }}/public/images/2019/08/verify_domain_step_2.png)
+![verify_domain_step_2]({{ site.url }}/assets/img/2019/08/verify_domain_step_2.png)
 
 <br>
 
@@ -51,7 +52,7 @@ After a few hours (or even less) our domain will get verified.
 
 <br>
 
-![verified_domain]({{ site.url }}/public/images/2019/08/verified_domain.png)
+![verified_domain]({{ site.url }}/assets/img/2019/08/verified_domain.png)
 
 <br>
 
@@ -107,7 +108,7 @@ exports.handler = async (event, context, callback) => {
 
     console.log("parsedEmail Subject: "  + parsedEmail.subject);
     console.log("parsedEmail Body: " + parsedEmail.textAsHtml);
-    
+
     callback(null);
 };
 ```
@@ -124,7 +125,7 @@ First step will be selecting `Rule Sets` under `Email Receiving` section from le
 
 <br>
 
-![create_email_rule_set_step_1]({{ site.url }}/public/images/2019/08/create_email_rule_set_step_1.png)
+![create_email_rule_set_step_1]({{ site.url }}/assets/img/2019/08/create_email_rule_set_step_1.png)
 
 <br>
 
@@ -132,7 +133,7 @@ In the next section we will be asked to add any recipient email addresses to int
 
 <br>
 
-![create_email_rule_set_step_2]({{ site.url }}/public/images/2019/08/create_email_rule_set_step_2.png)
+![create_email_rule_set_step_2]({{ site.url }}/assets/img/2019/08/create_email_rule_set_step_2.png)
 
 <br>
 
@@ -140,7 +141,7 @@ Now it is time to define actions. As the first action we will select `S3` with t
 
 <br>
 
-![create_email_rule_set_step_3]({{ site.url }}/public/images/2019/08/create_email_rule_set_step_3.png)
+![create_email_rule_set_step_3]({{ site.url }}/assets/img/2019/08/create_email_rule_set_step_3.png)
 
 <br>
 
@@ -148,7 +149,7 @@ Next, we will configure some rule details. We can just leave it with its default
 
 <br>
 
-![create_email_rule_set_step_5]({{ site.url }}/public/images/2019/08/create_email_rule_set_step_5.png)
+![create_email_rule_set_step_5]({{ site.url }}/assets/img/2019/08/create_email_rule_set_step_5.png)
 
 <br>
 
@@ -156,7 +157,7 @@ Finally, we will see a review page like below;
 
 <br>
 
-![create_email_rule_set_step_6]({{ site.url }}/public/images/2019/08/create_email_rule_set_step_6.png)
+![create_email_rule_set_step_6]({{ site.url }}/assets/img/2019/08/create_email_rule_set_step_6.png)
 
 <br>
 
@@ -180,5 +181,5 @@ START RequestId: c7c3c8f9-a868-4e7c-90e4-b2ffb88e90fe Version: $LATEST
 }
 
 END RequestId: c7c3c8f9-a868-4e7c-90e4-b2ffb88e90fe
-REPORT RequestId: c7c3c8f9-a868-4e7c-90e4-b2ffb88e90fe	Duration: 1616.06 ms	Billed Duration: 1700 ms Memory Size: 128 MB	Max Memory Used: 87 MB	
+REPORT RequestId: c7c3c8f9-a868-4e7c-90e4-b2ffb88e90fe	Duration: 1616.06 ms	Billed Duration: 1700 ms Memory Size: 128 MB	Max Memory Used: 87 MB
 ```

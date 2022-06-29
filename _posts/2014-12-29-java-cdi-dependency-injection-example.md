@@ -6,7 +6,7 @@ permalink: /java-cdi-dependency-injection-example/
 dsq_thread_id:
   - 3368735856
 categories:
-  - Java-EE
+  - java-ee
 tags:
   - cdi
   - dependency-injection
@@ -66,7 +66,7 @@ http://java.sun.com/xml/ns/javaee/beans_1_0.xsd"&gt;
 &lt;/beans&gt;</code>
 </pre>
 
-<b>AutoService.java</b> 
+<b>AutoService.java</b>
 <pre><code class="language-java">public interface AutoService {
     void getService();
 }</code>
@@ -113,9 +113,9 @@ public class HondaAutoService implements AutoService{
     void callAutoService();
 }</code>
 </pre>
-  
+
 <h3> 1. Injection Through Fields </h3>
-  
+
 Beans are injected through fields.
 
 <pre><code class="language-java">public class AutoServiceCallerImp implements AutoServiceCaller{
@@ -145,7 +145,7 @@ Beans are injected through fields.
     }
 }</code>
 </pre>
-  
+
 <h3> 2. Injection Through Setter Methods </h3>
 
 We can also inject our beans via setters
@@ -180,7 +180,7 @@ We can also inject our beans via setters
     }
 }</code>
 </pre>
-  
+
 <h3> 3. Injection Through Constructor </h3>
 
 Finally, beans can be injected through the constructor of the class.

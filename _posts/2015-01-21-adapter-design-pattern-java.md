@@ -6,7 +6,7 @@ permalink: /adapter-design-pattern-java/
 dsq_thread_id:
   - 3440392317
 categories:
-  - Design Patterns
+  - design-patterns
 tags:
   - adapter-design-pattern
   - design-pattern
@@ -20,7 +20,7 @@ Adapter design pattern is a structural design pattern that provides two unrelate
 <!--more-->
 
 <b><u>Elements</u></b>
-<div> 
+<div>
   <ul>
     <li>
       <b>Client:</b> collaborates with objects adaptable to the Target interface.
@@ -38,7 +38,7 @@ Adapter design pattern is a structural design pattern that provides two unrelate
 </div>
 
 <b><u>Types</u></b>
-<div> 
+<div>
   <ul>
     <li>
       <b>Object ADP:</b> Uses (wraps) an instance of the class it wants to adapt.
@@ -49,14 +49,14 @@ Adapter design pattern is a structural design pattern that provides two unrelate
   </ul>
 </div>
 
-Here is the actual UML diagram for ADP 
+Here is the actual UML diagram for ADP
 
-![]({{ site.url }}/public/images/2015/01/adapter-design-pattern.png)
+![]({{ site.url }}/assets/img/2015/01/adapter-design-pattern.png)
 
 Now let's implement an example of ADP. Suppose that we have implemented a RPG (role playing game) application by using a third party API that has only <b>Fighter</b> interface.
 
 <b>Fighter.class</b>
-  
+
 <pre><code class="language-java">public interface Fighter {
     public void attack();
     public void defend();
@@ -67,7 +67,7 @@ Now let's implement an example of ADP. Suppose that we have implemented a RPG (r
 And a basic implementation of our Fighter interface.
 
 <b>Knight.class</b>
-  
+
 <pre><code class="language-java">public class Knight implements Fighter {
 
     @Override
@@ -90,7 +90,7 @@ And a basic implementation of our Fighter interface.
 After a while, a Wizard interface/class has published but we still want to use it again as a Fighter. So, what we have to do is adapting this <b>Wizard</b> class (adaptee) into a <b>Fighter</b> (Target) via an adapter class because Wizard has different functionality than Fighter. Here is the implementation of Wizard class;
 
 <b>Wizard.java</b>
-  
+
 <pre><code class="language-java">public class Wizard {
 
     public void castDestructionSpell() {
@@ -110,7 +110,7 @@ After a while, a Wizard interface/class has published but we still want to use i
 So, our WizardAdapter class will implement Fighter interface and call appropriate functions of Wizard class.
 
 <b>WizardAdapter.java</b>
-  
+
 <pre><code class="language-java">public class WizardAdapter implements Fighter {
 
     private Wizard wizard;
@@ -160,14 +160,14 @@ And finally our Client is ready to use adapted Wizard class.
 
 This is how we used the adapter design pattern by our example.
 
-![]({{ site.url }}/public/images/2015/01/adapter_design_pattern_2_2.png)
+![]({{ site.url }}/assets/img/2015/01/adapter_design_pattern_2_2.png)
 
 <h3> Advanced Example </h3>
 
 We saw the simplest implementation of ADP, however, due to the reason that we are dealing with huge systems we may need many adapters for different kind of adaptees. Consider that we have a system which provides paying customers bills, calculating their balance, credit history etc. through external APIs of some banks and other companies. And these kind of operations will be made by sending requests to their systems. So, we have an Accounting adapter for Banks (Bank of America and HSBC) and Credit History Service adapter for a company called CompX. We can see the UML diagram for this system below.
 
-![]({{ site.url }}/public/images/2015/01/adapter_design_pattern_2_2.png)
+![]({{ site.url }}/assets/img/2015/01/adapter_design_pattern_2_2.png)
 
 Actually, there is no need to show adaptee objects. Each adapter contains an appropriate adaptee object and sends a http request to process it to the related systems. This is where adaptors providing to deal with unrelated interfaces.
 
-![]({{ site.url }}/public/images/2015/01/adp_flow_chart.png)
+![]({{ site.url }}/assets/img/2015/01/adp_flow_chart.png)

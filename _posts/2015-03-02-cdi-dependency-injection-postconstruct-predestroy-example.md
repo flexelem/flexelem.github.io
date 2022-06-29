@@ -6,7 +6,7 @@ permalink: /cdi-dependency-injection-postconstruct-predestroy-example/
 dsq_needs_sync:
   - 1
 categories:
-  - Java-EE
+  - java-ee
 tags:
   - cdi
   - dependency-injection

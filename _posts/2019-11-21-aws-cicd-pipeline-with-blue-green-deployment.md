@@ -6,7 +6,7 @@ permalink: /aws-cicd-codepipeline-with-blue-green-deployment/
 dsq_needs_sync:
   - 1
 categories:
-  - Amazon Web Services
+  - aws
 tags:
   - aws
   - aws-code-deploy
@@ -29,7 +29,7 @@ We will walk through how to create a CI/CD pipeline in AWS. Basically, CI/CD sta
 
 Here is the architecture we will build
 
-![code_pipeline]({{ site.url }}/public/images/2019/12/codepipeline-architecture.png)
+![code_pipeline]({{ site.url }}/assets/img/2019/12/codepipeline-architecture.png)
 
 - Step 1 - AWS CodeCommit will generate a Source Artifact in S3 bucket
 - Step 2 & 3 - AWS CodeBuild will run buildspec.yml. In this step, it will generate Build Artifact and also publish a new Docker image into ECR
@@ -417,7 +417,7 @@ When creating ECS service we will have `deployment-controller` set to `CODE_DEPL
 <br>
 
 <h2>CodeDeploy</h2>
-CodeDeploy is a deployment service to configure and automate deployments on given targets like EC2 instances, AWS Lambda functions or ECS services. In this use case we will of course use ECS type deployments. This is the place we will point the two Target Group we created. One for production port and other one for test port. 
+CodeDeploy is a deployment service to configure and automate deployments on given targets like EC2 instances, AWS Lambda functions or ECS services. In this use case we will of course use ECS type deployments. This is the place we will point the two Target Group we created. One for production port and other one for test port.
 
 > aws deploy create-application --application-name nodejs-hello-world-codedeploy --compute-platform ECS
 
@@ -556,7 +556,7 @@ As the final step we will create and configure CodePipeline by combining the com
 
 After creating the codepipeline we can release a new change to verify that everything works as expected.
 
-![code_pipeline]({{ site.url }}/public/images/2019/12/codepipeline.png)
+![code_pipeline]({{ site.url }}/assets/img/2019/12/codepipeline.png)
 
 <br>
 
@@ -564,11 +564,11 @@ After creating the codepipeline we can release a new change to verify that every
 
 Now we only have one api which is the `hello-world` endpoint. We will add another api `v2/hello-world` and verify that during the deployment port 8080 will point to the new revision where port 80 points the current revision. After pushing the new change our Deployment with test traffic enabled will look like;
 
-![deployment_with_test_traffic]({{ site.url }}/public/images/2019/12/deployment_with_test_traffic.png)
+![deployment_with_test_traffic]({{ site.url }}/assets/img/2019/12/deployment_with_test_traffic.png)
 
 Here we can see two target groups attached to the ALB as well. One points to port 80 and other one points to 8080
 
-![alb_with_target_groups]({{ site.url }}/public/images/2019/12/alb_with_target_groups.png)
+![alb_with_target_groups]({{ site.url }}/assets/img/2019/12/alb_with_target_groups.png)
 
 > curl curl example-elb-162160344.us-east-1.elb.amazonaws.com:8080/v2/hello-world
 
@@ -606,11 +606,11 @@ X-Content-Type-Options: nosniff
 
 After waiting 15 minutes target group with production will also point to the new revision and we will have 30 minutes to test production. If something goes wrong we will be able to rollback. Here is the deployment looks like after routing production traffic into new revision;
 
-![deployment_with_prod_traffic]({{ site.url }}/public/images/2019/12/deployment_with_prod_traffic.png)
+![deployment_with_prod_traffic]({{ site.url }}/assets/img/2019/12/deployment_with_prod_traffic.png)
 
 If we check ALB we will see that now there is only one Target Group pointing both test and prod ports.
 
-![alb_with_swapped_target_groups]({{ site.url }}/public/images/2019/12/alb_with_swapped_target_groups.png)
+![alb_with_swapped_target_groups]({{ site.url }}/assets/img/2019/12/alb_with_swapped_target_groups.png)
 
 Now lets another curl request to verify production serves from correct revision.
 

@@ -6,7 +6,7 @@ permalink: /spring-shedlock-tutorial/
 dsq_needs_sync:
   - 1
 categories:
-  - Spring Framework
+  - spring-framework
 tags:
   - spring-framework
   - java
@@ -74,10 +74,10 @@ First step is creating a table for locks to be used by Shedlock. I assume you al
 
 ```sql
 CREATE TABLE shedlock(
-    name VARCHAR(64), 
-    lock_until TIMESTAMP(3) NULL, 
-    locked_at TIMESTAMP(3) NULL, 
-    locked_by  VARCHAR(255), 
+    name VARCHAR(64),
+    lock_until TIMESTAMP(3) NULL,
+    locked_at TIMESTAMP(3) NULL,
+    locked_by  VARCHAR(255),
     PRIMARY KEY (name)
 )
 ```

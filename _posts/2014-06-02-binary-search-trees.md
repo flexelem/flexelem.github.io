@@ -3,12 +3,14 @@ title: Binary Search Trees
 author: buraktas
 layout: post
 permalink: /binary-search-trees/
+math: true
 dsq_thread_id:
   - 2730152008
 categories:
-  - Data Structures
+  - data-structures
 tags:
   - binary-search-trees
+  - trees
   - data-structures
   - java
 comments: true
@@ -62,24 +64,24 @@ There are a few properties to define a tree as a binary search tree;
     </li>
 
     <li>
-      Every node is represented by a key ( this can be any kind of comparable object - we will use Integers in this example- ). 
+      Every node is represented by a key ( this can be any kind of comparable object - we will use Integers in this example- ).
     </li>
-    
+
     <li>
       For each node <b>x</b>, <b>x</b>'s left key is less than or equal to <b>x</b>, and its right key is greater than <b>x</b>.
     </li>
   </ul>
-</div> 
+</div>
 
 Here is a representation a simple BST.
 
-![]({{ site.url }}/public/images/2014/06/binary_tree_representation.png)
-      
+![]({{ site.url }}/assets/img/2014/06/binary_tree_representation.png)
+
 <h3> Height of BST </h3>
 
 There are many possible trees for same set of keys. Thus, a height of a tree could be anywhere from ~log<sub>2</sub>n to ~n. Additionally, calculating height of a BST takes \(O(n)\) time because we have to visit every node.
-      
-![height_of_bst]({{ site.url }}/public/images/2014/06/height_of_BST.png)
+
+![height_of_bst]({{ site.url }}/assets/img/2014/06/height_of_BST.png)
 
 <pre><code class="language-java">public int height(Node root) {
     if (root == null) {
@@ -102,7 +104,7 @@ There are many possible trees for same set of keys. Thus, a height of a tree cou
 
 <b>Inorder Tree Walk :</b>
 The binary search tree property allows us to print keys in sorted order by a simple recursion algorithm which is called <b>inorder tree walk</b>. Walk order is;
-      
+
 <div>
   <ol>
     <li>
@@ -116,7 +118,7 @@ The binary search tree property allows us to print keys in sorted order by a sim
     </li>
   </ol>
 </div>
-      
+
 inorderTreeWalk procedure is follows;
 
 <pre><code class="language-java">public void inorderTreeWalk(Node x) {
@@ -128,9 +130,9 @@ inorderTreeWalk procedure is follows;
      }
 }</code>
 </pre>
-      
+
 In order tree walk take \(O(n)\) time because it traverses each node in the tree recursively.
-      
+
 
 <b>Preorder Tree Walk :</b><br>
 Traverse order;
@@ -148,9 +150,9 @@ Traverse order;
     </li>
   </ol>
 </div>
-      
+
 Its running time is \(O(n)\) as well. Its procedure is as follows;
-    
+
 <pre><code class="language-java" >public void preorderTreeWalk(Node x) {
     if (x != null) {
 
@@ -160,10 +162,10 @@ Its running time is \(O(n)\) as well. Its procedure is as follows;
     }
 }</code>
 </pre>
-      
+
 <b>Postorder Tree Walk: </b><br>
 Traverse order;
-      
+
 <div>
   <ol>
     <li>
@@ -177,7 +179,7 @@ Traverse order;
     </li>
   </ol>
 </div>
-      
+
 Its running time is \(O(n)\) as well. Its procedure is as follows;
 
 <pre><code class="language-java">public void postorderTreeWalk(Node x) {
@@ -189,14 +191,14 @@ Its running time is \(O(n)\) as well. Its procedure is as follows;
     }
 }</code>
 </pre>
-      
+
 In addition, the iterative versions of tree walks could be find at its <a href="http://en.wikipedia.org/wiki/Tree_traversal" title="wiki">wiki page</a>
-      
+
 <h3> Query Operations </h3>
-      
-<b>Search : </b><br> 
+
+<b>Search : </b><br>
 To search for a key <b>k</b> in BST;
-      
+
 <div>
   <ul>
     <li>
@@ -206,10 +208,10 @@ To search for a key <b>k</b> in BST;
       Traverse left <code>(if k < current key) / right (if k > current key)</code> child pointers as needed.
     </li>
     <li>
-      Return node with key k or NULL ,as appropriate. 
+      Return node with key k or NULL ,as appropriate.
     </li>
-  </ul> 
-</div> 
+  </ul>
+</div>
 
 <pre><code class="language-java" >public Node search(Node x, int key) {
     while (x != null && key != x.getKey()) {
@@ -224,11 +226,11 @@ To search for a key <b>k</b> in BST;
     return x;
 }</code>
 </pre>
-            
+
 The running time of search procedure is \(O(height)\).
-            
+
 <b> Minimum and Maximum :</b><br /> To compute the minimum (maximum) of a BST ;
-            
+
 <div>
   <ul>
     <li>
@@ -260,11 +262,11 @@ The running time of search procedure is \(O(height)\).
     return x;
 }</code>
 </pre>
-            
+
 Both the procedures run in \(O(height)\) time.
 
-<b>Successor : </b><br /> 
-The successor of a node <b>x</b> is the node with smallest key greater than <b>x</b>'s key. To compute the successor of a node <b>x</b> ;            
+<b>Successor : </b><br />
+The successor of a node <b>x</b> is the node with smallest key greater than <b>x</b>'s key. To compute the successor of a node <b>x</b> ;
 <div>
   <ul>
     <li>
@@ -273,10 +275,10 @@ The successor of a node <b>x</b> is the node with smallest key greater than <b>x
     <li>
       Otherwise : Find the first ancestor <b>y</b> which is also a left child of it's parent <b>z</b>. Then return <b>z</b>.
     </li>
-  </ul> 
-</div> 
+  </ul>
+</div>
 
-![bst_successor]({{ site.url }}/public/images/2014/06/bst_successor-.png)
+![bst_successor]({{ site.url }}/assets/img/2014/06/bst_successor-.png)
 
 The procedure is as follow;
 
@@ -295,12 +297,12 @@ The procedure is as follow;
     return parent;
 }</code>
 </pre>
-                  
 
-<b>Predecessor : </b><br> 
+
+<b>Predecessor : </b><br>
 The predecessor of a node <b>x</b> is the node with greatest key less than <b>x</b>'s key. To compute the predecessor of a node <b>x</b> ;
 
-                  
+
 <div>
   <ul>
     <li>
@@ -311,8 +313,8 @@ The predecessor of a node <b>x</b> is the node with greatest key less than <b>x<
     </li>
   </ul>
 </div>
-                  
-![predecessor]({{ site.url }}/public/images/2014/06/bst_predecessor1.png)
+
+![predecessor]({{ site.url }}/assets/img/2014/06/bst_predecessor1.png)
 
 The procedure is as follow;
 
@@ -334,12 +336,12 @@ The procedure is as follow;
 Both the procedures run in \(O(height)\) time.
 
 <h3> Insertion and Deletion </h3>
-                  
+
 While insertion and deletion operations the binary search tree property should be preserved.
-                  
-<b> Insertion : </b><br> 
+
+<b> Insertion : </b><br>
 To insert a key <b>k</b>;
-                  
+
 <div>
   <ul>
     <li>
@@ -355,7 +357,7 @@ To insert a key <b>k</b>;
 </div>
 
 
-![insert_key]({{ site.url }}/public/images/2014/06/insert_key_in_BST.png)
+![insert_key]({{ site.url }}/assets/img/2014/06/insert_key_in_BST.png)
 
 insert procedure is as follows;
 
@@ -388,10 +390,10 @@ insert procedure is as follows;
 </pre>
 
 The running time of insertion is \(O(height)\).
-                  
-<b> Deletion : </b><br> 
+
+<b> Deletion : </b><br>
 To delete a key <b>k</b> from a search tree;
-                  
+
 <div>
   <ul>
     <li>
@@ -405,19 +407,19 @@ To delete a key <b>k</b> from a search tree;
     </li>
     <li>
       Difficult Case (k's two children) : Compute <b>k</b>’s predecessor <b>l</b>, swap them, and deleting <b>l</b> will do the trick.
-    </li> 
-  </ul> 
-</div> 
+    </li>
+  </ul>
+</div>
 
 An illustration of deleting a key for each case;
-                        
-![delete_key]({{ site.url }}/public/images/2014/06/delete_bst.png)
+
+![delete_key]({{ site.url }}/assets/img/2014/06/delete_bst.png)
 
 The delete procedure will use a subroutine which is called <em>transplant</em> to handle with the cases when <b>x</b> has no children, or only one child. Transplant and delete procedures are as follows;
 
 <pre><code class="language-java">public void delete(int key) {
     Node delNode = search(root, key);
- 
+
     if (delNode.getLeftChild() == null) {
         transplant(delNode, delNode.getRightChild());
     } else if (delNode.getRightChild() == null) {
@@ -425,7 +427,7 @@ The delete procedure will use a subroutine which is called <em>transplant</em> t
     } else {
         Node y = treePredecessor(delNode);
         swapKeys(delNode, y);
- 
+
         Node z = y.getLeftChild();
         transplant(y, z);
     }
@@ -446,7 +448,7 @@ The delete procedure will use a subroutine which is called <em>transplant</em> t
     }
 }</code>
 </pre>
-                        
+
 The running time of delete procedure is \(O(height)\).
 
 Here you can find the complete implementation of a BST by java.<br /> <a href="https://gist.github.com/flexelem/63c6897c075e4b8c4139">BST</a>

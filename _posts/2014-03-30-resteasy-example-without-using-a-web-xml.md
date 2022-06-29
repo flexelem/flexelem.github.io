@@ -54,17 +54,17 @@ command line will prompt some questions while it is initializing your project li
 
 After we created our maven project we have to import initialized project into eclipse by <b>import->Existing Maven Projects</b>
 
-![import_maven]({{ site.url }}/public/images/2014/03/eclipse_import-maven_project.png)
+![import_maven]({{ site.url }}/assets/img/2014/03/eclipse_import-maven_project.png)
 
 Then browse to the directory where you created your maven project, and select the root folder.
 
 Now our directory structure should look like this
 
-![directory]({{ site.url }}/public/images/2014/03/directory.png)
+![directory]({{ site.url }}/assets/img/2014/03/directory.png)
 
 <h3> 2. Dependencies </h3>
 
-We are going to use 2 dependencies which <code>junit</code> is optional cause I'm not going to show any test methods in this tutorial 
+We are going to use 2 dependencies which <code>junit</code> is optional cause I'm not going to show any test methods in this tutorial
 
 <pre>
 <code class="language-default">&lt;dependencies&gt;
@@ -92,12 +92,12 @@ We are going to use 2 dependencies which <code>junit</code> is optional cause I'
 
     <li>
       <b>junit</b> is for testing and it comes with default maven project.
-    </li> 
+    </li>
     </ul>
-</div> 
+</div>
 
 Also we have to add 2 maven plugins ;
-      
+
 <pre>
 <code class="language-default">&lt;build&gt;
 	&lt;plugins&gt;
@@ -122,7 +122,7 @@ Also we have to add 2 maven plugins ;
 	&lt;/plugins&gt;
 &lt;/build&gt;</code>
 </pre>
-      
+
 <div>
   <ul>
     <li>
@@ -140,10 +140,10 @@ Also we have to add 2 maven plugins ;
     </ul>
   </ul>
 </div>
-      
+
 <h3> 3. Developing a REST Service </h3>
 We have to implement a base/root application which defines the base URI for all other sub-resources. Then, this root class has to extended from <code>Application</code>, with <code>@ApplicationPath(&#8220;&#8221;)</code> annotation.
-      
+
 <pre>
 <code class="language-java">package com.buraktas.application;
 
@@ -161,7 +161,7 @@ public class BaseApplication extends Application {
     }
 }</code>
 </pre>
-      
+
 <div>
   <ul>
     <li>
@@ -170,15 +170,15 @@ public class BaseApplication extends Application {
 <pre>
 JBAS011203: No Servlet mappings found for JAX-RS application: com.buraktas.application.BaseApplication either annotate it with @ApplicationPath or add a servlet-mapping in web.xml
 </pre>
-          
+
     <li>
       Overriding <b>getClasses</b> method is optional, if you are not going to map classes manually.
     </li>
   </ul>
 </div>
-      
+
 Finally, we can implement our simplest and first REST service now which is only composed by a <b>GET</b> method and returns a <b>Hello World</b> string.
-      
+
 <pre>
 <code class="language-java">
 package com.buraktas.helloworld;
@@ -198,16 +198,16 @@ public class HelloWorld {
     }
 }</code>
 </pre>
-      
+
 Now our web-service is ready for getting build by maven with;
-      
+
 ```
 mvn clean install
 ```
 
 After the process is successfully finished, maven will create <b>.war</b> file under target directory. When we deploy it on JBoss, we could use our implemented resource on <b>http://localhost:8080/rest-helloworld/helloworld</b> which will print <b>Hello World</b>
-      
-![localhost_helloword]({{ site.url }}/public/images/2014/03/localhost_hello_world.png)
-      
+
+![localhost_helloword]({{ site.url }}/assets/img/2014/03/localhost_hello_world.png)
+
 Here you can find the original source code. <br>
 <a href="https://github.com/flexelem/resteasy_hello_world" title="RESTEasy Hello World" target="_blank">RESTEasy Hello World</a>

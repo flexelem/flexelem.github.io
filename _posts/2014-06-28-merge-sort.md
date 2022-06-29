@@ -3,11 +3,12 @@ title: Merge Sort
 author: buraktas
 layout: post
 permalink: /merge-sort/
+math: true
 dsq_thread_id:
   - 2802018068
 categories:
-  - Algorithms
-  - Sorting
+  - algorithms
+  - sorting
 tags:
   - algorithms
   - java
@@ -15,7 +16,7 @@ tags:
   - sorting
 comments: true
 ---
-Merge sort is another comparison based sort algorithm. It closely follows *divide-and-conquer* paradigm, and provides \\( O(n&#8203;lgn) \\) run time complexity in worst and average cases, however, \\( O(n) \\) in space complexity. Merge sort can be used for sorting huge data sets that can not fit into memory. It is also a stable sort which preserves the order of equal elements. 
+Merge sort is another comparison based sort algorithm. It closely follows *divide-and-conquer* paradigm, and provides \\( O(n&#8203;lgn) \\) run time complexity in worst and average cases, however, \\( O(n) \\) in space complexity. Merge sort can be used for sorting huge data sets that can not fit into memory. It is also a stable sort which preserves the order of equal elements.
 
 <!--more-->
 
@@ -36,59 +37,59 @@ Merge sort follows a divide-and-conquer algorithm by the following steps;
     </li>
   </ul>
 </div>
-  
+
 <h3> Complexity Analysis </h3>
-  
+
 <table class="TFtable">
     <tr>
       <th colspan="3">
         Time
       </th>
-      
+
       <th>
         Space
       </th>
     </tr>
-    
+
     <tr>
       <th>
         Best case
       </th>
-      
+
       <th>
         Worst case
       </th>
-      
+
       <th>
         Average case
       </th>
-      
+
       <th>
         Worst case
       </th>
     </tr>
-    
+
     <tr>
       <td>
         \(O(n&#8203;lgn)\)
       </td>
-      
+
       <td>
         \(O(n&#8203;lgn)\)
       </td>
-      
+
       <td>
         \(O(n&#8203;lgn)\)
       </td>
-      
+
       <td>
         \(O(n) auxiliary\)
       </td>
     </tr>
 </table>
-  
+
 <h2> Code </h2>
-  
+
 <em>mergeSort</em> procedure divides input into two equal parts by recursion until input size becomes 1. Then, <em>merge</em> procedure sorts and combine divided parts. The code of mergeSort procedure is as following ;
 
 <pre><code class="language-java">public void mergeSort(int[] numbers, int left, int right) {
@@ -104,8 +105,8 @@ Merge sort follows a divide-and-conquer algorithm by the following steps;
 	}
 }</code>
 </pre>
-  
-![]({{ site.url }}/public/images/2014/06/merge_sort.png)
+
+![]({{ site.url }}/assets/img/2014/06/merge_sort.png)
 
 <em>merge</em> procedure is the part where subarrays are combined and sorted. Thus, <em>merge</em> procedure on an n-element subarray takes time \\( O(n) \\). Code of <em>merge</em> procedure is as follows;
 
@@ -149,4 +150,4 @@ Merge sort follows a divide-and-conquer algorithm by the following steps;
 }</code>
 </pre>
 
-![combine_step]({{ site.url }}/public/images/2014/06/merge_sort_combine_and_sort_step.png)
+![combine_step]({{ site.url }}/assets/img/2014/06/merge_sort_combine_and_sort_step.png)

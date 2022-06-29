@@ -6,7 +6,7 @@ permalink: /spring-retry-tutorial/
 dsq_needs_sync:
   - 1
 categories:
-  - Spring Framework
+  - spring-framework
 tags:
   - spring-framework
   - java
@@ -194,7 +194,7 @@ public RetryTemplate retryTemplate() {
 }
 ```
 
-Now we can use this `RestTemplate` anywhere in spring to apply a retry logic by its `execute` method. There are 3 implementations of `execute` where I will show the common one by giving `RetryCallback` and `RecoveryCallback` functions. 
+Now we can use this `RestTemplate` anywhere in spring to apply a retry logic by its `execute` method. There are 3 implementations of `execute` where I will show the common one by giving `RetryCallback` and `RecoveryCallback` functions.
 
 ```java
 public void processRetryWithRestTemplate(String requestId) {

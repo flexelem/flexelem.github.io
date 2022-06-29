@@ -14,14 +14,14 @@ tags:
   - timestamp
 comments: true
 ---
-Sometimes we might want to export only a specific part of our collection with query support of <b>mongoexport</b>.
-  
+Sometimes we might want to export only a specific part of our collection with query support of **mongoexport**.
+
 Suppose this is our notebook collection, and each document refers to a notebook with their production date.
 
 <!--more-->
 
-<pre>
-<code class="language-javascript">{
+```
+{
         "_id" : ObjectId("531ce460000000019b9643bc"),
         "company" : "Samsung",
         "date" : ISODate("2014-03-09T22:00:00Z"),
@@ -55,28 +55,26 @@ Suppose this is our notebook collection, and each document refers to a notebook 
         "date" : ISODate("2014-03-05T22:00:00Z"),
         "price" : 1000,
         "brand" : "Ultrabook",
-}</code>
-</pre>
+}
+```
 
 The original way of mongoexport is defined by
 
-<pre>
-mongoexport --db &lt;database&gt; --collection &lt;collection&gt; --query &lt;JSON query&gt; --out &lt;file&gt;
-</pre>
+> mongoexport --db &lt;database&gt; --collection &lt;collection&gt; --query &lt;JSON query&gt; --out &lt;file&gt;
 
 The major problem is we can not use **ISODate(&#8220;&#8221;)** objects to represent dates within a query, so that we have to convert each of them object into a **Date** object.
 
-For instance; if we try to find the notebooks produced between **2014-03-09T22:00:00Z** and **2014-03-07T22:00:00Z** by Apple with the given query; 
+For instance; if we try to find the notebooks produced between **2014-03-09T22:00:00Z** and **2014-03-07T22:00:00Z** by Apple with the given query;
 
-<pre>
+```shell
 mongoexport --db test --collection notebooks --query  '{ company:"Apple", date: { $lt: ISODate("2014-03-09T22:00:00Z") , $gte: ISODate("2014-03-07T22:00:00Z")} }' --out example.json
-</pre>
+```
 
 we will probably have an error like;
 
-<pre>
+```
 ERROR: too many positional options
-</pre>
+```
 
 There are two common ways to convert ISODates into Date objects which are;
 
@@ -88,7 +86,7 @@ There are two common ways to convert ISODates into Date objects which are;
 <pre>
 var a = ISODate('2014-03-10T22:00:00Z');
 a.getTime()</pre>
-    
+
     <li>
       we can convert the given date into milliseconds from the link <a href="http://www.ruddwire.com/handy-code/date-to-millisecond-calculators/#.Ux3CqPmSzO5">ISODate to milliseconds</a>
     </li>
@@ -97,18 +95,18 @@ a.getTime()</pre>
 
 Now we have correct Date times to use them in our query.
 
-<pre>
+```shell
 mongoexport --db test --collection notebooks --query  "{ company:"Apple", date: { $lt: new Date(1394402400000) , $gte: new Date(1394229600000)} }" --out example.json
-</pre>
+```
 
 Finally, we will have a json file (example.json) in our current directory which includes only one document which is;
 
-<pre>
-<code class="language-javascript">{
-        "_id" : ObjectId("531ce460000000019b9643bd"),
-        "company" : "Apple",
-        "date" : ISODate("2014-03-07T22:00:00Z"),
-        "price" : 2250,
-        "brand" : "MacbookPro",
-}</code>
-</pre>
+```json
+{
+  "_id" : ObjectId("531ce460000000019b9643bd"),
+  "company" : "Apple",
+  "date" : ISODate("2014-03-07T22:00:00Z"),
+  "price" : 2250,
+  "brand" : "MacbookPro",
+}
+```

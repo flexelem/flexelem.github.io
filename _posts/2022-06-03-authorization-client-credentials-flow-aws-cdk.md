@@ -34,7 +34,7 @@ These are the resources we will provision;
 
 Client credentials flow is a simple which contains a few steps to get an access token to provide M2M communication.
 
-![client_credentials_flow]({{ site.url }}/public/images/2022/06/client_credentials_flow.png)
+![client_credentials_flow]({{ site.url }}/assets/img/2022/06/client_credentials_flow.png)
 
 - Server app makes a call to [`/token`](https://docs.aws.amazon.com/cognito/latest/developerguide/token-endpoint.html) endpoint with Client ID and Client Secret pair to request access token. `Authorization` request header is mandatory which is
 in format of **Base64Encode(client_id:client_secret)**. Additionally, in request body `grant_type` parameter must be `client_credentials` and `scope` should be provided if there any scopes associated to the app client.
@@ -45,7 +45,7 @@ in format of **Base64Encode(client_id:client_secret)**. Additionally, in request
 
 Here is the AWS representation of the Client Credentials Flow;
 
-![aws_client_credentials_flow]({{ site.url }}/public/images/2022/06/aws_client_credentials_flow.png)
+![aws_client_credentials_flow]({{ site.url }}/assets/img/2022/06/aws_client_credentials_flow.png)
 
 - Server app makes a call `/token` endpoint with providing Client ID and Client Secret pair to get an access token.
 - AWS Cognito validates provided Client ID and Client Secret pair. Returns access token after if the credentials are valid.
@@ -59,8 +59,8 @@ Here is the AWS representation of the Client Credentials Flow;
 ## Testing
 First thing first, lets see we really get an `401 - Unauthorized` response from the protected endpoint by making a http call without an `Authorization` header.
 
-```
-> curl -i --request GET 'https://1w1wa554q4.execute-api.us-east-1.amazonaws.com/prod/awesomeapi'
+```shell
+curl -i --request GET 'https://1w1wa554q4.execute-api.us-east-1.amazonaws.com/prod/awesomeapi'
 
 HTTP/2 401
 date: Mon, 06 Jun 2022 21:16:15 GMT
@@ -75,8 +75,8 @@ x-amz-apigw-id: TUY44EBvoAMFbUw=
 
 Now, we need to get an access token.
 
-```
-> curl --request POST 'https://buraktas-awesome-domain.auth.us-east-1.amazoncognito.com/oauth2/token' \
+```shell
+curl --request POST 'https://buraktas-awesome-domain.auth.us-east-1.amazoncognito.com/oauth2/token' \
 --header 'Authorization: Basic NGYyaG1obmh2anVqam9yMGtpbGE4ZThpdTk6MWhqMzVyZjE1dTNjNnUyb2FxaXV1MzUyYWprbXM0cW10bTIxNmtsN3M1ZXIwYzRhM25nYw==' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'grant_type=client_credentials' \
@@ -85,7 +85,7 @@ Now, we need to get an access token.
 
 Just to note; `scope` parameter is Optional here. If we don't request for any custom scopes we created then AWS Cognito will return an access token having all scopes defined.
 
-```
+```json
 {
   "access_token": "eyJraWQiOiJEVGxKSTBvTnN4KzVjOFVLZDViYlJTNnl6bnFFY1UyS3VOY1l4OGc2RmNNPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI0ZjJobWhuaHZqdWpqb3Iwa2lsYThlOGl1OSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdlc29tZWFwaS1yZXNvdXJjZS1zZXJ2ZXJcL2F3ZXNvbWVhcGkucmVhZCIsImF1dGhfdGltZSI6MTY1NDU1NDAyNywiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfTjhGMjJVc2xvIiwiZXhwIjoxNjU0NTU3NjI3LCJpYXQiOjE2NTQ1NTQwMjcsInZlcnNpb24iOjIsImp0aSI6IjEwMzhmNTNmLTBjZTAtNGI1Zi04MDhiLTk1ZTg4MGE4NzY0MyIsImNsaWVudF9pZCI6IjRmMmhtaG5odmp1ampvcjBraWxhOGU4aXU5In0.t1qmxKwboXh4s2FcpExB_icqUkBaAn9UzR3qZPtT3_U5NuxoJ05JLHCCM9NfYUdiT9nlP08NMJSVi_qQBEwmcouWhNN9mrWQqvpuyha8_UFCrFAyzyOrjeUHsknoabyjToUPlPYbdmPP6LhjeK43lcZeJnUeXBELGIGz0mkasPbiodyvEmozAczxfikUGzStgTOXF9YueLSjs1r-JClj0QICfaZW7mMYno462fioURy-UZElVsfXODFhWIXmD9viFoEy657_sKRzctrLci0ejD9jKv_MBEBMBYiQpIEN3zyevCweXYG9jmMaGI8w-StrDGYNqdDPcn02a3kJlCV76Q",
   "expires_in": 3600,
@@ -95,8 +95,8 @@ Just to note; `scope` parameter is Optional here. If we don't request for any cu
 
 We are finally ready to call our protected endpoints with provided access token;
 
-```
-> curl --request GET 'https://1w1wa554q4.execute-api.us-east-1.amazonaws.com/prod/awesomeapi' \
+```shell
+curl --request GET 'https://1w1wa554q4.execute-api.us-east-1.amazonaws.com/prod/awesomeapi' \
 --header 'Authorization: eyJraWQiOiJEVGxKSTBvTnN4KzVjOFVLZDViYlJTNnl6bnFFY1UyS3VOY1l4OGc2RmNNPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI0ZjJobWhuaHZqdWpqb3Iwa2lsYThlOGl1OSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdlc29tZWFwaS1yZXNvdXJjZS1zZXJ2ZXJcL2F3ZXNvbWVhcGkucmVhZCIsImF1dGhfdGltZSI6MTY1NDU1NDAyNywiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfTjhGMjJVc2xvIiwiZXhwIjoxNjU0NTU3NjI3LCJpYXQiOjE2NTQ1NTQwMjcsInZlcnNpb24iOjIsImp0aSI6IjEwMzhmNTNmLTBjZTAtNGI1Zi04MDhiLTk1ZTg4MGE4NzY0MyIsImNsaWVudF9pZCI6IjRmMmhtaG5odmp1ampvcjBraWxhOGU4aXU5In0.t1qmxKwboXh4s2FcpExB_icqUkBaAn9UzR3qZPtT3_U5NuxoJ05JLHCCM9NfYUdiT9nlP08NMJSVi_qQBEwmcouWhNN9mrWQqvpuyha8_UFCrFAyzyOrjeUHsknoabyjToUPlPYbdmPP6LhjeK43lcZeJnUeXBELGIGz0mkasPbiodyvEmozAczxfikUGzStgTOXF9YueLSjs1r-JClj0QICfaZW7mMYno462fioURy-UZElVsfXODFhWIXmD9viFoEy657_sKRzctrLci0ejD9jKv_MBEBMBYiQpIEN3zyevCweXYG9jmMaGI8w-StrDGYNqdDPcn02a3kJlCV76Q'
 ```
 
@@ -104,8 +104,8 @@ Response
 
 ```json
 {
-	"statusCode": 200,
-	"message": "Hello From Protected Resource"
+  "statusCode": 200,
+  "message": "Hello From Protected Resource"
 }
 ```
 

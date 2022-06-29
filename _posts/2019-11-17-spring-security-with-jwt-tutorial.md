@@ -6,11 +6,12 @@ permalink: /spring-security-with-jwt-tutorial/
 dsq_needs_sync:
   - 1
 categories:
-  - Spring Framework
+  - spring-framework
 tags:
   - java
   - spring-framework
   - spring-security
+  - jwt
 comments: true
 ---
 
@@ -20,9 +21,9 @@ JWT is an open standard ([RFC7519](https://tools.ietf.org/html/rfc7519)) to shar
 
 <!--more-->
 
-The most common usage of JWT is for accessing authorized resources. Here is an example illustration of JWT usage; 
+The most common usage of JWT is for accessing authorized resources. Here is an example illustration of JWT usage;
 
-![jwt_workflow]({{ site.url }}/public/images/2019/11/jwt_workflow.png)
+![jwt_workflow]({{ site.url }}/assets/img/2019/11/jwt_workflow.png)
 
 1. User sends a request to authenticate with his credentials.
 2. Application server authenticates the user with given credentials and generates a JWT.

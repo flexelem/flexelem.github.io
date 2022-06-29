@@ -3,10 +3,12 @@ title: Binary Search
 author: buraktas
 layout: post
 permalink: /binary-search/
+math: true
 dsq_thread_id:
   - 2770434619
 categories:
-  - Algorithms
+  - algorithms
+  - searching
 tags:
   - algorithms
   - binary-search
@@ -40,43 +42,43 @@ Finding an item takes logarithmic time in binary search. Thus, it works blazingl
     <th colspan="3">
       Time
     </th>
-    
+
     <th>
       Space
     </th>
   </tr>
-  
+
   <tr>
     <th>
       Best Case
     </th>
-    
+
     <th>
       Average Case
     </th>
-    
+
     <th>
       Worst Case
     </th>
-    
+
     <th>
       Worst Case
     </th>
   </tr>
-  
+
   <tr>
     <td>
       \(O(1)\)
     </td>
-    
+
     <td>
       \(O(lgn)\)
     </td>
-    
+
     <td>
       \(O(lgn)\)
     </td>
-    
+
     <td>
       \(O(1) auxiliary\)
     </td>
@@ -85,7 +87,7 @@ Finding an item takes logarithmic time in binary search. Thus, it works blazingl
 
 An illustration of searching a key 22 is shown below;
 
-![binary_search]({{ site.url }}/public/images/2014/06/binary_search1.png)
+![binary_search]({{ site.url }}/assets/img/2014/06/binary_search1.png)
 
 <h2> Code </h2>
 

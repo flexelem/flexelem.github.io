@@ -3,13 +3,15 @@ title: Bubble Sort
 author: buraktas
 layout: post
 permalink: /bubble-sort/
+math: true
 dsq_thread_id:
   - 2699278119
 categories:
-  - Algorithms
+  - algorithms
+  - sorting
 tags:
   - algorithms
-  - bubble sort
+  - bubble-sort
   - java
   - sorting
 comments: true
@@ -34,11 +36,11 @@ Bubble sort is one of the simplest sorting algorithm which pairs are repeatedly 
 
 Let us see an example on a given array [2, 7, 9, 3, 4]
 
-![]({{ site.url }}/public/images/2014/05/bubble_sort_1.png)
+![]({{ site.url }}/assets/img/2014/05/bubble_sort_1.png)
 
 Finally, our array is sorted, however, it needs an additional iteration to figure out it is sorted. The key point is there shouldn&#8217;t be any swaps while iteration continues, so algorithm will understand that array is already sorted.
 
-![]({{ site.url }}/public/images/2014/05/bubble_sort_2.png)
+![]({{ site.url }}/assets/img/2014/05/bubble_sort_2.png)
 
 <h2> Complexity Analysis </h2>
 
@@ -47,43 +49,43 @@ Finally, our array is sorted, however, it needs an additional iteration to figur
     <th colspan="3">
       Time
     </th>
-    
+
     <th>
       Space
     </th>
   </tr>
-  
+
   <tr>
     <th>
       Worst case
     </th>
-    
+
     <th>
       Best case
     </th>
-    
+
     <th>
       Average case
     </th>
-    
+
     <th>
       Worst case
     </th>
   </tr>
-  
+
   <tr>
     <td>
       \(O(n^{2})\)
     </td>
-    
+
     <td>
       \(O(n)\)
     </td>
-    
+
     <td>
       \(O(n^{2})\)
     </td>
-    
+
     <td>
       \(O(1) auxiliary\)
     </td>

@@ -6,7 +6,7 @@ permalink: /java-enums-tutorial/
 dsq_thread_id:
   - 3539669404
 categories:
-  - Java
+  - java
 tags:
   - enums
   - java
@@ -51,7 +51,7 @@ true
 Before going deeper we should understand why and where to use Enums. Before Enums are introduced, int enum or String enum pattern were used to represent enumerated types, and these techniques had a bunch disadvantages. First of all, they are not type-safe. For example; we have a Languages class with int enum pattern ,and a method which returns a greetings message to its associated language as a String.
 
 <pre><code class="language-java">public class Languages {
-    
+
     public static final int ENGLISH = 1;
     public static final int FRENCH = 2;
     public static final int GERMAN = 3;
@@ -86,7 +86,7 @@ As we can see if an undefined int parameter is send, method will throw an except
 }</code>
 </pre>
 
-<pre><code class="language-java">// Enums are compiled-time type safe 
+<pre><code class="language-java">// Enums are compiled-time type safe
 public String greet(Languages lang) {
         if (lang == Languages.ENGLISH) {
             return "English";
@@ -237,7 +237,7 @@ Like classes in Java, Enums can implement interfaces. The important point is the
     <blockquote>
         If no access modifier is specified for the constructor of an enum type, the constructor is private.
     </blockquote>
-    
+
     <li>
       Enums can have and implement abstract methods.
     </li>

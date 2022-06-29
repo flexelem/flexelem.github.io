@@ -6,7 +6,7 @@ permalink: /convert-objects-to-from-json-by-jackson-example/
 dsq_thread_id:
   - 3425397232
 categories:
-  - Uncategorized
+  - serialization
 tags:
   - jackson
   - java
@@ -27,7 +27,7 @@ We will see a simple example about converting objects to/from JSON objects in Ja
 And two typical Person and Address classes.
 
 <b>Person.java</b>
-  
+
 <pre><code class="language-java">public class Person {
 
     private String name;
@@ -66,9 +66,9 @@ And two typical Person and Address classes.
     }
 }</code>
 </pre>
-  
+
 <b>Address.java</b>
-    
+
 <pre><code class="language-java">public class Address {
 
     private int zipcode;
@@ -95,9 +95,9 @@ And two typical Person and Address classes.
     }
 }</code>
 </pre>
-  
+
 <b><u>Notes</u></b>
-  
+
 <div>
     <ul>
       <li>
@@ -109,9 +109,9 @@ And two typical Person and Address classes.
       </li>
     </ul>
 </div>
-  
+
 <h3> 1.Object to JSON </h3>
-  
+
 <pre><code class="language-java">public class JacksonExample {
 
     public static void main(String[] args) throws JsonProcessingException {
@@ -129,9 +129,9 @@ And two typical Person and Address classes.
     }
 }</code>
 </pre>
-  
+
 Output will be;
-  
+
 <pre><code class="language-java">{
    "name":"Sawyer",
    "lastName":"Bootstrapper",
@@ -148,9 +148,9 @@ Output will be;
    ]
 }</code>
 </pre>
-  
+
 <h3> 2.JSON to Object </h3>
-  
+
 <pre><code class="language-java">public class JacksonExample {
 
     private static String jsonValue = "{\"name\":\"Sawyer\",\"lastName\":\"Bootstrapper\",\"age\":23,\"addressList\":[{\"zipcode\":12345,\"street\":" +
@@ -162,9 +162,9 @@ Output will be;
     }
 }</code>
 </pre>
-  
+
 Output will be;
-  
+
 <pre>name: Sawyer
 lastName: Bootstrapper
 age: 23

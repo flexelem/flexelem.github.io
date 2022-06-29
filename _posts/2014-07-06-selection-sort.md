@@ -3,11 +3,12 @@ title: Selection Sort
 author: buraktas
 layout: post
 permalink: /selection-sort/
+math: true
 dsq_thread_id:
   - 2822289059
 categories:
-  - Algorithms
-  - Sorting
+  - algorithms
+  - sorting
 tags:
   - algorithms
   - java
@@ -19,25 +20,15 @@ Selection sort is an in-place comparison sort algorithm which has \\( O(n^2) \\)
 
 <!--more-->
 
-<h2> Algorithm </h2>
+## Algorithm
 
-<div>
-  <ul>
-    <li>
-      Find minimum in unsorted list.
-    </li>
-    <li>
-      Swap minimum with left most element in unsorted list.
-    </li>
-    <li>
-      Shift boundaries of unsorted list to right by one.
-    </li>
-  </ul>
-</div>
+- Find minimum in unsorted list.
+- Swap minimum with left most element in unsorted list.
+- Shift boundaries of unsorted list to right by one.
 
-![selection_sort]({{ site.url }}/public/images/2014/07/selection_sort.png)
+![selection_sort]({{ site.url }}/assets/img/2014/07/selection_sort.png)
 
-<h2> Complexity Analysis </h2>
+## Complexity Analysis
 
 Due to the fact that selection sort is not adaptive ( number of cycles doesn't change due to given order) it takes \\( O(n^2) \\) for every case.
 
@@ -46,59 +37,60 @@ Due to the fact that selection sort is not adaptive ( number of cycles doesn't c
     <th colspan="3">
       Time
     </th>
-    
+
     <th>
       Space
     </th>
   </tr>
-  
+
   <tr>
     <th>
       Best case
     </th>
-    
+
     <th>
       Worst case
     </th>
-    
+
     <th>
       Average case
     </th>
-    
+
     <th>
       Worst case
     </th>
   </tr>
-  
+
   <tr>
     <td>
       \(O(n^{2})\)
     </td>
-    
+
     <td>
       \(O(n^{2})\)
     </td>
-    
+
     <td>
       \(O(n^{2})\)
     </td>
-    
+
     <td>
       \(O(1) auxiliary\)
     </td>
   </tr>
 </table>
 
-<h2> Code </h2>
+## Code
 
-<pre><code class="language-java">public class SelectionSort {
+```java
+public class SelectionSort {
 
     public int[] selectionSort(int[] numbers) {
-        for (int i = 0; i &lt; numbers.length - 1; i++) {
+        for (int i = 0; i < numbers.length - 1; i++) {
 
             int minIndex = i;
-            for (int j = i + 1; j &lt; numbers.length; j++) {
-                if (numbers[j] &lt; numbers[minIndex]) {
+            for (int j = i + 1; j < numbers.length; j++) {
+                if (numbers[j] < numbers[minIndex]) {
                     minIndex = j;
                 }
             }
@@ -115,5 +107,5 @@ Due to the fact that selection sort is not adaptive ( number of cycles doesn't c
         numbers[i] = numbers[j];
         numbers[j] = temp;
     }
-}</code>
-</pre>
+}
+```

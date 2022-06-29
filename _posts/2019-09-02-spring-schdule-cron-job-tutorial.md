@@ -6,7 +6,7 @@ permalink: /spring-schedule-tutorial/
 dsq_needs_sync:
   - 1
 categories:
-  - Spring Framework
+  - spring-framework
 tags:
   - spring-framework
   - java
@@ -37,7 +37,7 @@ and streaming them. Instead of implementing separate cron jobs and managing them
             <artifactId>spring-boot-autoconfigure</artifactId>
             <version>2.1.2.RELEASE</version>
         </dependency>
-        
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>

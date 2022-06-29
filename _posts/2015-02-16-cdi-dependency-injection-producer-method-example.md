@@ -4,15 +4,15 @@ author: buraktas
 layout: post
 permalink: /cdi-dependency-injection-producer-method-example/
 dsq_thread_id:
-- 3519616668
+  - 3519616668
 categories:
-- Java-EE
+  - java-ee
 tags:
-- cdi
-- dependency-injection
-- java
-- java-annotations
-- java-ee
+  - cdi
+  - dependency-injection
+  - java
+  - java-annotations
+  - java-ee
 comments: true
 ---
 
@@ -83,7 +83,7 @@ org.jboss.weld.exceptions.DeploymentException: WELD-001409 Ambiguous dependencie
   at org.jboss.arquillian.container.weld.ee.embedded_1_1.WeldEEMockContainer.deploy(WeldEEMockContainer.java:98)</code>
 </pre>
 
-![]({{ site.url }}/public/images/2015/02/disambiguation1.png)
+![]({{ site.url }}/assets/img/2015/02/disambiguation1.png)
 
 Now it is time solve our simple ambiguous dependency problem. We are going to create a qualifier called <code>@BankProducer</code>.
 
@@ -125,7 +125,7 @@ public class ProducesExample {
 }</code>
 </pre>
 
-![]({{ site.url }}/public/images/2015/02/producer_method_bean.png)
+![]({{ site.url }}/assets/img/2015/02/producer_method_bean.png)
 
 Now what if we had more than one Bank implementation and we want to resolve disambiguation in producer method. Assume we have HSBC and Chase.
 

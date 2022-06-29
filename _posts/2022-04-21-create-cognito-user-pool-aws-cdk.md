@@ -214,7 +214,7 @@ const { user } = await Auth.signUp({
 
 After a successful response we will receive a verification email based on the template we defined.
 
-![verify_email]({{ site.url }}/public/images/2022/04/verify_email.png)
+![verify_email]({{ site.url }}/assets/img/2022/04/verify_email.png)
 
 And the second part is confirming signup of the user.
 ```javascript
@@ -225,7 +225,7 @@ const result = await Auth.confirmSignUp(this.state.email, verifyCode);
 
 Finally, our cognito user pool will have a verified user
 
-![verified_user]({{ site.url }}/public/images/2022/04/cognito_verified_user.png)
+![verified_user]({{ site.url }}/assets/img/2022/04/cognito_verified_user.png)
 
 <br/>
 

@@ -6,7 +6,7 @@ permalink: /aws-ecs-initial-guide-to-docker-deployments/
 dsq_needs_sync:
   - 1
 categories:
-  - Amazon Web Services
+  - aws
 tags:
   - aws
   - ecs
@@ -24,14 +24,14 @@ We will use EC2 type container instances. Before starting there are some compone
 - Task Definition: JSON\|YML based configuration file. In other words recipe or blueprint of your containers. We give parameters like Docker Image, CPU, Memory, Network Mode for one or more containers. You can think of it like a Dockerfile.
 - Task: An instance based on given Task Definition. This is the Docker container which can contain one or more Task Definitions.
 - Service: Allows you to create and maintain a number of tasks (containers) including their lifecycle and deployment properties from same Task Definition.
-- ECS Container Agent: A service (docker container) that manages the connection between ECS cluster. 
+- ECS Container Agent: A service (docker container) that manages the connection between ECS cluster.
 - Cluster: Group for defining container instances. It can be either group of EC2 instances or a Fargate type cluster which is serverless.
 
 <!--more-->
 
 Here is the high level architecture for our application
 
-![aws_ecs_cluster]({{ site.url }}/public/images/2019/11/aws_ecs_cluster.png)
+![aws_ecs_cluster]({{ site.url }}/assets/img/2019/11/aws_ecs_cluster.png)
 
 There are 3 different AWS components we will create and configure;
 
@@ -41,7 +41,7 @@ There are 3 different AWS components we will create and configure;
 
 We will create and configure ECS and ELB components, however, I will use ECR to get my own simple docker image. Moreover, here is the high level representation of EC2 instances in ECS cluster.
 
-![ecs_container_instance_resized]({{ site.url }}/public/images/2019/11/ecs_container_instance_resized.png)
+![ecs_container_instance_resized]({{ site.url }}/assets/img/2019/11/ecs_container_instance_resized.png)
 
 <br>
 
@@ -84,7 +84,7 @@ Cluster creation succeeded.
 
 We can also verify the cluster from AWS Console
 
-![empty_ecs_cluster]({{ site.url }}/public/images/2019/11/empty_ecs_cluster.png)
+![empty_ecs_cluster]({{ site.url }}/assets/img/2019/11/empty_ecs_cluster.png)
 
 <br>
 
@@ -139,7 +139,7 @@ CMD [ "node", "server.js" ]
 
 <br>
 
-For the task definition we will expose port 8080 and use the image url from our ECR repository which has our Docker image. 
+For the task definition we will expose port 8080 and use the image url from our ECR repository which has our Docker image.
 
 > aws ecs register-task-definition --cli-input-json file://task-definition.json
 
@@ -218,7 +218,7 @@ We will have a an output like;
 
 We can see the task definition we created from AWS Console
 
-![task_definition]({{ site.url }}/public/images/2019/11/task_definition.png)
+![task_definition]({{ site.url }}/assets/img/2019/11/task_definition.png)
 
 <br>
 
@@ -372,7 +372,7 @@ Now we have to create a Listener
 
 Our Elastic Load Balancer will have an attached Listener that can also verify from AWS Console.
 
-![example_elb]({{ site.url }}/public/images/2019/11/example_elb.png)
+![example_elb]({{ site.url }}/assets/img/2019/11/example_elb.png)
 
 <br>
 
@@ -443,7 +443,7 @@ Now it is time to validate our ECS cluster is healthy and works for the endpoint
 
 Well for the Target Group we can directly check it from AWS Console.
 
-![example_target_group_with_healthy_target]({{ site.url }}/public/images/2019/11/example_target_group_with_healthy_target.png)
+![example_target_group_with_healthy_target]({{ site.url }}/assets/img/2019/11/example_target_group_with_healthy_target.png)
 
 <br>
 

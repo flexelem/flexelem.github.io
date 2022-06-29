@@ -7,7 +7,7 @@ deneme:
   - |
     @Named("hondaAutoService")
     public class HondaAutoService implements AutoService{
-    
+
         @Override
         public void getService() {
             System.out.println("You chose Honda auto service");
@@ -16,7 +16,7 @@ deneme:
 dsq_thread_id:
   - 3421824012
 categories:
-  - Java-EE
+  - java-ee
 tags:
   - arquillian
   - cdi
@@ -92,21 +92,21 @@ Here you can find very simple classes that I am going to use for dependency inje
    │               ├── AutoService.java
    │               ├── BMWAutoService.java
    │               ├── HondaAutoService.java
-   │           
+   │  
    ├── resources
    └── webapp
        └── WEB-INF
            └── beans.xml</pre>
 
 <b>AutoService.java</b>
-  
+
 <pre><code class="language-java">public interface AutoService {
     String getService();
 }</code>
 </pre>
 
 <b>BMWAutoService.java</b>
-  
+
 <pre><code class="language-java">@Named("bmwAutoService")
 public class BMWAutoService implements AutoService{
 
@@ -117,8 +117,8 @@ public class BMWAutoService implements AutoService{
 }</code>
 </pre>
 
-<b>HondaAutoService.java</b></p> 
-  
+<b>HondaAutoService.java</b></p>
+
 <pre><code class="language-java">@Named("hondaAutoService")
 public class HondaAutoService implements AutoService{
 
@@ -164,7 +164,7 @@ public class AutoServiceTest {
 
 <b><u>Notes</u></b>
 
-<div>  
+<div>
   <ul>
     <li>
       <code>@RunWith(Arquillian.class)</code> provides to run our test class with Arquillian features.
