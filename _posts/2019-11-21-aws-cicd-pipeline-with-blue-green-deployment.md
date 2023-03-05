@@ -40,7 +40,9 @@ Here is the architecture we will build
 <h2>CodeCommit</h2>
 CodeCommit is an AWS service to host git repositories. First, we will create a git repository on CodeCommit. I will call repository name as `nodejs-hello-world`.
 
-> aws codecommit create-repository --repository-name nodejs-hello-world --repository-description "NodeJS example repository for CI/CD pipeline tutorial"
+```shell
+aws codecommit create-repository --repository-name nodejs-hello-world --repository-description "NodeJS example repository for CI/CD pipeline tutorial"
+```
 
 ```json
 {
@@ -62,11 +64,15 @@ You might need to configure your aws credentials for CodeCommit if you haven't w
 
 After creating the repository we will now clone it to our local;
 
-> git clone ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/nodejs-hello-world
+```shell
+git clone ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/nodejs-hello-world
+```
 
 Now it is time to initialize our nodejs project and push the initial commit.
 
-> npm init
+```shell
+npm init
+```
 
 This is how package.json and server.js looks like;
 
@@ -100,7 +106,7 @@ app.get('/hello-world', (req, res) => {
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 ```
 
-```
+```shell
 git add .
 git commit -m "init commit"
 git push
@@ -129,7 +135,7 @@ We will create a Docker registry in ECR which will keep the list of Docker image
 
 After creating our ECR repository we will push our first image.
 
-```
+```shell
 $(aws ecr get-login --no-include-email --region us-east-1)
 
 docker build -t nodejs-cicd-example-registry .
@@ -319,23 +325,19 @@ Now after creating and registering it to our new ECS cluster we will replace `im
 
 ```json
 {
-    "containerDefinitions": [
-      {
-        "name": "node-app",
-        "image": "<IMAGE1_NAME>",
-        "memory": 512,
-        "cpu": 128,
-        "essential": true,
-        "portMappings": [
-          {
-             "containerPort": 8080,
-             "protocol": "tcp"
-          }
-        ]
-      }
-    ],
-    "family": "nodejs-hello-world-task-def",
-    "taskRoleArn": "arn:aws:iam::548754742764:role/ecsTaskExecutionRole"
+  "containerDefinitions": [{
+    "name": "node-app",
+    "image": "<IMAGE1_NAME>",
+    "memory": 512,
+    "cpu": 128,
+    "essential": true,
+    "portMappings": [{
+      "containerPort": 8080,
+      "protocol": "tcp"
+    }]
+  }],
+  "family": "nodejs-hello-world-task-def",
+  "taskRoleArn": "arn:aws:iam::548754742764:role/ecsTaskExecutionRole"
 }
 ```
 
@@ -343,74 +345,71 @@ We can then push new task-definition.json change into our code repository. Befor
 
 When creating ECS service we will have `deployment-controller` set to `CODE_DEPLOY` and we will use one Target Group because multiple Target Groups are not supported for CODE_DEPLOY type services.
 
-> aws ecs create-service --cluster example-ecs-cluster --service-name example-ecs-service --task-definition nodejs-hello-world-task-def --desired-count 1 --deployment-controller type=CODE_DEPLOY --launch-type EC2 --load-balancers targetGroupArn=arn:aws:elasticloadbalancing:us-east-1:548754742764:targetgroup/example-target-group/0f9efaeceb63ac61,containerName=nodejs-hello-world,containerPort=8080
+```shell
+aws ecs create-service --cluster example-ecs-cluster --service-name example-ecs-service --task-definition nodejs-hello-world-task-def --desired-count 1 --deployment-controller type=CODE_DEPLOY --launch-type EC2 --load-balancers targetGroupArn=arn:aws:elasticloadbalancing:us-east-1:548754742764:targetgroup/example-target-group/0f9efaeceb63ac61,containerName=nodejs-hello-world,containerPort=8080
+```
+
 
 ```json
 {
-    "service": {
-        "serviceArn": "arn:aws:ecs:us-east-1:548754742764:service/example-ecs-service",
-        "serviceName": "example-ecs-service",
-        "clusterArn": "arn:aws:ecs:us-east-1:548754742764:cluster/example-ecs-cluster",
-        "loadBalancers": [
-            {
-                "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:548754742764:targetgroup/example-target-group/0f9efaeceb63ac61",
-                "containerName": "nodejs-hello-world",
-                "containerPort": 8080
-            }
-        ],
-        "serviceRegistries": [],
-        "status": "ACTIVE",
-        "desiredCount": 1,
-        "runningCount": 0,
-        "pendingCount": 0,
-        "launchType": "EC2",
-        "taskDefinition": "arn:aws:ecs:us-east-1:548754742764:task-definition/nodejs-hello-world-task-def:23",
-        "deploymentConfiguration": {
-            "maximumPercent": 200,
-            "minimumHealthyPercent": 100
-        },
-        "taskSets": [
-            {
-                "id": "ecs-svc/9223370461212859254",
-                "taskSetArn": "arn:aws:ecs:us-east-1:548754742764:task-set/example-ecs-cluster/example-ecs-service/ecs-svc/9223370461212859254",
-                "status": "PRIMARY",
-                "taskDefinition": "arn:aws:ecs:us-east-1:548754742764:task-definition/nodejs-hello-world-task-def:23",
-                "computedDesiredCount": 1,
-                "pendingCount": 0,
-                "runningCount": 0,
-                "createdAt": 1575641916.534,
-                "updatedAt": 1575641916.534,
-                "launchType": "EC2",
-                "loadBalancers": [
-                    {
-                        "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:548754742764:targetgroup/example-target-group/0f9efaeceb63ac61",
-                        "containerName": "nodejs-hello-world",
-                        "containerPort": 8080
-                    }
-                ],
-                "serviceRegistries": [],
-                "scale": {
-                    "value": 100.0,
-                    "unit": "PERCENT"
-                },
-                "stabilityStatus": "STABILIZING",
-                "stabilityStatusAt": 1575641916.534
-            }
-        ],
-        "deployments": [],
-        "roleArn": "arn:aws:iam::548754742764:role/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS",
-        "events": [],
-        "createdAt": 1575641916.534,
-        "placementConstraints": [],
-        "placementStrategy": [],
-        "healthCheckGracePeriodSeconds": 0,
-        "schedulingStrategy": "REPLICA",
-        "deploymentController": {
-            "type": "CODE_DEPLOY"
-        },
-        "enableECSManagedTags": false,
-        "propagateTags": "NONE"
-    }
+  "service": {
+    "serviceArn": "arn:aws:ecs:us-east-1:548754742764:service/example-ecs-service",
+    "serviceName": "example-ecs-service",
+    "clusterArn": "arn:aws:ecs:us-east-1:548754742764:cluster/example-ecs-cluster",
+    "loadBalancers": [{
+      "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:548754742764:targetgroup/example-target-group/0f9efaeceb63ac61",
+      "containerName": "nodejs-hello-world",
+      "containerPort": 8080
+    }],
+    "serviceRegistries": [],
+    "status": "ACTIVE",
+    "desiredCount": 1,
+    "runningCount": 0,
+    "pendingCount": 0,
+    "launchType": "EC2",
+    "taskDefinition": "arn:aws:ecs:us-east-1:548754742764:task-definition/nodejs-hello-world-task-def:23",
+    "deploymentConfiguration": {
+      "maximumPercent": 200,
+      "minimumHealthyPercent": 100
+    },
+    "taskSets": [{
+      "id": "ecs-svc/9223370461212859254",
+      "taskSetArn": "arn:aws:ecs:us-east-1:548754742764:task-set/example-ecs-cluster/example-ecs-service/ecs-svc/9223370461212859254",
+      "status": "PRIMARY",
+      "taskDefinition": "arn:aws:ecs:us-east-1:548754742764:task-definition/nodejs-hello-world-task-def:23",
+      "computedDesiredCount": 1,
+      "pendingCount": 0,
+      "runningCount": 0,
+      "createdAt": 1575641916.534,
+      "updatedAt": 1575641916.534,
+      "launchType": "EC2",
+      "loadBalancers": [{
+        "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:548754742764:targetgroup/example-target-group/0f9efaeceb63ac61",
+        "containerName": "nodejs-hello-world",
+        "containerPort": 8080
+      }],
+      "serviceRegistries": [],
+      "scale": {
+        "value": 100.0,
+        "unit": "PERCENT"
+      },
+      "stabilityStatus": "STABILIZING",
+      "stabilityStatusAt": 1575641916.534
+    }],
+    "deployments": [],
+    "roleArn": "arn:aws:iam::548754742764:role/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS",
+    "events": [],
+    "createdAt": 1575641916.534,
+    "placementConstraints": [],
+    "placementStrategy": [],
+    "healthCheckGracePeriodSeconds": 0,
+    "schedulingStrategy": "REPLICA",
+    "deploymentController": {
+      "type": "CODE_DEPLOY"
+    },
+    "enableECSManagedTags": false,
+    "propagateTags": "NONE"
+  }
 }
 ```
 
@@ -419,21 +418,25 @@ When creating ECS service we will have `deployment-controller` set to `CODE_DEPL
 <h2>CodeDeploy</h2>
 CodeDeploy is a deployment service to configure and automate deployments on given targets like EC2 instances, AWS Lambda functions or ECS services. In this use case we will of course use ECS type deployments. This is the place we will point the two Target Group we created. One for production port and other one for test port.
 
-> aws deploy create-application --application-name nodejs-hello-world-codedeploy --compute-platform ECS
-
+```shell
+aws deploy create-application --application-name nodejs-hello-world-codedeploy --compute-platform ECS
 ```
+
+```json
 {
-    "applicationId": "8547a900-0da1-4d18-99d1-ee36db90f58d"
+  "applicationId": "8547a900-0da1-4d18-99d1-ee36db90f58d"
 }
 ```
 
 Now we will create a deployment group for our deployment application;
 
-> aws deploy create-deployment-group --cli-input-json file://create-deployment-group.json
+```shell
+aws deploy create-deployment-group --cli-input-json file://create-deployment-group.json
+```
 
 ```json
 {
-    "deploymentGroupId": "d24efd84-eddf-4f92-bba0-3b3c02ad26ae"
+  "deploymentGroupId": "d24efd84-eddf-4f92-bba0-3b3c02ad26ae"
 }
 ```
 
@@ -448,109 +451,96 @@ As the final step we will create and configure CodePipeline by combining the com
 - **Build** - This is the part `buildspec.yml` will run to build and push Docker images into ECR. Additionally, it will create an artifact which contains 3 files; imageDetail.json, task-definition.json and appspec.yml.
 - **Deploy** - This stage is the core side of our Blue/Green deployment.
 
-> aws codepipeline create-pipeline --cli-input-json file://create-codepipeline.json
+```shell
+aws codepipeline create-pipeline --cli-input-json file://create-codepipeline.json
+```
 
 ```json
 {
-    "pipeline": {
-        "name": "nodejs-codepipeline",
-        "roleArn": "arn:aws:iam::548754742764:role/service-role/AWSCodePipelineServiceRole-us-east-1-express-pipeline",
-        "artifactStore": {
-            "type": "S3",
-            "location": "codepipeline-us-east-1-493918737827"
+  "pipeline": {
+    "name": "nodejs-codepipeline",
+    "roleArn": "arn:aws:iam::548754742764:role/service-role/AWSCodePipelineServiceRole-us-east-1-express-pipeline",
+    "artifactStore": {
+      "type": "S3",
+      "location": "codepipeline-us-east-1-493918737827"
+    },
+    "stages": [{
+      "name": "Source",
+      "actions": [{
+        "name": "Source",
+        "actionTypeId": {
+          "category": "Source",
+          "owner": "AWS",
+          "provider": "CodeCommit",
+          "version": "1"
         },
-        "stages": [
-            {
-                "name": "Source",
-                "actions": [
-                    {
-                        "name": "Source",
-                        "actionTypeId": {
-                            "category": "Source",
-                            "owner": "AWS",
-                            "provider": "CodeCommit",
-                            "version": "1"
-                        },
-                        "runOrder": 1,
-                        "configuration": {
-                            "BranchName": "master",
-                            "PollForSourceChanges": "false",
-                            "RepositoryName": "nodejs-hello-world"
-                        },
-                        "outputArtifacts": [
-                            {
-                                "name": "SourceArtifact"
-                            }
-                        ],
-                        "inputArtifacts": [],
-                        "region": "us-east-1"
-                    }
-                ]
-            },
-            {
-                "name": "Build",
-                "actions": [
-                    {
-                        "name": "Build",
-                        "actionTypeId": {
-                            "category": "Build",
-                            "owner": "AWS",
-                            "provider": "CodeBuild",
-                            "version": "1"
-                        },
-                        "runOrder": 1,
-                        "configuration": {
-                            "ProjectName": "nodejs-codebuild-project"
-                        },
-                        "outputArtifacts": [
-                            {
-                                "name": "BuildArtifact"
-                            }
-                        ],
-                        "inputArtifacts": [
-                            {
-                                "name": "SourceArtifact"
-                            }
-                        ],
-                        "region": "us-east-1"
-                    }
-                ]
-            },
-            {
-                "name": "Deploy",
-                "actions": [
-                    {
-                        "name": "Deploy",
-                        "actionTypeId": {
-                            "category": "Deploy",
-                            "owner": "AWS",
-                            "provider": "CodeDeployToECS",
-                            "version": "1"
-                        },
-                        "runOrder": 1,
-                        "configuration": {
-                            "AppSpecTemplateArtifact": "BuildArtifact",
-                            "AppSpecTemplatePath": "appspec.yml",
-                            "ApplicationName": "nodejs-hello-world-codedeploy",
-                            "DeploymentGroupName": "nodejs-hello-world-deployment-group",
-                            "Image1ArtifactName": "BuildArtifact",
-                            "Image1ContainerName": "IMAGE1_NAME",
-                            "TaskDefinitionTemplateArtifact": "BuildArtifact",
-                            "TaskDefinitionTemplatePath": "task-definition.json"
-                        },
-                        "outputArtifacts": [],
-                        "inputArtifacts": [
-                            {
-                                "name": "BuildArtifact"
-                            }
-                        ],
-                        "region": "us-east-1"
-                    }
-                ]
-            }
-        ],
-        "version": 1
-    }
+        "runOrder": 1,
+        "configuration": {
+          "BranchName": "master",
+          "PollForSourceChanges": "false",
+          "RepositoryName": "nodejs-hello-world"
+        },
+        "outputArtifacts": [{
+          "name": "SourceArtifact"
+        }],
+        "inputArtifacts": [],
+        "region": "us-east-1"
+      }]
+    },
+      {
+        "name": "Build",
+        "actions": [{
+          "name": "Build",
+          "actionTypeId": {
+            "category": "Build",
+            "owner": "AWS",
+            "provider": "CodeBuild",
+            "version": "1"
+          },
+          "runOrder": 1,
+          "configuration": {
+            "ProjectName": "nodejs-codebuild-project"
+          },
+          "outputArtifacts": [{
+            "name": "BuildArtifact"
+          }],
+          "inputArtifacts": [{
+            "name": "SourceArtifact"
+          }],
+          "region": "us-east-1"
+        }]
+      },
+      {
+        "name": "Deploy",
+        "actions": [{
+          "name": "Deploy",
+          "actionTypeId": {
+            "category": "Deploy",
+            "owner": "AWS",
+            "provider": "CodeDeployToECS",
+            "version": "1"
+          },
+          "runOrder": 1,
+          "configuration": {
+            "AppSpecTemplateArtifact": "BuildArtifact",
+            "AppSpecTemplatePath": "appspec.yml",
+            "ApplicationName": "nodejs-hello-world-codedeploy",
+            "DeploymentGroupName": "nodejs-hello-world-deployment-group",
+            "Image1ArtifactName": "BuildArtifact",
+            "Image1ContainerName": "IMAGE1_NAME",
+            "TaskDefinitionTemplateArtifact": "BuildArtifact",
+            "TaskDefinitionTemplatePath": "task-definition.json"
+          },
+          "outputArtifacts": [],
+          "inputArtifacts": [{
+            "name": "BuildArtifact"
+          }],
+          "region": "us-east-1"
+        }]
+      }
+    ],
+    "version": 1
+  }
 }
 ```
 
@@ -578,7 +568,9 @@ Here we can see two target groups attached to the ALB as well. One points to por
 
 On the other hand, if we send the same request to the production port (80 in this case) then server will return 404 error becauase production target group still points to the old revision.
 
-> curl -i example-elb-162160344.us-east-1.elb.amazonaws.com:80/v2/hello-world
+```shell
+curl -i example-elb-162160344.us-east-1.elb.amazonaws.com:80/v2/hello-world
+```
 
 ```
 HTTP/1.1 404 Not Found
@@ -614,10 +606,14 @@ If we check ALB we will see that now there is only one Target Group pointing bot
 
 Now lets another curl request to verify production serves from correct revision.
 
-> curl example-elb-162160344.us-east-1.elb.amazonaws.com:80/v2/hello-world
-
+```shell
+curl example-elb-162160344.us-east-1.elb.amazonaws.com:80/v2/hello-world
 ```
-{"data":"Hello World from version 2!"}
+
+```json
+{
+  "data": "Hello World from version 2!"
+}
 ```
 
 Everything works as expected. After 30 minutes the old Task will be terminated on ECS cluster and new Task will be the permanent one. In this tutorial, we saw how to build a CI/CD pipeline with Blue/Green deployment type on ECS cluster. Feel free to ask any questions if you have. Additionally, you can find the resources from my [github](https://github.com/flexelem/aws-samples/tree/master/nodejs-codepipeline)

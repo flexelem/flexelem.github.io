@@ -55,7 +55,9 @@
     {{ site.title }}
   </title>
 
+  {% comment %}
   {% include favicons.html %}
+  {% endcomment %}
 
   {% if site.resources.ignore_env != jekyll.environment and site.resources.self_hosted %}
 

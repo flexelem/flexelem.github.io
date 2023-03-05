@@ -126,7 +126,7 @@ AWS Amplify will make `/token` request behind the scenes after the user is redir
 
 User will get the valid tokens
 
-```
+```json
 {
   "id_token": "eyJraWQiOiJNd3Q...",
   "access_token": "eyJraWQiOi...",
@@ -152,7 +152,7 @@ We can assume user enters their credentials through a browser and redirected bac
 
 Here is the Curl request to the `/token` endpoint we use;
 
-```
+```shell
 curl --location --request POST 'https://buraktas-awesome-domain.auth.us-east-1.amazoncognito.com/oauth2/token' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'client_id=2v4929s76jtnepd4q0nj695gmb' \
@@ -163,20 +163,20 @@ curl --location --request POST 'https://buraktas-awesome-domain.auth.us-east-1.a
 
 And here below is the response with a short format. We can see main the attributes `scope`, `client_id` and `username` if we decode the access token.
 
-```
+```json
 {
-	"access_token": "eyJraWQiOiJyOVBsUVF1SUtsMlwvcEt2ZXhlWjQ5dVlMXC81THRxR2o5UElFb3o3MEJueUk9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIyN2I4MDBiYy00NDdkLTRhY2ItYTIwNi0zYmYzNTY4MzZmZmMiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9QdjhQcG01elEiLCJ2ZXJzaW9uIjoyLCJjbGllbnRfaWQiOiIydjQ5MjlzNzZqdG5lcGQ0cTBuajY5NWdtYiIsIm9yaWdpbl9qdGkiOiI2MWJjZjIyZC1mYmEyLTQyYzgtYTg2MS1lMTE0NjQxYmIwODMiLCJldmVudF9pZCI6ImUxNjQxM2EzLTJjOTctNDYwMS05ZDJkLTc3MGY1NjRjNWZjMiIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdlc29tZWFwaS1yZXNvdXJjZS1zZXJ2ZXJcL2F3ZXNvbWVhcGkucmVhZCBvcGVuaWQiLCJhdXRoX3RpbWUiOjE2NTQwODUxMzEsImV4cCI6MTY1NDA4ODczMSwiaWF0IjoxNjU0MDg1MTMxLCJqdGkiOiI5ZDk4YzY5Ni1mYjMxLTQ0YzQtYmRlZi1iNmZmMzFjMGUxOTEiLCJ1c2VybmFtZSI6IjI3YjgwMGJjLTQ0N2QtNGFjYi1hMjA2LTNiZjM1NjgzNmZmYyJ9.k8Go2FUcObywizvrVUfdU0rYSyFyNJgAN-rwjL6WTzgocc5vm3giu2hRfhfS57iz9Z59XevO5vzF5xnuLXiz156WgwR6U5Yo8ku-ZTLhEzXHN1wXy82VLoFaKZXJod9fjpI0vCCoNpsRKHGzteaHI5PRN7r1td0aHgKZX8VKwZovsLQueEqwHQGh1f6FWXaygvm_uRF5X43dNUAy_j8n4gv9X4hMm7CKJSS4bm0MzeptV7Z1eCD3sCuWANq4SCHpXL4TvpROpoF26Tt9ZaGoQy6xUiM0K-v2TWU1kTYcQpXtXlq3UDrE4RV3xG4R3lg5G5HwzCgxwlAbz-8IpJl-Mg",
-	"id_token": "eyJraWQiOiJNd3Q...",
-	"refresh_token": "eyJjdHkiOiJ...",
-	"expires_in": 3600,
-	"token_type": "Bearer"
+  "access_token": "eyJraWQiOiJyOVBsUVF1SUtsMlwvcEt2ZXhlWjQ5dVlMXC81THRxR2o5UElFb3o3MEJueUk9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIyN2I4MDBiYy00NDdkLTRhY2ItYTIwNi0zYmYzNTY4MzZmZmMiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9QdjhQcG01elEiLCJ2ZXJzaW9uIjoyLCJjbGllbnRfaWQiOiIydjQ5MjlzNzZqdG5lcGQ0cTBuajY5NWdtYiIsIm9yaWdpbl9qdGkiOiI2MWJjZjIyZC1mYmEyLTQyYzgtYTg2MS1lMTE0NjQxYmIwODMiLCJldmVudF9pZCI6ImUxNjQxM2EzLTJjOTctNDYwMS05ZDJkLTc3MGY1NjRjNWZjMiIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdlc29tZWFwaS1yZXNvdXJjZS1zZXJ2ZXJcL2F3ZXNvbWVhcGkucmVhZCBvcGVuaWQiLCJhdXRoX3RpbWUiOjE2NTQwODUxMzEsImV4cCI6MTY1NDA4ODczMSwiaWF0IjoxNjU0MDg1MTMxLCJqdGkiOiI5ZDk4YzY5Ni1mYjMxLTQ0YzQtYmRlZi1iNmZmMzFjMGUxOTEiLCJ1c2VybmFtZSI6IjI3YjgwMGJjLTQ0N2QtNGFjYi1hMjA2LTNiZjM1NjgzNmZmYyJ9.k8Go2FUcObywizvrVUfdU0rYSyFyNJgAN-rwjL6WTzgocc5vm3giu2hRfhfS57iz9Z59XevO5vzF5xnuLXiz156WgwR6U5Yo8ku-ZTLhEzXHN1wXy82VLoFaKZXJod9fjpI0vCCoNpsRKHGzteaHI5PRN7r1td0aHgKZX8VKwZovsLQueEqwHQGh1f6FWXaygvm_uRF5X43dNUAy_j8n4gv9X4hMm7CKJSS4bm0MzeptV7Z1eCD3sCuWANq4SCHpXL4TvpROpoF26Tt9ZaGoQy6xUiM0K-v2TWU1kTYcQpXtXlq3UDrE4RV3xG4R3lg5G5HwzCgxwlAbz-8IpJl-Mg",
+  "id_token": "eyJraWQiOiJNd3Q...",
+  "refresh_token": "eyJjdHkiOiJ...",
+  "expires_in": 3600,
+  "token_type": "Bearer"
 }
 ```
 
 Now user is able to call protected APIs. We have a GET API which requires a scope of `awesomeapi-resource-server/awesomeapi.read`. Of course, this scope doesn't come by default. It is the way that I configured the Resource Server for granting access with this scope and
  provisioned an API which checks if the access token has it (Remember the step API Gateway checks the validity of the access token).
 
-```
+```shell
 curl --request GET 'https://u9l0thnf46.execute-api.us-east-1.amazonaws.com/prod/awesomeapi' \
 --header 'Authorization: eyJraWQiOiJyOVBsUVF1SUtsMlwvcEt2ZXhlWjQ5dVlMXC81THRxR2o5UElFb3o3MEJueUk9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIyN2I4MDBiYy00NDdkLTRhY2ItYTIwNi0zYmYzNTY4MzZmZmMiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9QdjhQcG01elEiLCJ2ZXJzaW9uIjoyLCJjbGllbnRfaWQiOiIydjQ5MjlzNzZqdG5lcGQ0cTBuajY5NWdtYiIsIm9yaWdpbl9qdGkiOiI4MDFiMjAwZC1lYzljLTQ3ZmMtYmMzOS0yN2Q5ZjAyOWFjNjUiLCJldmVudF9pZCI6IjhmZGMyZDdiLWVkMTUtNGI0Yi04NDc1LWQ5NTE1MDAzZDUzNCIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdlc29tZWFwaS1yZXNvdXJjZS1zZXJ2ZXJcL2F3ZXNvbWVhcGkucmVhZCBvcGVuaWQiLCJhdXRoX3RpbWUiOjE2NTQxMDQ0NTYsImV4cCI6MTY1NDEwODA1NiwiaWF0IjoxNjU0MTA0NDU3LCJqdGkiOiI4MjY1ZjhhOC1jMGYyLTRiZjctODYyNS1iMjIyMjA5OTM3NDciLCJ1c2VybmFtZSI6IjI3YjgwMGJjLTQ0N2QtNGFjYi1hMjA2LTNiZjM1NjgzNmZmYyJ9.BmBLqhShOiuhD8Q2zAVK0M3qtBENXVzgiCpfw5W839M6oFBcWkNCaTnUJubujhu4FpUHDVssDY1CTW0CbJS4ULrj1vcnwZSALF-AcNQjxyMC2xNhqCo_r92fGm66txnUZzWftdN_Tg62mgEprflZ0tVR-PU9cbAI-DDko5fUUANkR1CSDQf0A36cW3ttkb4N0PxyAWHmKezn7dX62l1uha4THuWci8MB2t7G06u5SM2f2azOdFlCAy5Ai-fgvlJK_jYqPBPY-K__N3tjVJq9DfIEWtgHnOhwCPsAhByBZdFSEuuLTGFtWrhCcv9m6DasGc76h03coBTQPFSv2raAcA'
 ```
@@ -184,8 +184,8 @@ curl --request GET 'https://u9l0thnf46.execute-api.us-east-1.amazonaws.com/prod/
 Response
 ```json
 {
-    "statusCode": 200,
-    "message": "Hello From Protected Resource"
+  "statusCode": 200,
+  "message": "Hello From Protected Resource"
 }
 ```
 
@@ -197,78 +197,75 @@ We will have two different CDK Stacks for AWS Cognito and AWS ApiGateway.
 
 ### AWS Cognito Stack
 
-```python
-from aws_cdk import (
-    core,
-    aws_cognito as cognito,
-)
+```typescript
+import * as cdk from 'aws-cdk-lib';
+import * as cognito from 'aws-cdk-lib/aws-cognito';
+import { Construct } from 'constructs';
 
+export class CognitoStack extends cdk.Stack {
+  readonly cognitoUserPool: cognito.IUserPool;
 
-class CognitoStack(core.Stack):
-    def __init__(self, scope: core.Construct,
-                 id: str,
-                 **kwargs) -> None:
-        super().__init__(scope, id, **kwargs)
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+    super(scope, id, props);
 
-        self.cognito_user_pool = cognito.UserPool(self, "awesome-cognito-user-pool",
-            sign_in_aliases=cognito.SignInAliases(
-                email=True
-            ),
-            self_sign_up_enabled=True,
-            auto_verify=cognito.AutoVerifiedAttrs(
-                email=True
-            ),
-            user_verification=cognito.UserVerificationConfig(
-                email_subject="You need to verify your email",
-                email_body="Thanks for signing up Your verification code is {####}",
-                email_style=cognito.VerificationEmailStyle.CODE
-            ),
-            account_recovery=cognito.AccountRecovery.EMAIL_ONLY,
-            removal_policy=core.RemovalPolicy.DESTROY
-        )
+    this.cognitoUserPool = new cognito.UserPool(this, 'awesome-cognito-user-pool', {
+      signInAliases: {
+        email: true,
+      },
+      selfSignUpEnabled: true,
+      autoVerify: {
+        email: true,
+      },
+      userVerification: {
+        emailSubject: 'You need to verify your email',
+        emailBody: 'Thanks for signing up Your verification code is {####}',
+        emailStyle: cognito.VerificationEmailStyle.CODE,
+      },
+      accountRecovery: cognito.AccountRecovery.EMAIL_ONLY,
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
+    });
 
-        awesome_api_read_scope = cognito.ResourceServerScope(scope_name="awesomeapi.read", scope_description="awesomeapi read scope")
+    const awesomeApiReadScope = new cognito.ResourceServerScope({
+      scopeName: 'awesomeapi.read',
+      scopeDescription: 'awesomeapi read scope',
+    });
 
-        resource_server = cognito.UserPoolResourceServer(
-            self,
-            "awesome-resource-server",
-            identifier="awesomeapi-resource-server",
-            user_pool=self.cognito_user_pool,
-            scopes=[awesome_api_read_scope]
-        )
+    const resourceServer = new cognito.UserPoolResourceServer(this, 'awesome-resource-server', {
+      identifier: 'awesomeapi-resource-server',
+      userPool: this.cognitoUserPool,
+      scopes: [awesomeApiReadScope],
+    });
 
-        user_pool_app_client = cognito.UserPoolClient(
-            self,
-            "awesome-app-client",
-            user_pool=self.cognito_user_pool,
-            access_token_validity=core.Duration.minutes(60),
-            id_token_validity=core.Duration.minutes(60),
-            generate_secret=False,
-            refresh_token_validity=core.Duration.days(1),
-            enable_token_revocation=True,
-            prevent_user_existence_errors=True,
-            auth_flows=cognito.AuthFlow(
-                user_password=True,
-            ),
-            o_auth=cognito.OAuthSettings(
-                flows=cognito.OAuthFlows(
-                    authorization_code_grant=True,
-                ),
-                scopes=[cognito.OAuthScope.OPENID,
-                        cognito.OAuthScope.resource_server(resource_server, awesome_api_read_scope)
-                ],
-                callback_urls=["http://localhost:3000/dashboard"],
-            )
-        )
+    const userPoolAppClient = new cognito.UserPoolClient(this, 'awesome-app-client', {
+      userPool: this.cognitoUserPool,
+      accessTokenValidity: cdk.Duration.minutes(60),
+      idTokenValidity: cdk.Duration.minutes(60),
+      refreshTokenValidity: cdk.Duration.days(1),
+      preventUserExistenceErrors: true,
+      generateSecret: false,
+      enableTokenRevocation: true,
+      authFlows: {
+        userPassword: true,
+      },
+      oAuth: {
+        flows: {
+          authorizationCodeGrant: true,
+        },
+        scopes: [
+          cognito.OAuthScope.OPENID,
+          cognito.OAuthScope.resourceServer(resourceServer, awesomeApiReadScope),
+        ],
+        callbackUrls: ['http://localhost:3000/dashboard'],
+      },
+    });
 
-        self.cognito_user_pool.add_domain("awesome-cognito-domain",
-            cognito_domain=cognito.CognitoDomainOptions(
-                domain_prefix="buraktas-awesome-domain"
-            )
-        )
-
-        core.CfnOutput(self, "CognitoUserPoolID", value=self.cognito_user_pool.user_pool_id)
-        core.CfnOutput(self, "CognitoUserPoolAppClientID", value=user_pool_app_client.user_pool_client_id)
+    this.cognitoUserPool.addDomain('awesome-cognito-domain', {
+      cognitoDomain: {
+        domainPrefix: 'buraktas-awesome-domain',
+      },
+    });
+  }
+}
 ```
 
 <br/>
@@ -277,7 +274,7 @@ I will skip the `cognito.UserPool` construct which is the same and a short versi
 
 **cognito.ResourceServer**
 - `identifier`: This is just an identifier for the resource server. (It is not the id of the CDK construct)
-- `user_pool`: Related Cognito UserPool to attach this Resource Server
+- `cognitoUserPool`: Related Cognito UserPool to attach this Resource Server
 - `scopes`: The list of available scopes we want to grant access for App Clients. Remember that we were authorized to call our protected API with the given scope of `awesomeapi-resource-server/awesomeapi.read`.
 So, it has a format like {resource_server_identifier/scope_name}
 
@@ -286,15 +283,15 @@ So, it has a format like {resource_server_identifier/scope_name}
 
 
 **cognito.UserPoolClient**
-- `user_pool`: The associated UserPool this AppClient will use.
-- `access_token_validity`: Validity of the access token.
-- `id_token_validity`: Validity of the id token.
-- `refresh_token_validity`: Validity of the refresh token.
-- `prevent_user_existence_errors`: To make Cognito return more abstract errors instead of indicating that user doesn't really exist, invalid password etc.
-- `generate_secret`: Whether to generate a client secret for the App Client. In our case, we don't need this secret since we are using this App Client on Web App and we don't want to expose it to public.
-- [`auth_flows`](https://docs.aws.amazon.com/cdk/api/v2/python/aws_cdk.aws_cognito/AuthFlow.html): Types of the auth flows AppClient will support. In this example we are just using simple username password flow.
-- [`o_auth`](https://docs.aws.amazon.com/cdk/api/v2/python/aws_cdk.aws_cognito/OAuthSettings.html#aws_cdk.aws_cognito.OAuthSettings): OAuth settings including flow type, scopes and callback urls. For this tutorial, we
-are using `authorization_code_grant` OAuth flow.
+- `cognitoUserPool`: The associated UserPool this AppClient will use.
+- `accessTokenValidity`: Validity of the access token.
+- `idTokenValidity`: Validity of the id token.
+- `refreshTokenValidity`: Validity of the refresh token.
+- `preventUserExistenceErrors`: To make Cognito return more abstract errors instead of indicating that user doesn't really exist, invalid password etc.
+- `generateSecret`: Whether to generate a client secret for the App Client. In our case, we don't need this secret since we are using this App Client on Web App and we don't want to expose it to public.
+- [`authFlows`](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_cognito.AuthFlow.html): Types of the auth flows AppClient will support. In this example we are just using simple username password flow.
+- [`oAuth`](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_cognito.OAuthSettings.html): OAuth settings including flow type, scopes and callback urls. For this tutorial, we
+are using `authorizationCodeGrant` OAuth flow.
 
 NOTE: There is also another scope `OPENID` which is not related to this example, however, due to a bug from AWS Amplify we have to include this scope as well. Otherwise, AWS Amplify will return an error
 when using `Auth.currentAuthenticatedUser()` after the user is redirected back to the provided `redirect_uri`. In our case, it is the Dashboard page (which is also a protected UI page). Here is the related [Github Issue](https://github.com/aws-amplify/amplify-js/issues/9920)
@@ -309,82 +306,76 @@ As the last step, we also create a Cognito Domain with a custom name. And attach
 In this stack we are just creating a RestApi with one protected GET endpoint. We will not deep dive into this stack. It is basically a [Mocked Integration](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-mock-integration.html) to support
 basic request response model. We will get a custom API URL after the deployment. The only important part here is configuring a `CognitoUserPoolsAuthorizer` and defining which authorization scopes are required for the GET method.
 
-```python
-import json
-from aws_cdk import (
-    core,
-    aws_cognito as cognito,
-    aws_apigateway as api_gateway
-)
+```typescript
+import * as cdk from 'aws-cdk-lib';
+import * as apigw from 'aws-cdk-lib/aws-apigateway';
+import * as cognito from 'aws-cdk-lib/aws-cognito';
+import { Construct } from 'constructs';
 
+export class ApiGatewayStack extends cdk.Stack {
+  constructor(scope: Construct, id: string, cognitoUserPool: cognito.IUserPool, props?: cdk.StackProps) {
+    super(scope, id, props);
 
-class ApiGatewayStack(core.Stack):
-    def __init__(self, scope: core.Construct,
-                 id: str,
-                 cognito_user_pool: cognito.IUserPool,
-                 **kwargs) -> None:
-        super().__init__(scope, id, **kwargs)
+    const awesomeApi = new apigw.RestApi(this, 'awesome-api', {
+      endpointTypes: [apigw.EndpointType.REGIONAL],
+      deploy: true,
+      deployOptions: {
+        stageName: 'prod',
+      },
+      defaultCorsPreflightOptions: {
+        allowOrigins: apigw.Cors.ALL_ORIGINS,
+        allowMethods: apigw.Cors.ALL_METHODS,
+      },
+    });
 
-        awesome_api = api_gateway.RestApi(
-            self,
-            "awesome-api",
-            endpoint_types=[api_gateway.EndpointType.REGIONAL],
-            deploy=True,
-            deploy_options=api_gateway.StageOptions(
-                stage_name="prod",
-            ),
-            default_cors_preflight_options=api_gateway.CorsOptions(
-                allow_origins=api_gateway.Cors.ALL_ORIGINS,
-                allow_methods=api_gateway.Cors.ALL_METHODS,
-            )
-        )
+    const cognitoUserPoolAuthorizer = new apigw.CognitoUserPoolsAuthorizer(this, 'cognito-userpool-authorizer', {
+      cognitoUserPools: [cognitoUserPool],
+    });
 
-        cognito_userpool_authorizer = api_gateway.CognitoUserPoolsAuthorizer(
-            self,
-            "cognito-userpool-authorizer",
-            cognito_user_pools=[cognito_user_pool]
-        )
-
-        # /awesomeapi
-        awesome_api_resource = awesome_api.root.add_resource("awesomeapi")
-
-        awesome_api_resource.add_method(
-            "GET",
-            api_gateway.MockIntegration(
-                integration_responses=[api_gateway.IntegrationResponse(
-                    status_code="200",
-                    response_templates={
-                        "application/json": json.dumps({
-                            "statusCode": 200,
-                            "message": "Hello From Protected Resource",
-                        })
-                    },
-                    response_parameters={
-                        "method.response.header.Content-Type": "'application/json'",
-                        "method.response.header.Access-Control-Allow-Origin": "'*'"
-                    }
-                )],
-                request_templates={
-                    "application/json": "{ 'statusCode': 200 }"
-                }
-            ),
-            method_responses=[api_gateway.MethodResponse(
-                status_code="200",
-                response_parameters={
-                    "method.response.header.Content-Type": True,
-                    "method.response.header.Access-Control-Allow-Origin": True
-                }
-            )],
-            authorizer=cognito_userpool_authorizer,
-            authorization_type=api_gateway.AuthorizationType.COGNITO,
-            authorization_scopes=["awesomeapi-resource-server/awesomeapi.read"]
-        )
+    // /awesomeapi
+    const awesomeApiResource = awesomeApi.root.addResource('awesomeapi');
+    awesomeApiResource.addMethod(
+      'GET',
+      new apigw.MockIntegration({
+        integrationResponses: [{
+          statusCode: '200',
+          responseTemplates: {
+            'application/json': JSON.stringify({
+              statusCode: 200,
+              message: 'Hello From Protected Resource',
+            }),
+          },
+          responseParameters: {
+            'method.response.header.Content-Type': "'application/json'",
+            'method.response.header.Access-Control-Allow-Origin': "'*'",
+          },
+        }],
+        requestTemplates: {
+          'application/json': "{ 'statusCode': 200 }",
+        },
+      }), {
+        methodResponses: [{
+          statusCode: '200',
+          responseParameters: {
+            'method.response.header.Content-Type': true,
+            'method.response.header.Access-Control-Allow-Origin': true,
+          },
+        }],
+        authorizer: cognitoUserPoolAuthorizer,
+        authorizationType: apigw.AuthorizationType.COGNITO,
+        authorizationScopes: ['awesomeapi-resource-server/awesomeapi.read'],
+      },
+    );
+  }
+}
 ```
 
 <br/>
 
 ## Synth Stack(s)
-> cdk synth
+```shell
+cdk synth
+```
 
 ```
 Supply a stack id (AuthCodeFlowStack, AuthCodeFlowStack/CognitoStack, AuthCodeFlowStack/ApiGatewayStack) to display its template.
@@ -393,15 +384,18 @@ Supply a stack id (AuthCodeFlowStack, AuthCodeFlowStack/CognitoStack, AuthCodeFl
 <br/>
 
 ## Deploy Stack(s)
-> cdk deploy --all
+```shell
+cdk deploy --all
+```
 
 <br/>
 
 ## Destroy the Stack
 Don't forget to delete the stack after your testing.
 
-> cdk destroy --all
-
+```shell
+cdk destroy --all
+```
 
 <br/>
 

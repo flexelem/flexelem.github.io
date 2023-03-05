@@ -22,7 +22,7 @@ I talked about how to create a scheduled job in this [post]({% link _posts/2019-
 
 <h2>Dependencies</h2>
 
-```
+```xml
 <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
@@ -187,7 +187,9 @@ services:
 
 The whole project with docker files can be found [here](https://github.com/flexelem/spring-tutorials/tree/master/spring-shedlock)
 
-> docker ps
+```shell
+docker ps
+```
 
 ```
 CONTAINER ID        IMAGE                                      COMMAND                  CREATED             STATUS              PORTS                    NAMES
