@@ -27,7 +27,7 @@ each of your lambda functions but an update on the library means you have to re-
 
 The Lambda authorizer flow is pretty straightforward;
 
-![lambda_authorizer_flow]({{ site.url }}/assets/img/2023/03/lambda-custom-auth-flow.png)
+![lambda_authorizer_flow]({{ site.url }}/assets/img/2023/03/lambda_authorizer_flow.png)
 
 - Client makes a call to the protected resource
 - API Gateway intercepts the request and forwards it to the attached Lambda Authorizer
