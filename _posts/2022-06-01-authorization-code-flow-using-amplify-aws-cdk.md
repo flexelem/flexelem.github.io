@@ -375,9 +375,7 @@ export class ApiGatewayStack extends cdk.Stack {
 ## Synth Stack(s)
 ```shell
 cdk synth
-```
 
-```
 Supply a stack id (AuthCodeFlowStack, AuthCodeFlowStack/CognitoStack, AuthCodeFlowStack/ApiGatewayStack) to display its template.
 ```
 
@@ -390,7 +388,7 @@ cdk deploy --all
 
 <br/>
 
-## Destroy the Stack
+## Destroy Stack(s)
 Don't forget to delete the stack after your testing.
 
 ```shell

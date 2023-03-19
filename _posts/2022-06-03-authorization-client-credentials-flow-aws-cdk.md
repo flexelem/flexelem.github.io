@@ -19,7 +19,7 @@ comments: true
 ---
 
 We learned how to implement OAuth Authorization Code Flow which provides client facing apps to access protected resources in my [previous]({{ site.url }}//oauth-authorization-code-flow-aws-cdk//) tutorial. Now what if there are external companies, clients, devices etc.
-wants to integrate with our resources? We generally been provided some sort of credentials which can be a basic username password tuple, api key, even a unique string to make a call to 3rd party clients.
+wants to integrate with our resources? We generally have been provided some sort of credentials which can be a basic username password tuple, api key, even a unique string to make a call to 3rd party clients.
 In this example we will learn [`Oauth Client Credentials Flow`](https://datatracker.ietf.org/doc/html/rfc6749#section-4.4).
 This flow is being used for Machine-to-Machine (M2M) communication. Basically, the client has to get an access token for making calls to protected endpoints. Similar to the other OAuth flows, these protected endpoints might require different scopes from each other as well.
 These are the resources we will provision;
@@ -240,11 +240,11 @@ export class ApiGatewayStack extends cdk.Stack {
 ## Synth Stack(s)
 ```shell
 cdk synth
-```
 
-```
 Supply a stack id (ClientCredentialsFlowStack, ClientCredentialsFlowStack/CognitoStack, ClientCredentialsFlowStack/ApiGatewayStack) to display its template.
 ```
+
+<br/>
 
 ## Deploy Stack(s)
 ```shell
@@ -253,7 +253,7 @@ cdk deploy --all
 
 <br/>
 
-## Destroy the Stack
+## Destroy Stack(s)
 Don't forget to delete the stack after your testing.
 
 ```shell
