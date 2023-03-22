@@ -41,7 +41,8 @@ Due to the [Weld Reference][3] injection and initialization happens in this orde
 
 So, the purpose of using <code>@PostConstruct</code> is clear; it gives you a chance to initialize injected beans, resources etc.
 
-<pre><code class="language-java">public class Person {
+```java
+public class Person {
 
     // you may have injected beans, resources etc.
 
@@ -53,15 +54,15 @@ So, the purpose of using <code>@PostConstruct</code> is clear; it gives you a ch
     public void init() {
         System.out.println("@PostConstruct is called...");
     }
-}</code>
-</pre>
+}
+```
 
 So, the output by injecting a Person bean will be;
 
-<pre>
+```text
 Constructor is called...
 @PostConstruct is called...
-</pre>
+```
 
 One important point about <code>@PostConstruct</code> is, it won't be invoked if you try to inject and initialize bean through producer methods. Because using a producer method means that you are programmatically creating, initializing, and injecting your bean with <code>new</code> keyword.
 
@@ -69,7 +70,8 @@ One important point about <code>@PostConstruct</code> is, it won't be invoked if
 
 The second lifecycle call back method for a bean is annotated with <code>@PreDestroy</code>. It prepares the managed bean to get destroyed. It is used for cleaning up operations, or releasing any resources. Finally, the method annotated with <code>@PreDestroy</code> is called by CDI container when the life cycle of bean is finished.
 
-<pre><code class="language-java">public class Person {
+```java
+public class Person {
 
     // you may have injected beans, resources etc.
 
@@ -86,12 +88,13 @@ The second lifecycle call back method for a bean is annotated with <code>@PreDes
     public void dispose() {
         System.out.println("@PreDestroy is called...");
     }
-}</code>
-</pre>
+}
+```
 
 We can see a very simple example about the life cycle a Person bean in a test method.
 
-<pre><code class="language-java">@RunWith(Arquillian.class)
+```java
+@RunWith(Arquillian.class)
 public class PersonTest {
 
     @Deployment
@@ -108,17 +111,17 @@ public class PersonTest {
     public void test() {
         System.out.println("running test");
     }
-}</code>
-</pre>
+}
+```
 
 Output;
 
-<pre>
+```text
 Constructor is called...
 @PostConstruct is called...
 running test
 @PreDestroy is called...
-</pre>
+```
 
 Again like producer methods, if we try to destroy a bean with a disposer method then method annotated with <code>@PreDestroy</code> won't be invoked due to the same reason which applies for producer methods.
 

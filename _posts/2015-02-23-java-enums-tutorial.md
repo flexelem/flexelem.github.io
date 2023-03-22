@@ -16,17 +16,19 @@ Enums (Enumeration) are introduced as a new reference type in Java 1.5 with a bu
 
 <!--more-->
 
-<pre><code class="language-java">public enum Books {
+```java
+public enum Books {
 
     HARRY_POTTER,
     GAME_OF_THRONES,
     DRAGONLANCE;
-}</code>
-</pre>
+}
+```
 
 Enums are classes that return one instance (like singletons) for each enumeration constant declared by public static final field (immutable) so that <code>==</code> operator could be used to check their equality rather than using <code>equals()</code> method. Additionally, we can use <code>toString()</code> method to get their string representation.
 
-<pre><code class="language-java">public class BookExample {
+```java
+public class BookExample {
 
     public static void main(String[] args) {
         Books dragonlance = Books.DRAGONLANCE;
@@ -39,27 +41,29 @@ Enums are classes that return one instance (like singletons) for each enumeratio
             System.out.println(true);
         }
     }
-}</code>
-</pre>
+}
+```
 
 Output;
 
-<pre>DRAGONLANCE
+```text
+DRAGONLANCE
 true
-</pre>
+```
 
 Before going deeper we should understand why and where to use Enums. Before Enums are introduced, int enum or String enum pattern were used to represent enumerated types, and these techniques had a bunch disadvantages. First of all, they are not type-safe. For example; we have a Languages class with int enum pattern ,and a method which returns a greetings message to its associated language as a String.
 
-<pre><code class="language-java">public class Languages {
-
+```java
+public class Languages {
     public static final int ENGLISH = 1;
     public static final int FRENCH = 2;
     public static final int GERMAN = 3;
     public static final int TURKISH = 4;
-}</code>
-</pre>
+}
+```
 
-<pre><code class="language-java">public String greet(int lang) {
+```java
+public String greet(int lang) {
         switch (lang) {
             case 1: // English
                 return "Hello";
@@ -73,20 +77,22 @@ Before going deeper we should understand why and where to use Enums. Before Enum
 
         // now what ?
         throw new IllegalArgumentException("There is no associated language for given number");
-}</code>
-</pre>
+}
+```
 
 As we can see if an undefined int parameter is send, method will throw an exception to inform us there is no any defined language for the given int. Thus, this is not a safe way. Another problem is we can not take the string representation for any language, so we have to hardcoded it. On the other hand, if we would use String constants (known as String enum pattern) than we had to use string comparisons to define each behavior which is not good for performance. Thanks to Enums so that we can overcome these problems. We should use Enums if we have to define a set of fixed constants
 
-<pre><code class="language-java">public enum Languages {
+```java
+public enum Languages {
     ENGLISH,
     GERMAN,
     FRENCH,
     TURKISH;
-}</code>
-</pre>
+}
+```
 
-<pre><code class="language-java">// Enums are compiled-time type safe
+```java
+// Enums are compiled-time type safe
 public String greet(Languages lang) {
         if (lang == Languages.ENGLISH) {
             return "English";
@@ -97,8 +103,8 @@ public String greet(Languages lang) {
         } else {
             return "Selam";
         }
-}</code>
-</pre>
+}
+```
 
 Now there is no way to send an undefined parameter into greet() function since Enums are compile-time type safe which means passing a wrong value will cause a compiler error.
 
@@ -110,7 +116,8 @@ We have seen simple examples and usages of Enums so far, now it is time see thei
 
 Enums can have any kind of associated data that is initialized via a constructor. Since Enums are immutable, fields should be defined with private accessor (They can be public but better to use private).
 
-<pre><code class="language-java">public enum Books {
+```java
+public enum Books {
 
     HARRY_POTTER ("Harry Potter", 856, 12.99),
     THE_SOULFORGE ("The Soulforge", 123, 12.11),
@@ -139,28 +146,30 @@ Enums can have any kind of associated data that is initialized via a constructor
     public double getPrice() {
         return price;
     }
-}</code>
-</pre>
+}
+```
 
-<pre><code class="language-java">for (Books book : Books.values()) {
+```java
+for (Books book : Books.values()) {
             System.out.println("Book Name: " + book.getRepresentations()
                                 + " Number of Pages: " + book.getPages()
                                 + " Price: " + book.getPrice());
-}</code>
-</pre>
+}
+```
 
-<pre>
+```text
 Book Name: Harry Potter     Number of Pages: 856	Price: 12.99
 Book Name: The Soulforge	Number of Pages: 100	Price: 12.11
 Book Name: Game of Thrones	Number of Pages: 567	Price: 10.0
 Book Name: Dragonlance		Number of Pages: 456	Price: 6.77
-</pre>
+```
 
 <b><u>2. Enums can have abstract methods</u></b>
 
 Enums can have constant-specific method implementations which simply means they can have abstract methods and they can override it.
 
-<pre><code class="language-java">public enum GameCharacterTypes {
+```java
+public enum GameCharacterTypes {
 
     ARCHER {
         @Override
@@ -183,19 +192,21 @@ Enums can have constant-specific method implementations which simply means they 
 
     // calculates damage related to character type
     public abstract double attack();
-}</code>
-</pre>
+}
+```
 
 <b><u>3. Enums can implement interfaces</u></b>
 
 Like classes in Java, Enums can implement interfaces. The important point is they can not extend from any other class because Enums implicitly extend from java.lang.Enum. Additionally, Enums implicitly implement Comparable and Serializable interfaces but you can override them if you want.
 
-<pre><code class="language-java">public interface Price {
+```java
+public interface Price {
     public double price();
-}</code>
-</pre>
+}
+```
 
-<pre><code class="language-java">public enum Books implements Price {
+```java
+public enum Books implements Price {
 
     HARRY_POTTER (12.99),
     THE_SOULFORGE (12.11),
@@ -212,8 +223,8 @@ Like classes in Java, Enums can implement interfaces. The important point is the
     public double price() {
         return this.price;
     }
-}</code>
-</pre>
+}
+```
 
 <b><u>Additional Notes</u></b>
 
@@ -250,7 +261,10 @@ Like classes in Java, Enums can implement interfaces. The important point is the
     <li>
       If you override <code>toString()</code> method in an enum type than consider to write a fromString method to get enum constant related to its string representation.
     </li>
-    <pre><code class="language-java">public enum Books {
+</ul>
+
+```java
+public enum Books {
 
     HARRY_POTTER ("Harry Potter"),
     THE_SOULFORGE ("The Soulforge"),
@@ -278,7 +292,6 @@ Like classes in Java, Enums can implement interfaces. The important point is the
     public static Books fromString(String rep) {
         return enumMap.get(rep);
     }
-}</code>
-</pre>
-</ul>
+}
+```
 </div>

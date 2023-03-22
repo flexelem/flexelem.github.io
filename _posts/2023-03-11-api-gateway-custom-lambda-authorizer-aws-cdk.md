@@ -344,7 +344,7 @@ If request itself doesn't contain any defined identity source then authorizer wi
 As the first step we will get an access token by making a call to /token endpoint.
 
 ```shell
-curl --request POST 'https://buraktas-awesome-domain.auth.us-east-1.amazoncognito.com/oauth2/token' \
+> curl --request POST 'https://buraktas-awesome-domain.auth.us-east-1.amazoncognito.com/oauth2/token' \
 --header 'Authorization: Basic MnA3djM3c2tpc2xxMDBuZmZydXYwZ3MzNzg6MXQxbnZuNDA2a2dna3J1cDd2MmFvaGJrMG83bzZza2ExNmg3Z3JrMjhrMGJxZWlsa3RwaQ==' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'grant_type=client_credentials'
@@ -364,7 +364,7 @@ curl --request POST 'https://buraktas-awesome-domain.auth.us-east-1.amazoncognit
 We will call the protected endpoint with the provided access token.
 
 ```shell
-curl -i 'https://cl2u9uoz65.execute-api.us-east-1.amazonaws.com/prod/awesomeapi' \
+> curl -i 'https://cl2u9uoz65.execute-api.us-east-1.amazonaws.com/prod/awesomeapi' \
 --header 'Authorization: eyJraWQiOiJBe...'
 
 HTTP/2 200
