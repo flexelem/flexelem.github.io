@@ -382,7 +382,7 @@ Hello from protected resource
 
 ## Synth Stack(s)
 ```shell
-cdk synth
+> cdk synth
 
 Supply a stack id (LambdaAuthorizerMainStack, LambdaAuthorizerMainStack/CognitoStack, LambdaAuthorizerMainStack/ApiGatewayStack) to display its template.
 ```
@@ -391,7 +391,7 @@ Supply a stack id (LambdaAuthorizerMainStack, LambdaAuthorizerMainStack/CognitoS
 
 ## Deploy Stack(s)
 ```shell
-cdk deploy --all
+> cdk deploy --all
 ```
 
 <br/>
@@ -400,7 +400,7 @@ cdk deploy --all
 Don't forget to delete the stack after your testing.
 
 ```shell
-cdk destroy --all
+> cdk destroy --all
 ```
 
 <br/>

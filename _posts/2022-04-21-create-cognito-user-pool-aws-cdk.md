@@ -125,7 +125,7 @@ Additionally, here are the few properties we used for creating an AppClient;
 
 ## Deploying The CDK Stack
 ```shell
-cdk deploy CognitoUserPoolStack
+> cdk deploy CognitoUserPoolStack
 ```
 
 After a successful deployment you will get an output like;
@@ -156,7 +156,7 @@ There are a bunch of steps for registering and confirming a new user in cognito.
 The first step is sign-up a user by [sign-up](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cognito-idp/sign-up.html) command.
 
 ```shell
-aws cognito-idp sign-up \
+> aws cognito-idp sign-up \
 --client-id <app_client_id> \
 --username sawijis139@wifame.com \
 --password 1234Abcd^ \
@@ -183,7 +183,7 @@ Response;
 Next step is confirming the user by [admin-confirm-sign-up](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cognito-idp/admin-confirm-sign-up.html) command. Since this is an admin command we don't have to provide the verification code. This will move user's confirmation state from `Unconfirmed` to `Confirmed` state.
 
 ```shell
-aws cognito-idp admin-confirm-sign-up \
+> aws cognito-idp admin-confirm-sign-up \
 --user-pool-id <user_pool_id> \
 --username wiyovah293@carsik.com \
 --region us-east-1
@@ -195,7 +195,7 @@ aws cognito-idp admin-confirm-sign-up \
 Final step is updating user's email attribute as verified by calling the command [admin-update-user-attributes](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cognito-idp/admin-update-user-attributes.html)
 
 ```shell
-aws cognito-idp admin-update-user-attributes \
+> aws cognito-idp admin-update-user-attributes \
 --user-pool-id <user_pool_id> \
 --username wiyovah293@carsik.com \
 --user-attributes Name=email_verified,Value=true \
@@ -244,7 +244,7 @@ Finally, our cognito user pool will have a verified user
 
 
 ```shell
-aws cognito-idp list-users --user-pool-id <app_client_id> --region us-east-1
+> aws cognito-idp list-users --user-pool-id <app_client_id> --region us-east-1
 ```
 
 ```json
@@ -297,7 +297,7 @@ aws cognito-idp list-users --user-pool-id <app_client_id> --region us-east-1
 I will use another AWS CLI command for signing in and verify that we are getting related JWT tokens.
 
 ```shell
-aws cognito-idp initiate-auth --auth-flow USER_PASSWORD_AUTH \
+> aws cognito-idp initiate-auth --auth-flow USER_PASSWORD_AUTH \
 --client-id <app_client_id> \
 --auth-parameters USERNAME=wiyovah293@carsik.com,PASSWORD=1234Abcd^ \
 --region us-east-1
@@ -328,7 +328,7 @@ const user = await Auth.signIn(email, password);
 Don't forget to delete the stack after your testing.
 
 ```shell
-cdk destroy CognitoUserPoolStack
+> cdk destroy CognitoUserPoolStack
 ```
 
 <br/>

@@ -153,7 +153,7 @@ We can assume user enters their credentials through a browser and redirected bac
 Here is the Curl request to the `/token` endpoint we use;
 
 ```shell
-curl --location --request POST 'https://buraktas-awesome-domain.auth.us-east-1.amazoncognito.com/oauth2/token' \
+> curl --location --request POST 'https://buraktas-awesome-domain.auth.us-east-1.amazoncognito.com/oauth2/token' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'client_id=2v4929s76jtnepd4q0nj695gmb' \
 --data-urlencode 'code=1169af5a-c718-45cb-8beb-ca05e5509550' \
@@ -177,7 +177,7 @@ Now user is able to call protected APIs. We have a GET API which requires a scop
  provisioned an API which checks if the access token has it (Remember the step API Gateway checks the validity of the access token).
 
 ```shell
-curl --request GET 'https://u9l0thnf46.execute-api.us-east-1.amazonaws.com/prod/awesomeapi' \
+> curl --request GET 'https://u9l0thnf46.execute-api.us-east-1.amazonaws.com/prod/awesomeapi' \
 --header 'Authorization: eyJraWQiOiJyOVBsUVF1SUtsMlwvcEt2ZXhlWjQ5dVlMXC81THRxR2o5UElFb3o3MEJueUk9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIyN2I4MDBiYy00NDdkLTRhY2ItYTIwNi0zYmYzNTY4MzZmZmMiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9QdjhQcG01elEiLCJ2ZXJzaW9uIjoyLCJjbGllbnRfaWQiOiIydjQ5MjlzNzZqdG5lcGQ0cTBuajY5NWdtYiIsIm9yaWdpbl9qdGkiOiI4MDFiMjAwZC1lYzljLTQ3ZmMtYmMzOS0yN2Q5ZjAyOWFjNjUiLCJldmVudF9pZCI6IjhmZGMyZDdiLWVkMTUtNGI0Yi04NDc1LWQ5NTE1MDAzZDUzNCIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdlc29tZWFwaS1yZXNvdXJjZS1zZXJ2ZXJcL2F3ZXNvbWVhcGkucmVhZCBvcGVuaWQiLCJhdXRoX3RpbWUiOjE2NTQxMDQ0NTYsImV4cCI6MTY1NDEwODA1NiwiaWF0IjoxNjU0MTA0NDU3LCJqdGkiOiI4MjY1ZjhhOC1jMGYyLTRiZjctODYyNS1iMjIyMjA5OTM3NDciLCJ1c2VybmFtZSI6IjI3YjgwMGJjLTQ0N2QtNGFjYi1hMjA2LTNiZjM1NjgzNmZmYyJ9.BmBLqhShOiuhD8Q2zAVK0M3qtBENXVzgiCpfw5W839M6oFBcWkNCaTnUJubujhu4FpUHDVssDY1CTW0CbJS4ULrj1vcnwZSALF-AcNQjxyMC2xNhqCo_r92fGm66txnUZzWftdN_Tg62mgEprflZ0tVR-PU9cbAI-DDko5fUUANkR1CSDQf0A36cW3ttkb4N0PxyAWHmKezn7dX62l1uha4THuWci8MB2t7G06u5SM2f2azOdFlCAy5Ai-fgvlJK_jYqPBPY-K__N3tjVJq9DfIEWtgHnOhwCPsAhByBZdFSEuuLTGFtWrhCcv9m6DasGc76h03coBTQPFSv2raAcA'
 ```
 
@@ -374,7 +374,7 @@ export class ApiGatewayStack extends cdk.Stack {
 
 ## Synth Stack(s)
 ```shell
-cdk synth
+> cdk synth
 
 Supply a stack id (AuthCodeFlowStack, AuthCodeFlowStack/CognitoStack, AuthCodeFlowStack/ApiGatewayStack) to display its template.
 ```
@@ -383,7 +383,7 @@ Supply a stack id (AuthCodeFlowStack, AuthCodeFlowStack/CognitoStack, AuthCodeFl
 
 ## Deploy Stack(s)
 ```shell
-cdk deploy --all
+> cdk deploy --all
 ```
 
 <br/>
@@ -392,7 +392,7 @@ cdk deploy --all
 Don't forget to delete the stack after your testing.
 
 ```shell
-cdk destroy --all
+> cdk destroy --all
 ```
 
 <br/>

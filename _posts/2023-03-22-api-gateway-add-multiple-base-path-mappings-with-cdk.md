@@ -263,7 +263,7 @@ Same approach can be applied to subdomains or even `RestApi` constructs to be im
 
 ## Synth Stack(s)
 ```shell
-cdk synth
+> cdk synth
 
 Supply a stack id (InfrastuctureStack, AppStack) to display its template
 ```

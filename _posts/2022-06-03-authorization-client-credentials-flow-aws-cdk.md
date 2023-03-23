@@ -60,7 +60,7 @@ Here is the AWS representation of the Client Credentials Flow;
 First thing first, lets see we really get an `401 - Unauthorized` response from the protected endpoint by making a http call without an `Authorization` header.
 
 ```shell
-curl -i --request GET 'https://1w1wa554q4.execute-api.us-east-1.amazonaws.com/prod/awesomeapi'
+> curl -i --request GET 'https://1w1wa554q4.execute-api.us-east-1.amazonaws.com/prod/awesomeapi'
 
 HTTP/2 401
 date: Mon, 06 Jun 2022 21:16:15 GMT
@@ -76,7 +76,7 @@ x-amz-apigw-id: TUY44EBvoAMFbUw=
 Now, we need to get an access token.
 
 ```shell
-curl --request POST 'https://buraktas-awesome-domain.auth.us-east-1.amazoncognito.com/oauth2/token' \
+> curl --request POST 'https://buraktas-awesome-domain.auth.us-east-1.amazoncognito.com/oauth2/token' \
 --header 'Authorization: Basic NGYyaG1obmh2anVqam9yMGtpbGE4ZThpdTk6MWhqMzVyZjE1dTNjNnUyb2FxaXV1MzUyYWprbXM0cW10bTIxNmtsN3M1ZXIwYzRhM25nYw==' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'grant_type=client_credentials' \
@@ -96,7 +96,7 @@ Just to note; `scope` parameter is Optional here. If we don't request for any cu
 We are finally ready to call our protected endpoints with provided access token;
 
 ```shell
-curl --request GET 'https://1w1wa554q4.execute-api.us-east-1.amazonaws.com/prod/awesomeapi' \
+> curl --request GET 'https://1w1wa554q4.execute-api.us-east-1.amazonaws.com/prod/awesomeapi' \
 --header 'Authorization: eyJraWQiOiJEVGxKSTBvTnN4KzVjOFVLZDViYlJTNnl6bnFFY1UyS3VOY1l4OGc2RmNNPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI0ZjJobWhuaHZqdWpqb3Iwa2lsYThlOGl1OSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdlc29tZWFwaS1yZXNvdXJjZS1zZXJ2ZXJcL2F3ZXNvbWVhcGkucmVhZCIsImF1dGhfdGltZSI6MTY1NDU1NDAyNywiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfTjhGMjJVc2xvIiwiZXhwIjoxNjU0NTU3NjI3LCJpYXQiOjE2NTQ1NTQwMjcsInZlcnNpb24iOjIsImp0aSI6IjEwMzhmNTNmLTBjZTAtNGI1Zi04MDhiLTk1ZTg4MGE4NzY0MyIsImNsaWVudF9pZCI6IjRmMmhtaG5odmp1ampvcjBraWxhOGU4aXU5In0.t1qmxKwboXh4s2FcpExB_icqUkBaAn9UzR3qZPtT3_U5NuxoJ05JLHCCM9NfYUdiT9nlP08NMJSVi_qQBEwmcouWhNN9mrWQqvpuyha8_UFCrFAyzyOrjeUHsknoabyjToUPlPYbdmPP6LhjeK43lcZeJnUeXBELGIGz0mkasPbiodyvEmozAczxfikUGzStgTOXF9YueLSjs1r-JClj0QICfaZW7mMYno462fioURy-UZElVsfXODFhWIXmD9viFoEy657_sKRzctrLci0ejD9jKv_MBEBMBYiQpIEN3zyevCweXYG9jmMaGI8w-StrDGYNqdDPcn02a3kJlCV76Q'
 ```
 
@@ -239,7 +239,7 @@ export class ApiGatewayStack extends cdk.Stack {
 
 ## Synth Stack(s)
 ```shell
-cdk synth
+> cdk synth
 
 Supply a stack id (ClientCredentialsFlowStack, ClientCredentialsFlowStack/CognitoStack, ClientCredentialsFlowStack/ApiGatewayStack) to display its template.
 ```
@@ -248,7 +248,7 @@ Supply a stack id (ClientCredentialsFlowStack, ClientCredentialsFlowStack/Cognit
 
 ## Deploy Stack(s)
 ```shell
-cdk deploy --all
+> cdk deploy --all
 ```
 
 <br/>
@@ -257,7 +257,7 @@ cdk deploy --all
 Don't forget to delete the stack after your testing.
 
 ```shell
-cdk destroy --all
+> cdk destroy --all
 ```
 
 <br/>
