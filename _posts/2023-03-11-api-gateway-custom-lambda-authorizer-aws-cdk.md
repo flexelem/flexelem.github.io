@@ -238,7 +238,7 @@ export const handler = async function (event: any): Promise<APIGatewayAuthorizer
 <br/>
 
 ## CDK Code
-The structure of the cdk code base is same with my [previous]({{ site.url }}//oauth-authorization-code-flow-aws-cdk//) authorization code flow except the ApiGatewayStack will have 2 lambda function
+The structure of the cdk code base is same with my [previous]({{ site.url }}/oauth-authorization-code-flow-aws-cdk/) authorization code flow except the ApiGatewayStack will have 2 lambda function
 definitions; one for the authorizer lambda and other one is for the API Lambda (we used a mock integration lambda previously).
 
 ### API Gateway Stack
