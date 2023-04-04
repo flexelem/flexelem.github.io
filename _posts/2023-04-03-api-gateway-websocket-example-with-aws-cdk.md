@@ -20,8 +20,8 @@ comments: true
 In this tutorial, we will learn how to create a basic application for publishing real-time notifications via websocket api from API Gateway. Before having API Gateway support for websockets we had to
 have a separate websocket server to publish notifications or sending messages to the available connections at that point of time. API Gateway literally simplifies this process and fits it into the serverless world.
 The flow basically consists of persisting the connections in a data store where we will be using `DynamoDB` and getting connections which we want to send notifications to. Websocket API has 3 routes;
-- **$connect**: This route is triggered automatically when a client send a connect request.
-- **$disconnect**: This route is triggered automatically when a client send a connect request.
+- **$connect**: This route is triggered automatically when a client sends a connect request.
+- **$disconnect**: This route is triggered automatically when a client sends a disconnect request.
 - **$default**: Obviously this is the default handler if there are no any routes matched.
 
 API Gateway selects routes based on the `request.body.action` value, meaning we can define custom routes to handle different type of logic. And if there is no any matching route then API Gateway will forward to request to the `$default` handler.
