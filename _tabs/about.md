@@ -4,11 +4,10 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-Hi there,
+I am a passionate software engineer/cloud architect with 9+ years of experience. I enjoy designing and building software architectures mainly focused on AWS. I love to take ownership of the product, research, ask questions and proactively raise concerns with stakeholders meanwhile mentoring people if needed and always value to be working as a team.
 
-I am Burak, a Software Engineer with 8+ years of experience. I have been mainly working on AWS ecosystem with both serverless architectures along with containerized microservices. I worked with Java, NodeJS and Python frameworks in production before.
-I prefer to work with AWS as cloud provider along with AWS CDK as infrastructure as code.
+I have experience working in from early stage startups to large businesses with different domains including e-commerce, freight forwarding and logistics, manufacturing, healthcare, adtech and more.
 
-I love designing and implementing software architectures based on any type of needs for companies.
+I am interested in both long term contractor and full time work mainly in SaaS applications with backend including NodeJS, Python, Java and technologies from AWS.
 
-Feel free to drop message to my inbox or don't hesitate connect me from Linkedin.
+Feel free to shoot an email to my inbox or don't hesitate connect me from Linkedin.
