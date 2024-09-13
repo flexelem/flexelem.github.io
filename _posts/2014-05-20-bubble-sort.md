@@ -94,16 +94,16 @@ Finally, our array is sorted, however, it needs an additional iteration to figur
 
 <h2> Code </h2>
 
-<pre>
-<code class="language-java">public class BubbleSort {
+```java
+public class BubbleSort {
 
     public void bubbleSort(int[] numbers) {
         boolean swapped = true;
 
         while (swapped) { // continue until there is no swap
             swapped = false;
-            for (int k = 0; k &lt; numbers.length - 1; k++) {
-                if (numbers[k] &gt; numbers[k + 1]) {
+            for (int k = 0; k < numbers.length - 1; k++) {
+                if (numbers[k] > numbers[k + 1]) {
                     swap(numbers, k);
                     swapped = true; // if there is at least one swap make swapped true
                 }
@@ -116,13 +116,13 @@ Finally, our array is sorted, however, it needs an additional iteration to figur
         numbers[k + 1] = numbers[k];
         numbers[k] = temp;
     }
-}</code>
-</pre>
+}
+```
 
 And here are a bunch of test cases.
 
-<pre>
-<code class="language-java">public class BubbleSortTest {
+```java
+public class BubbleSortTest {
 
     private BubbleSort testClass;
 
@@ -155,5 +155,5 @@ And here are a bunch of test cases.
         assertArrayEquals(new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, numbers);
     }
 
-}</code>
-</pre>
+}
+```

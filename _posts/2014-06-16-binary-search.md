@@ -91,21 +91,22 @@ An illustration of searching a key 22 is shown below;
 
 <h2> Code </h2>
 
-<pre><code class="language-java">public int binarySearch(int[] numbers, int left, int right, int key) {
-	if (left &lt;= right) { // recurse until length of array is 1
-		int mid = (left + right) / 2;
+```java
+public int binarySearch(int[] numbers, int left, int right, int key) {
+    if (left <= right) { // recurse until length of array is 1
+      int mid = (left + right) / 2;
 
-		if (key == numbers[mid]) {
-			return mid;
-		}
+      if (key == numbers[mid]) {
+        return mid;
+      }
 
-		if (key &gt; numbers[mid]) { // continue from right sub-array
-			return binarySearch(numbers, mid + 1, right, key);
-		} else { // continue from left sub-array
-			return binarySearch(numbers, 0, mid - 1, key);
-		}
-	}
+      if (key > numbers[mid]) { // continue from right sub-array
+        return binarySearch(numbers, mid + 1, right, key);
+      } else { // continue from left sub-array
+        return binarySearch(numbers, 0, mid - 1, key);
+      }
+    }
 
-	return -1;
-}</code>
-</pre>
+    return -1;
+}
+```

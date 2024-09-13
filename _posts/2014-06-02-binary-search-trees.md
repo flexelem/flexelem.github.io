@@ -83,7 +83,8 @@ There are many possible trees for same set of keys. Thus, a height of a tree cou
 
 ![height_of_bst]({{ site.url }}/assets/img/2014/06/height_of_BST.png)
 
-<pre><code class="language-java">public int height(Node root) {
+```java
+public int height(Node root) {
     if (root == null) {
         return 0;
     }
@@ -97,8 +98,8 @@ There are many possible trees for same set of keys. Thus, a height of a tree cou
     int rightHeight = height(root.getRightChild());
     int max = Math.max(leftHeight, rightHeight) + 1;
     return max;
-}</code>
-</pre>
+}
+```
 
 <h3> Tree Walk </h3>
 
@@ -121,15 +122,15 @@ The binary search tree property allows us to print keys in sorted order by a sim
 
 inorderTreeWalk procedure is follows;
 
-<pre><code class="language-java">public void inorderTreeWalk(Node x) {
+```java
+public void inorderTreeWalk(Node x) {
      if (x != null) {
-
          inorderTreeWalk(x.getLeftChild());
          System.out.println(x.getKey());
          inorderTreeWalk(x.getRightChild());
      }
-}</code>
-</pre>
+}
+```
 
 In order tree walk take \(O(n)\) time because it traverses each node in the tree recursively.
 
@@ -153,15 +154,15 @@ Traverse order;
 
 Its running time is \(O(n)\) as well. Its procedure is as follows;
 
-<pre><code class="language-java" >public void preorderTreeWalk(Node x) {
+```java
+public void preorderTreeWalk(Node x) {
     if (x != null) {
-
-		System.out.println(x.getKey());
+        System.out.println(x.getKey());
         preorderTreeWalk(x.getLeftChild());
         preorderTreeWalk(x.getRightChild());
     }
-}</code>
-</pre>
+}
+```
 
 <b>Postorder Tree Walk: </b><br>
 Traverse order;
@@ -182,15 +183,15 @@ Traverse order;
 
 Its running time is \(O(n)\) as well. Its procedure is as follows;
 
-<pre><code class="language-java">public void postorderTreeWalk(Node x) {
+```java
+public void postorderTreeWalk(Node x) {
     if (x != null) {
-
-		System.out.println(x.getKey());
-        postorderTreeWalk(x.getLeftChild());
-        postorderTreeWalk(x.getRightChild());
+      System.out.println(x.getKey());
+      postorderTreeWalk(x.getLeftChild());
+      postorderTreeWalk(x.getRightChild());
     }
-}</code>
-</pre>
+}
+```
 
 In addition, the iterative versions of tree walks could be find at its <a href="http://en.wikipedia.org/wiki/Tree_traversal" title="wiki">wiki page</a>
 
@@ -213,10 +214,10 @@ To search for a key <b>k</b> in BST;
   </ul>
 </div>
 
-<pre><code class="language-java" >public Node search(Node x, int key) {
+```java
+public Node search(Node x, int key) {
     while (x != null && key != x.getKey()) {
-
-        if (key &lt; x.getKey()) {
+        if (key < x.getKey()) {
             x = x.getLeftChild();
         } else {
             x = x.getRightChild();
@@ -224,8 +225,8 @@ To search for a key <b>k</b> in BST;
     }
 
     return x;
-}</code>
-</pre>
+}
+```
 
 The running time of search procedure is \(O(height)\).
 
@@ -245,23 +246,25 @@ The running time of search procedure is \(O(height)\).
   </ul>
 </div>
 
-<pre><code class="language-java" >public Node treeMinimum(Node x) {
+```java
+public Node treeMinimum(Node x) {
     while (x.getLeftChild() != null) {
         x = x.getLeftChild();
     }
 
     return x;
-}</code>
-</pre>
+}
+```
 
-<pre><code class="language-java" >public Node treeMaximum(Node x) {
+```java
+public Node treeMaximum(Node x) {
     while (x.getRightChild() != null) {
         x = x.getRightChild();
     }
 
     return x;
-}</code>
-</pre>
+}
+```
 
 Both the procedures run in \(O(height)\) time.
 
@@ -282,7 +285,8 @@ The successor of a node <b>x</b> is the node with smallest key greater than <b>x
 
 The procedure is as follow;
 
-<pre><code class="language-java">public Node treeSuccessor(Node x) {
+```java
+public Node treeSuccessor(Node x) {
     if (x.getRightChild() != null) {
         return treeMinimum(x.getRightChild());
     }
@@ -295,8 +299,8 @@ The procedure is as follow;
     }
 
     return parent;
-}</code>
-</pre>
+}
+```
 
 
 <b>Predecessor : </b><br>
@@ -318,20 +322,21 @@ The predecessor of a node <b>x</b> is the node with greatest key less than <b>x<
 
 The procedure is as follow;
 
-<pre><code class="language-java">public Node treePredecessor(Node x) {
+```java
+public Node treePredecessor(Node x) {
     if (x.getLeftChild() != null) {
         return treeMaximum(x.getLeftChild());
     }
 
     Node parent = x.getParent();
 
-    while (parent != null && parent.getKey() &gt; x.getKey()) {
+    while (parent != null && parent.getKey() > x.getKey()) {
         parent = parent.getParent();
     }
 
     return parent;
-}</code>
-</pre>
+}
+```
 
 Both the procedures run in \(O(height)\) time.
 
@@ -361,33 +366,34 @@ To insert a key <b>k</b>;
 
 insert procedure is as follows;
 
-<pre><code class="language-java">public void insert(Node x) {
+```java
+public void insert(Node x) {
     Node y = null;
     Node z = root;
 
     while (z != null) {
         y = z;
 
-        if (x.getKey() &lt;= z.getKey()) {
+        if (x.getKey() <= z.getKey()) {
             z = z.getLeftChild();
         } else {
             z = z.getRightChild();
         }
     }
 
-	// set y as x's parent
+    // set y as x's parent
     x.setParent(y);
 
-	// if root is already null then set x as root
+    // if root is already null then set x as root
     if (root == null) {
         root = x;
-    } else if (x.getKey() &lt;= y.getKey()) { // set x as left child of its parent y
+    } else if (x.getKey() <= y.getKey()) { // set x as left child of its parent y
         y.setLeftChild(x);
     } else { // set x as right child of its parent y
         y.setRightChild(x);
     }
-}</code>
-</pre>
+}
+```
 
 The running time of insertion is \(O(height)\).
 
@@ -417,7 +423,8 @@ An illustration of deleting a key for each case;
 
 The delete procedure will use a subroutine which is called <em>transplant</em> to handle with the cases when <b>x</b> has no children, or only one child. Transplant and delete procedures are as follows;
 
-<pre><code class="language-java">public void delete(int key) {
+```java
+public void delete(int key) {
     Node delNode = search(root, key);
 
     if (delNode.getLeftChild() == null) {
@@ -431,10 +438,11 @@ The delete procedure will use a subroutine which is called <em>transplant</em> t
         Node z = y.getLeftChild();
         transplant(y, z);
     }
-}</code>
-</pre>
+}
+```
 
-<pre><code class="language-java">private void transplant(Node u, Node v) {
+```java
+private void transplant(Node u, Node v) {
     if (u.getParent() == null) { // we delete the root
         root = v;
      } else if (u.getParent().getLeftChild() == u) {
@@ -446,8 +454,8 @@ The delete procedure will use a subroutine which is called <em>transplant</em> t
     if (v != null) {
         v.setParent(u.getParent());
     }
-}</code>
-</pre>
+}
+```
 
 The running time of delete procedure is \(O(height)\).
 
